@@ -2,8 +2,12 @@
 // Run from the website folder:  node tools/build.js
 // No dependencies. It understands only what the pages use: # and ## headings, paragraphs,
 // "- " lists, **bold**, [text](link), plain https:// links, email and www. addresses.
-// The home page (docs/index.html) is written by hand and is not touched here.
+// The home page (docs/index.html) is written by hand; only its file versions are updated here.
+// Last, every link to a style sheet, script, picture or screen in docs/ gets "?v=" and a short
+// fingerprint of that file, so a phone that keeps files for a while still gets a changed one at once.
+// Run it before every commit.
 
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
@@ -157,3 +161,31 @@ fs.writeFileSync(
   }),
 );
 console.log("docs/404.html");
+
+// File versions: deeper pages first, so a page's fingerprint includes the versions written into the
+// screens it shows.
+function stampVersions() {
+  const pages = [];
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith(".html")) pages.push(full);
+    }
+  };
+  walk(out);
+  pages.sort((a, b) => b.split(path.sep).length - a.split(path.sep).length);
+  const fingerprint = (file) => crypto.createHash("sha1").update(fs.readFileSync(file)).digest("hex").slice(0, 8);
+  for (const file of pages) {
+    const html = fs.readFileSync(file, "utf8");
+    const stamped = html.replace(/\b(href|src)="([^"#?:]+\.(?:css|js|html|jpg|png|svg))(?:\?v=[0-9a-f]+)?"/g, (m, attr, ref) => {
+      // Links between pages need no version (and pages that link to each other would never settle).
+      if (attr === "href" && ref.endsWith(".html")) return `${attr}="${ref}"`;
+      const target = path.join(path.dirname(file), ref);
+      return fs.existsSync(target) ? `${attr}="${ref}?v=${fingerprint(target)}"` : m;
+    });
+    if (stamped !== html) fs.writeFileSync(file, stamped);
+  }
+  console.log(`file versions: ${pages.length} pages`);
+}
+stampVersions();

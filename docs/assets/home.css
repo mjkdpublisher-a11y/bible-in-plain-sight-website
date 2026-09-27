@@ -529,3 +529,87 @@ section.block {
     transform: none;
   }
 }
+
+/* Buttons and the top of the page.
+   On arrival the arch appears and the words and buttons rise in one after another. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes arch-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.hero .arch-frame { animation: arch-in 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero .ground { animation: rise-in 0.8s ease both 0.15s; }
+.hero h2 { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.3s; }
+.hero .intro { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.45s; }
+.hero .privacy-note { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.6s; }
+.hero .actions { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.75s; }
+
+/* "Coming soon to Google Play": a soft band of light passes over it once after arrival
+   (home.js adds "shine"), and again when the mouse comes over it. */
+.btn-primary.soon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.26) 50%, transparent 75%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.btn-primary.soon.shine::before {
+  animation: sheen 1.3s ease-out 1;
+}
+@keyframes sheen {
+  to { transform: translateX(130%); }
+}
+.btn-primary.soon {
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease;
+}
+@media (hover: hover) {
+  .btn-primary.soon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -16px rgba(30, 39, 33, 0.5);
+  }
+  .btn-primary.soon:hover::before {
+    animation: sheen 1.3s ease-out 1;
+  }
+  /* "Need help now?": the phone with a heart gives one calm beat. */
+  a.btn-tonal:hover .icon {
+    animation: beat 0.9s ease-in-out 1;
+  }
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.16); }
+  60% { transform: scale(0.97); }
+}
+
+/* "Read the privacy policy →": the arrow moves on. */
+.promise a.more .arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.promise a.more:hover .arrow,
+.promise a.more:focus-visible .arrow {
+  transform: translateX(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .arch-frame,
+  .hero .ground,
+  .hero h2,
+  .hero .intro,
+  .hero .privacy-note,
+  .hero .actions,
+  .btn-primary.soon::before,
+  a.btn-tonal:hover .icon {
+    animation: none;
+  }
+  .btn-primary.soon::before {
+    display: none;
+  }
+  .promise a.more .arrow {
+    transition: none;
+  }
+}

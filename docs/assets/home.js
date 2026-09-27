@@ -88,3 +88,13 @@
     });
   }
 })();
+
+// "Coming soon to Google Play": one soft band of light once the top of the page has arrived.
+(function () {
+  var soon = document.querySelector(".btn-primary.soon");
+  if (!soon || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  setTimeout(function () {
+    soon.classList.add("shine");
+    soon.addEventListener("animationend", function () { soon.classList.remove("shine"); }, { once: true });
+  }, 1700);
+})();

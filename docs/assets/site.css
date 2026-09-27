@@ -231,3 +231,13 @@ a.btn {
     transform: none;
   }
 }
+
+/* A button gives a little under the finger (or the mouse button). */
+a.btn:active {
+  transform: scale(0.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  a.btn:active {
+    transform: none;
+  }
+}

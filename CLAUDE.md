@@ -56,6 +56,10 @@ mock-ups):
   `base.css` (fonts and components), `site.css` (page frame and text pages), `home.css`.
 - `pages/privacy-policy.md`, `support.md`, `legal-notice.md`: the approved texts, the source of truth.
   `node tools/build.js` turns them into `docs/*.html` (and `docs/404.html`). Change the `.md`, then build.
+- **Run `node tools/build.js` before every commit**, also after changing only CSS, JS or a screen: it
+  writes `?v=` and a fingerprint of the file into every link to a style sheet, script, picture or
+  screen. GitHub Pages lets browsers keep files for 10 minutes, so without it phones show the old
+  look after a change (Mark hit this on 2026-09-27).
 - `docs/screens/*.html`: the nine app screens in phone frames on the home page, drawn from the
   app's code with its approved content and verses word for word from `data/bsb.txt` (Home, check-in
   and Timeline come from the design mock-ups). Real screenshots from Mark's phone can replace any
