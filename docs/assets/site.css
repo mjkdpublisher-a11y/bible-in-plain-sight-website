@@ -129,3 +129,105 @@ footer .small {
     border-radius: var(--radius-card);
   }
 }
+
+/* ---------- Motion in the page frame ---------- */
+
+/* The wordmark with a small arch: the arch rises and glows a little on hover. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.brand .mini-arch {
+  width: 20px;
+  height: 27px;
+  flex: none;
+  border-radius: 999px 999px 0 0;
+  background: var(--c-sky) url("img/welcome-cross.jpg") center 72% / 280% auto no-repeat;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+}
+.brand:hover,
+.brand:focus-visible {
+  color: var(--c-primary);
+}
+.brand:hover .mini-arch,
+.brand:focus-visible .mini-arch {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-sage) 45%, transparent), 0 8px 16px -8px rgba(14, 51, 37, 0.6);
+}
+
+/* The menu at the top: small tiles that come up on hover; the page you are on stays marked. */
+header.top nav {
+  gap: 6px;
+}
+header.top nav a {
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease;
+}
+header.top nav a:hover,
+header.top nav a:focus-visible {
+  background: var(--c-tint);
+  color: var(--c-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -14px rgba(30, 39, 33, 0.45);
+}
+header.top nav a[aria-current="page"] {
+  background: var(--c-tint);
+  color: var(--c-primary);
+  text-decoration: none;
+}
+footer nav a {
+  transition: color 0.2s ease;
+}
+footer nav a:hover {
+  color: var(--c-ink);
+}
+
+/* Buttons that go somewhere come up a little too. */
+a.btn {
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease, background-color 0.25s ease;
+}
+@media (hover: hover) {
+  a.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -16px rgba(30, 39, 33, 0.5);
+  }
+}
+
+@media (max-width: 640px) {
+  header.top nav {
+    gap: 2px;
+  }
+  header.top nav a {
+    padding: 8px 10px;
+  }
+}
+@media (max-width: 420px) {
+  header.top .brand {
+    font-size: 17px;
+    gap: 8px;
+  }
+  header.top .brand .mini-arch {
+    width: 18px;
+    height: 24px;
+  }
+  header.top nav a {
+    padding: 8px 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand .mini-arch,
+  header.top nav a,
+  a.btn {
+    transition: none;
+  }
+  .brand:hover .mini-arch,
+  header.top nav a:hover,
+  a.btn:hover {
+    transform: none;
+  }
+}

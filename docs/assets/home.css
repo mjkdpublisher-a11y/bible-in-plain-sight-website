@@ -410,10 +410,15 @@ section.block {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 20px;
-    padding-bottom: 12px;
     margin: 0 calc(-1 * var(--gutter));
     padding-left: var(--gutter);
     padding-right: var(--gutter);
+    /* A strip that scrolls sideways cuts off whatever sticks out above or below it. The room here
+       takes the raised phone and its shadow; the negative margin keeps the page where it was. */
+    padding-top: 28px;
+    margin-top: -28px;
+    padding-bottom: 40px;
+    margin-bottom: -28px;
   }
   .screens {
     --pw: 232px;
@@ -468,5 +473,59 @@ section.block {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Tiles: with a mouse they come a little forward on hover; everywhere they slide in as they
+   first come into view (assets/home.js adds "in"). The slide uses "translate" and the hover uses
+   "transform", so the two never fight. */
+.tile {
+  transition:
+    opacity 0.7s ease var(--d, 0s),
+    translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s),
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.js .tile:not(.in) {
+  opacity: 0;
+  translate: 0 24px;
+}
+.icon-well {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.35s ease, color 0.35s ease;
+}
+@media (hover: hover) {
+  .tile:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 54px -32px rgba(30, 39, 33, 0.38), 0 2px 6px rgba(30, 39, 33, 0.06);
+    border-color: color-mix(in srgb, var(--c-sage) 65%, var(--c-line));
+  }
+  .promise.tile:hover {
+    box-shadow: 0 34px 64px -36px rgba(8, 28, 21, 0.65);
+  }
+  .tile:hover .icon-well {
+    transform: scale(1.08);
+    background: var(--c-primary);
+    color: var(--c-on-primary);
+  }
+}
+@media (hover: none) {
+  .tile:active {
+    transform: scale(0.985);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .icon-well {
+    transition: none;
+  }
+  .js .tile:not(.in) {
+    opacity: 1;
+    translate: none;
+  }
+  .tile:hover,
+  .tile:active,
+  .tile:hover .icon-well {
+    transform: none;
   }
 }

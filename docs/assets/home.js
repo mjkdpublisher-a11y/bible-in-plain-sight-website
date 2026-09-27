@@ -1,7 +1,30 @@
-// Motion on the home page. The phones come in one after another when the gallery scrolls into
-// view. Each phone's screen scrolls gently, like someone reading: with a mouse while the pointer is
+// Motion on the home page. Tiles and phones come in as they scroll into view (the phones one after
+// another). Each phone's screen scrolls gently, like someone reading: with a mouse while the pointer is
 // over it, on a touch screen when the phone stands in the middle of the view. Nothing here is
 // needed to read the page, and with "reduce motion" switched on it does nothing.
+(function () {
+  // Tiles slide in as they first come into view; tiles side by side come one after another.
+  var tiles = Array.prototype.slice.call(document.querySelectorAll(".tile"));
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (calm || !("IntersectionObserver" in window)) {
+    tiles.forEach(function (tile) { tile.classList.add("in"); });
+  } else {
+    tiles.forEach(function (tile) {
+      var row = tile.parentElement.children;
+      var index = Array.prototype.indexOf.call(row, tile);
+      if (row.length > 1 && index > 0) tile.style.setProperty("--d", index * 110 + "ms");
+    });
+    var show = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        show.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    tiles.forEach(function (tile) { show.observe(tile); });
+  }
+})();
+
 (function () {
   var gallery = document.querySelector(".screens");
   if (!gallery) return;
