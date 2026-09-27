@@ -175,7 +175,9 @@ function stampVersions() {
   };
   walk(out);
   pages.sort((a, b) => b.split(path.sep).length - a.split(path.sep).length);
-  const fingerprint = (file) => crypto.createHash("sha1").update(fs.readFileSync(file)).digest("hex").slice(0, 8);
+  // Line endings are left out, so the same file gives the same fingerprint on Windows and on GitHub.
+  const fingerprint = (file) =>
+    crypto.createHash("sha1").update(fs.readFileSync(file).toString("latin1").replace(/\r\n/g, "\n"), "latin1").digest("hex").slice(0, 8);
   for (const file of pages) {
     const html = fs.readFileSync(file, "utf8");
     const stamped = html.replace(/\b(href|src)="([^"#?:]+\.(?:css|js|html|jpg|png|svg))(?:\?v=[0-9a-f]+)?"/g, (m, attr, ref) => {

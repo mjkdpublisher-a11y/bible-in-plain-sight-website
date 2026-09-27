@@ -22,6 +22,14 @@
       });
     }, { threshold: 0.12 });
     tiles.forEach(function (tile) { show.observe(tile); });
+
+    // On a touch screen there is no hover: the tile crossing the middle band of the screen is "lit".
+    if (window.matchMedia("(hover: none)").matches) {
+      var middle = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { entry.target.classList.toggle("lit", entry.isIntersecting); });
+      }, { rootMargin: "-42% 0px -42% 0px" });
+      tiles.forEach(function (tile) { middle.observe(tile); });
+    }
   }
 })();
 
