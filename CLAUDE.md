@@ -47,8 +47,8 @@ auto-renew on, WHOIS privacy on). The mailbox `support@bibleinplainsight.com` ru
   CNAME to `mjkdpublisher-a11y.github.io`, and the bare domain has A records for GitHub's four
   addresses (185.199.108.153, .109.153, .110.153, .111.153); GitHub redirects it to `www`.
 - Before that, a four-page site on free **Google Sites** (Google account "Mark J",
-  bibleinplainsight@…; in Mark's Chrome that is `authuser=2`), published 2026-09-27. No longer
-  reached through the domain; its old copy still exists on sites.google.com until Mark unpublishes it.
+  bibleinplainsight@…; in Mark's Chrome that is `authuser=2`), published 2026-09-27. Mark
+  unpublished it the same day, after the switch; the draft stays in his Google account.
 
 **How the website is built** (design: option A, "Dawn", chosen by Mark; `design/` holds the two
 mock-ups):
@@ -64,6 +64,12 @@ mock-ups):
   No line of text may be cut by the phone's edge (Mark noticed it at once): screens with a tab bar
   hide the rest under it; reading screens end with the `.fade` from `screens/app.css`, and their
   content is placed so only the start of the next section fades out.
+- Motion: `docs/assets/home.js` (our own script, nothing from outside) plays a phone's screen when
+  the mouse is over it, or on a touch screen when the phone stands in the middle of the view, and
+  lets the phones come in one after another. A screen scrolls its `.scroller` by `--scroll` over
+  `--dur` (`screens/motion.css`). Each `--scroll` was measured so that, at the end, no line is cut
+  at the top bar, the tab bar or the fade; re-measure it when a screen's content changes.
+  "Reduce motion" switches all of it off.
 - Preview: `python tools/serve.py` (or the "site" entry in `.claude/launch.json`), then
   http://localhost:8766. It serves `/privacy-policy` from `privacy-policy.html`, as GitHub Pages does.
 - `notes/privacy-facts.md`: where each privacy claim comes from.

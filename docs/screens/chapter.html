@@ -5,6 +5,7 @@
 <title>Bible in Plain Sight · the whole chapter</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="motion.css">
 <link rel="stylesheet" href="app.css">
 <!-- "Read the whole chapter" (src/app/chapter.tsx), opened from Matthew 6:25-26 on the card: the
      verses from the card highlighted, the ones before and after around them. Verses word for word
@@ -13,6 +14,10 @@
 .verses { display: flex; flex-direction: column; gap: 12px; }
 .verses p { font-family: "Literata", Georgia, serif; font-size: 21px; line-height: 34px; }
 .verses b { font-family: "Atkinson Hyperlegible", system-ui, sans-serif; font-size: 13px; font-weight: 700; color: #9A4F37; }
+.chapter-link { flex: 1; min-height: 64px; display: flex; align-items: center; gap: 8px; padding: 12px; border: 1px solid #E2DACB; border-radius: 16px; background: #FFFDF8; box-sizing: border-box; }
+.chapter-link div { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.chapter-link b { font-size: 16px; line-height: 22px; }
+.chapter-link.next div { align-items: flex-end; }
 .highlight { display: flex; flex-direction: column; gap: 12px; margin: 0 -12px; padding: 16px 12px; border-radius: 12px; background: #EEEFE4; }
 </style>
 </head>
@@ -23,7 +28,7 @@
     <span class="start"><span class="ib"><svg class="i" viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></span><span class="name">Matthew 6</span></span>
   </div>
 </div>
-<div class="article" style="padding-top:0;margin-top:-13px">
+<div class="article scroller" style="--scroll:1198px;--dur:5.0s;padding-top:0;margin-top:-13px">
   <div class="verses">
     <p><b>24 </b>No one can serve two masters: Either he will hate the one and love the other, or he will be devoted to the one and despise the other. You cannot serve both God and money.</p>
     <div class="highlight">
@@ -35,9 +40,18 @@
     <p><b>28 </b>And why do you worry about clothes? Consider how the lilies of the field grow: They do not labor or spin.</p>
     <p><b>29 </b>Yet I tell you that not even Solomon in all his glory was adorned like one of these.</p>
     <p><b>30 </b>If that is how God clothes the grass of the field, which is here today and tomorrow is thrown into the furnace, will He not much more clothe you, O you of little faith?</p>
+    <p><b>31 </b>Therefore do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’</p>
+    <p><b>32 </b>For the Gentiles strive after all these things, and your heavenly Father knows that you need them.</p>
+    <p><b>33 </b>But seek first the kingdom of God and His righteousness, and all these things will be added unto you.</p>
+    <p><b>34 </b>Therefore do not worry about tomorrow, for tomorrow will worry about itself. Today has enough trouble of its own.</p>
+  </div>
+  <p class="small" style="margin-top:32px">Scripture quotations are from the Berean Standard Bible (BSB), public domain.</p>
+  <div style="display:flex;gap:12px;margin-top:32px">
+    <div class="chapter-link"><svg class="i" viewBox="0 0 24 24" style="width:20px;height:20px;color:#2D5A43"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg><div><span class="over">Previous</span><b>Matthew 5</b></div></div>
+    <div class="chapter-link next"><div><span class="over">Next</span><b>Matthew 7</b></div><svg class="i" viewBox="0 0 24 24" style="width:20px;height:20px;color:#2D5A43"><path d="M5 12h14M13.5 6.5 19 12l-5.5 5.5"/></svg></div>
   </div>
 </div>
-<div class="fade"></div>
+<div class="fade" style="height:80px"></div>
 </main>
 </body>
 </html>
