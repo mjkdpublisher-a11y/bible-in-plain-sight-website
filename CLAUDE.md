@@ -37,16 +37,18 @@ auto-renew on, WHOIS privacy on). The mailbox `support@bibleinplainsight.com` ru
 (MX, SPF, DKIM and DMARC records in Hostinger's DNS: never touch them when changing the website).
 
 **Where the site lives:**
-- Until the switch: a four-page site on free **Google Sites** (Google account "Mark J",
-  bibleinplainsight@…; in Mark's Chrome that is `authuser=2`), published 2026-09-27. Hostinger
-  cannot redirect the address without `www` there ("you can't redirect your domain to itself").
-- Decided on 2026-09-27: move to **GitHub Pages**, in the public repository
-  `mjkdpublisher-a11y/bible-in-plain-sight-website` (Mark created it; free GitHub Pages needs a
-  public repository). It publishes the `docs/` folder. Commits use GitHub's hidden noreply address,
-  never Mark's Gmail. The switch: Pages on (`main`, `/docs`), custom domain `www.bibleinplainsight.com`
-  (`docs/CNAME`), domain verified in GitHub, then in Hostinger `www` CNAME to
-  `mjkdpublisher-a11y.github.io` and the bare domain's A records to GitHub's four addresses, then
-  "Enforce HTTPS". Keep the Google Sites site until the new one works.
+- **GitHub Pages** since 2026-09-27, from the public repository
+  `mjkdpublisher-a11y/bible-in-plain-sight-website` (free GitHub Pages needs a public repository),
+  branch `main`, folder `docs/`. Publishing a change = commit and `git push`; GitHub rebuilds the
+  site in a minute or two. Commits use this repo's settings: author "Bible in Plain Sight" and
+  GitHub's hidden noreply address, never Mark's Gmail.
+- Custom domain `www.bibleinplainsight.com` (`docs/CNAME`), verified in Mark's GitHub account (TXT
+  record `_github-pages-challenge-mjkdpublisher-a11y`, keep it). In Hostinger's DNS: `www` is a
+  CNAME to `mjkdpublisher-a11y.github.io`, and the bare domain has A records for GitHub's four
+  addresses (185.199.108.153, .109.153, .110.153, .111.153); GitHub redirects it to `www`.
+- Before that, a four-page site on free **Google Sites** (Google account "Mark J",
+  bibleinplainsight@…; in Mark's Chrome that is `authuser=2`), published 2026-09-27. No longer
+  reached through the domain; its old copy still exists on sites.google.com until Mark unpublishes it.
 
 **How the website is built** (design: option A, "Dawn", chosen by Mark; `design/` holds the two
 mock-ups):
