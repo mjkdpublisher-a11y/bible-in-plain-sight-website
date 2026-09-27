@@ -1,0 +1,178 @@
+# Privacy Policy
+
+**Bible in Plain Sight** (the Android app) and **www.bibleinplainsight.com** (this website)
+
+Last updated: 27 September 2026
+
+## The short version
+
+- The app has no account, no ads, no analytics and no tracking.
+- Everything you write in the app stays on your phone. We never receive it and cannot read it.
+- The app goes online only when you buy or restore the full version through Google Play.
+- You can export or delete everything you wrote at any time, in Settings.
+
+The rest of this page explains the details.
+
+## 1. Who we are
+
+Bible in Plain Sight is published by Marek JANY, entrepreneur individuel (EI), a sole proprietor
+registered in France (SIRET 988 101 309 00017), Maison La Pierre, Route de la Salvetat,
+34220 Saint-Pons-de-Thomières, France.
+
+In this policy, "we" and "us" mean the publisher. We are responsible (the "controller") for the
+small amount of personal data we receive: the emails you send us and the purchase records Google
+Play gives us. You can reach us at **support@bibleinplainsight.com**.
+
+## 2. What the app keeps on your phone
+
+The app saves only what you choose to write or set:
+
+- **Journal entries:** your words, the date and time, your answer to "How heavy does it feel right
+  now?" (from Very heavy to Light), the topic you wrote from, and, if you wrote in "For someone I
+  love" mode, the first name you typed.
+- **Check-ins:** the topic, when the check-in is due, and your answer (Better, About the same or
+  Worse).
+- **Stones of Remembrance:** your note, its date and its topic.
+- **Settings:** how many days until a check-in, whether reminders show the topic, the country you
+  chose for helplines, whether you have seen the welcome screen, and whether the full version is
+  unlocked.
+
+All of this is kept in the app's private storage on your phone, where other apps cannot read it.
+It is never sent to us or to anyone else. The app does not keep a history of the topics you read.
+
+What you write may be very personal, for example about your faith, your health or your family.
+That is exactly why it stays with you.
+
+## 3. Topics that leave no trace
+
+Two topics, "Being hurt at home" and "Afraid for my safety", are for people who may be in danger
+from someone who can look at their phone. On these topics the app saves nothing: no journal entry,
+no check-in, no reminder, nothing on the Timeline. They cannot be shared, they are hidden in the
+phone's recent apps screen, screenshots are blocked, and a Quick exit button closes them at once.
+
+## 4. What the app can use on your phone
+
+- **Your phone's region setting.** The app reads the country your phone is set to, so it can show
+  helplines for your country. This happens on the phone and is not sent anywhere. You can choose a
+  different country in Settings.
+- **Notifications, only if you allow them.** The app uses them to remind you of a check-in. The
+  reminders are created on your phone, not sent from a server. By default they only say "You have a
+  new check-in." without the topic. You can choose to show the topic in Settings, and you can turn
+  reminders off at any time in Settings or in your phone's settings.
+- **Starting after a restart.** This lets reminders you already have still arrive after your phone
+  restarts.
+- **The internet, only for the purchase.** The app connects only to Google Play, and only to buy or
+  restore the full version.
+
+The app does not ask for and does not use your contacts, location, camera, microphone, photos,
+files, calls or messages.
+
+## 5. Calls, texts and links to helplines
+
+When you tap a helpline, the app opens your phone's own phone or messages app with the number filled
+in. Nothing is dialed or sent until you press call or send. The app does not see the call or the
+message. Links to helpline websites open in your browser. The organizations you contact have their
+own privacy practices.
+
+## 6. Sharing a verse and exporting your data
+
+You can share a verse as an image, and you can export all your data as one file (in Settings,
+"Export all data"). Both go through your phone's share menu, to the app or the person you choose.
+After that, the copy is handled by the app or service you chose, not by us.
+
+The export file holds everything you wrote, so the app does not keep it longer than needed: it is
+removed from the app's temporary storage before your next export, when you delete all data, and
+when you next open the app on a later day.
+
+## 7. Backups and moving to a new phone
+
+Android's backup to Google Drive is switched off for this app, so your journal is not copied to
+Google's servers. On some phones, when you set up a new phone by copying directly from your old one
+(with a cable or wirelessly), the app's data may be copied to the new phone as well. It goes
+straight from your old phone to your new one, never to us. To be sure you keep your data, use
+"Export all data" before you change phones.
+
+## 8. Deleting your data
+
+- **Delete all data** (in Settings) removes your journal, check-ins, stones, reminders and settings
+  from the phone. Deleted text is overwritten, so it cannot be recovered from the phone afterwards.
+- Deleting a single journal entry also removes its waiting check-in and reminder.
+- Uninstalling the app removes everything it saved.
+
+Because we never have a copy, we cannot restore your data for you.
+
+## 9. Buying the full version
+
+Eighteen topics, and every feature, are free. One purchase unlocks the other topics. The purchase
+goes through Google Play:
+
+- Google handles the payment. We never see your card or other payment details.
+- Google Play tells the app that the purchase is valid, and the app remembers on your phone that the
+  full version is unlocked.
+- Google Play gives us order details, such as the order number, date, price and country, and lets us
+  look up an order by the email address of the Google account that made it. We use these only to
+  help you with your order or a refund, and for our accounting and tax obligations. French law
+  requires us to keep sales records for up to 10 years.
+
+The legal bases are the purchase contract and our legal obligations (GDPR Article 6(1)(b) and (c)).
+Google's handling of your data is covered by Google's privacy policy:
+https://policies.google.com/privacy
+
+## 10. When you email us
+
+If you write to support@bibleinplainsight.com, we receive your email address, your name if you
+include it, and your message. We use them only to reply to you. The legal basis is our legitimate
+interest in answering you (GDPR Article 6(1)(f)). We delete the conversation 12 months after it
+ends, unless we need it longer to settle a dispute. Our mailbox is provided by Hostinger
+International Ltd (Cyprus, EU).
+
+Please do not send us more personal details than you need to. Our mailbox is not watched around the
+clock and cannot help in an emergency. **If you are in danger, call your local emergency number.**
+
+## 11. This website
+
+This website is made with Google Sites and hosted by Google. When you visit it, Google receives
+technical data, such as your IP address, your browser and the pages you view, and uses cookies, as
+described in the notice Google shows on this site and in Google's privacy policy. Google may process
+this data outside the EU, including in the United States. We have not added any analytics, ads or
+cookies of our own, and we do not receive information about individual visitors. You can block or
+delete cookies in your browser; the pages still work.
+
+## 12. Children
+
+The app is intended for adults and is not directed at children. We do not knowingly receive data
+from children. If you believe a child has written to us, contact us and we will delete the message.
+
+## 13. Your rights
+
+Under the GDPR you have the right to access, correct or delete the personal data we hold about you
+(emails and purchase records), to limit or object to its use, and to receive a copy of it. Write to
+support@bibleinplainsight.com. We will answer within one month.
+
+What you write in the app is on your phone, so you control it directly: you can export it or delete
+it at any time.
+
+You can also complain to a data protection authority: in France, the CNIL (3 Place de Fontenoy,
+TSA 80715, 75334 Paris Cedex 07, www.cnil.fr), or the authority in the country where you live.
+
+## 14. How we keep data safe
+
+- In the app: your data stays in the app's private storage; deleted text is overwritten; Google
+  Drive backup is off; the export file is removed soon after use; the two topics above leave no
+  trace; the app makes no network connections except to Google Play for the purchase.
+- On our side: we keep only emails and purchase records, and we protect our email and Google Play
+  accounts with strong passwords and two-step verification.
+
+## 15. Not a medical app
+
+Bible in Plain Sight offers Scripture, prayer and a place to write. It does not replace a doctor, a
+therapist or emergency services. If you are in danger, call your local emergency number.
+
+## 16. Changes to this policy
+
+If we change this policy, we will update this page and the date at the top. If a new version of the
+app changes what it does with your data, we will update this policy before that version is released.
+
+## 17. Contact
+
+Questions about this policy or your data: **support@bibleinplainsight.com**
