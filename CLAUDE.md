@@ -74,6 +74,10 @@ mock-ups):
   `--dur` (`screens/motion.css`). Each `--scroll` was measured so that, at the end, no line is cut
   at the top bar, the tab bar or the fade; re-measure it when a screen's content changes.
   "Reduce motion" switches all of it off.
+- Background (Mark chose "Dawn" + "Hills" on 2026-09-27; a darker "night to dawn" top was too dark
+  for him): `docs/assets/backgrounds.css` on the home page (sunrise glow behind the arch, drifting
+  washes in `.bg-layer`, sage bands with hills on `[data-part="gallery"]` and `[data-part="free"]`),
+  and in `site.css` for every page the faint paper grain and the dark green footer with a hill.
 - Preview: `python tools/serve.py` (or the "site" entry in `.claude/launch.json`), then
   http://localhost:8766. It serves `/privacy-policy` from `privacy-policy.html`, as GitHub Pages does.
 - `notes/privacy-facts.md`: where each privacy claim comes from.

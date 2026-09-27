@@ -39,10 +39,34 @@ header.top nav a[aria-current="page"] {
 
 /* ---------- Footer ---------- */
 
+/* Dark green like the ground under the cross, rising as a hill (img/hill-front.svg). */
 footer {
-  border-top: 1px solid var(--c-line);
-  margin-top: 72px;
-  padding: 32px 0 48px;
+  position: relative;
+  margin-top: 150px;
+  padding: 40px 0 48px;
+  background: #0e3325;
+  color: #f4eedc;
+}
+footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 1px);
+  height: 90px;
+  background: #0e3325;
+  -webkit-mask: url("img/hill-front.svg") bottom / 100% 100% no-repeat;
+  mask: url("img/hill-front.svg") bottom / 100% 100% no-repeat;
+  pointer-events: none;
+}
+footer .wordmark {
+  color: #f4eedc;
+}
+footer a {
+  color: #b8f2c9;
+}
+footer .small {
+  color: rgba(244, 238, 220, 0.72);
 }
 footer .row {
   display: flex;
@@ -182,8 +206,9 @@ header.top nav a[aria-current="page"] {
 footer nav a {
   transition: color 0.2s ease;
 }
-footer nav a:hover {
-  color: var(--c-ink);
+footer nav a:hover,
+footer .brand:hover {
+  color: #f4eedc;
 }
 
 /* Buttons that go somewhere come up a little too. */
@@ -239,5 +264,29 @@ a.btn:active {
 @media (prefers-reduced-motion: reduce) {
   a.btn:active {
     transform: none;
+  }
+}
+
+/* ---------- A faint paper grain over every page, as on the app's green buttons ---------- */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: url("img/grain.png");
+  background-size: 256px;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+@media (prefers-color-scheme: dark) {
+  body::after {
+    mix-blend-mode: soft-light;
+    opacity: 0.08;
+  }
+  footer,
+  footer::before {
+    background-color: #0f2a20;
   }
 }
