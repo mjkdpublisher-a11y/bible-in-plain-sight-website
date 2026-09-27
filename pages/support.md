@@ -13,9 +13,10 @@ country. If your country is not listed, you can find a helpline at https://finda
 No. There is no account and no sign-in. Everything you write stays on your phone.
 
 **Which topics are free?**
-Eighteen topics are free forever: every crisis topic, every topic about grief, depression, addiction
-and other hard times, plus Anxiety and worry, and Thankful. Every feature is free too. One purchase,
-with no subscription, unlocks the other 72 topics.
+Eighteen topics are free forever: all 5 crisis topics, 11 topics for the hardest times (such as the
+death of a loved one, depression, miscarriage and addiction), and two everyday topics, “Anxiety and
+worry” and “Thankful.” Every feature is free too. One purchase, with no subscription, unlocks the
+other 72 topics.
 
 **I bought the full version. How do I get it on a new phone?**
 Use the same Google account in Google Play on the new phone. Then open Settings in the app and tap
@@ -49,5 +50,3 @@ The Berean Standard Bible (BSB), which is in the public domain.
 **Is this a medical app?**
 No. Bible in Plain Sight offers Scripture, prayer and a place to write. It does not replace a doctor,
 a therapist or emergency services. If you are in danger, call your local emergency number.
-
-[Privacy Policy](/privacy-policy) · [Legal notice](/legal-notice)

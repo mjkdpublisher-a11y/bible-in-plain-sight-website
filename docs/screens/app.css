@@ -1,0 +1,64 @@
+/* The app's styles for the screens drawn on the website (from src/theme/theme.ts, src/ui/*.tsx).
+   Each screen is 390 x 867 (9:20, a common Android phone). */
+body { margin: 0; font-family: "Atkinson Hyperlegible", system-ui, sans-serif; color: #1E2721; background: #FAF7F0; }
+main { width: 390px; height: 867px; position: relative; overflow: hidden; background: #FAF7F0; }
+h1, h2, p { margin: 0; }
+svg.i { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* Top bar of the reading screens: back, actions, reading progress. */
+.bar { position: absolute; top: 0; left: 0; right: 0; z-index: 2; padding: 40px 12px 0; background: #FAF7F0; border-bottom: 1px solid #E2DACB; }
+.bar .row { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+.bar .start { display: flex; align-items: center; gap: 4px; }
+.bar .name { font-size: 16px; line-height: 22px; font-weight: 700; }
+.ib { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: #E6DFD1; }
+.progress i { display: block; height: 3px; background: #2D5A43; }
+
+.article { padding: 0 24px; display: flex; flex-direction: column; }
+.over { font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9A4F37; }
+.display { font-family: "Literata", Georgia, serif; font-size: 36px; line-height: 42px; font-weight: 500; letter-spacing: -0.01em; }
+.title { font-family: "Literata", Georgia, serif; font-size: 32px; line-height: 38px; font-weight: 500; letter-spacing: -0.01em; }
+.heading { font-family: "Literata", Georgia, serif; font-size: 25px; line-height: 32px; font-weight: 500; }
+.body { font-size: 18px; line-height: 30px; }
+.body-large { font-size: 20px; line-height: 30px; font-weight: 700; }
+.secondary { font-size: 16px; line-height: 24px; color: #4F5A52; }
+.small { font-size: 14px; line-height: 20px; color: #4F5A52; }
+.label { font-size: 16px; line-height: 22px; font-weight: 700; }
+.section { display: flex; flex-direction: column; gap: 16px; }
+.section .titles { display: flex; flex-direction: column; gap: 6px; }
+
+/* Scripture: reference in clay caps (a link to the whole chapter), a large clay quote mark,
+   the verse word for word in the serif, the context note below. */
+.block { display: flex; flex-direction: column; gap: 10px; }
+.block.divider { border-top: 1px solid #E2DACB; padding: 18px 0 20px; }
+.block.lament { background: #EEEFE4; border-radius: 12px; padding: 16px 18px; }
+.block.lament .verse { font-style: italic; }
+.ref { display: flex; align-items: center; gap: 4px; color: #9A4F37; }
+.ref svg.i { width: 16px; height: 16px; }
+.quote { display: flex; gap: 6px; }
+.mark { font-family: "Literata", Georgia, serif; font-size: 44px; line-height: 48px; color: #9A4F37; margin: -4px 0 0 -2px; }
+.verse { font-family: "Literata", Georgia, serif; font-size: 21px; line-height: 34px; }
+.verse.featured { font-size: 22px; line-height: 33px; }
+.context { font-size: 16px; line-height: 25px; color: #4F5A52; }
+
+/* Controls */
+.switch { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 16px; font-weight: 700; }
+.track { width: 44px; height: 26px; border-radius: 999px; background: #E6DFD1; border: 1px solid #E2DACB; box-sizing: border-box; display: flex; align-items: center; padding: 2px; }
+.track span { width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+.track.on { background: #2D5A43; border-color: #2D5A43; justify-content: flex-end; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field .label { font-size: 15px; }
+.input { min-height: 48px; padding: 12px 14px; box-sizing: border-box; border: 1.5px solid #CFC5B2; border-radius: 10px; background: #FAF7F0; font-size: 17px; line-height: 24px; }
+.btn { min-height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 18px; font-weight: 700; }
+.btn.primary { background: #2D5A43; color: #FFFFFF; }
+.btn.tonal { background: #E6ECDD; color: #2D5A43; }
+.radio-rows { display: flex; flex-direction: column; gap: 8px; }
+.radio-rows div { min-height: 60px; display: flex; align-items: center; gap: 14px; padding: 0 17px; border: 1px solid #E2DACB; border-radius: 14px; background: #FBF8F1; box-sizing: border-box; font-size: 18px; line-height: 24px; }
+.radio-rows div::before { content: ""; width: 24px; height: 24px; border-radius: 50%; border: 2px solid #69736B; box-sizing: border-box; flex: none; }
+.radio-rows div.on { border: 2px solid #2D5A43; background: #FFFDF8; padding: 0 16px; font-weight: 700; }
+.radio-rows div.on::before { border-color: #2D5A43; background: radial-gradient(circle, #2D5A43 0 6px, transparent 6.5px); }
+
+/* Reading screens go on below the phone's edge: the text fades into the paper and is gone before
+   the rounded corners, so no line is cut in half at the bottom. */
+.fade { position: absolute; left: 0; right: 0; bottom: 0; height: 130px; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(250, 247, 240, 0) 0%, rgba(250, 247, 240, 0.85) 50%, #FAF7F0 72%); }

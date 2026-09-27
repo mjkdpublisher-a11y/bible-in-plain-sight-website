@@ -1,0 +1,9 @@
+/* The app's fonts, hosted with the site (the mock-up screens loaded them from Google Fonts). */
+@font-face { font-family: "Literata"; src: url("../assets/fonts/Literata_400Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Literata"; src: url("../assets/fonts/Literata_400Regular_Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Literata"; src: url("../assets/fonts/Literata_500Medium.ttf") format("truetype"); font-weight: 500 600; font-style: normal; }
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("../assets/fonts/AtkinsonHyperlegible_400Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Atkinson Hyperlegible"; src: url("../assets/fonts/AtkinsonHyperlegible_700Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; }
+
+/* Shown inside a phone frame on the website: no scroll bars. */
+html, body { overflow: hidden; scrollbar-width: none; }

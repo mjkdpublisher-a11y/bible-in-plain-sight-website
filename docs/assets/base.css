@@ -1,0 +1,322 @@
+/* Shared by both design options: the app's fonts (hosted with the site), tokens and components. */
+
+@font-face {
+  font-family: "Literata";
+  src: url("fonts/Literata_400Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("fonts/Literata_400Regular_Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("fonts/Literata_500Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/AtkinsonHyperlegible_400Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("fonts/AtkinsonHyperlegible_700Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+  /* The dawn scene keeps its deep greens in both modes (design-system.md, section 9). */
+  --c-night: #081c15;
+  --c-sky: #0e3325;
+  --c-ivory: #f4eedc;
+  --page-max: 1120px;
+  --gutter: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--c-canvas);
+  color: var(--c-ink);
+  font: var(--t-body);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--c-primary);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+}
+
+.wrap {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  left: 16px;
+  top: 16px;
+  z-index: 10;
+  background: var(--c-surface);
+  padding: 12px 16px;
+}
+
+/* ---------- Type ---------- */
+
+.display {
+  font: var(--t-display);
+  letter-spacing: -0.01em;
+}
+.title {
+  font: var(--t-title);
+  letter-spacing: -0.01em;
+}
+.heading {
+  font: var(--t-heading);
+}
+.subheading {
+  font: var(--t-subheading);
+}
+.item-title {
+  font: var(--t-item-title);
+}
+.secondary {
+  font: var(--t-secondary);
+  color: var(--c-ink-2);
+}
+.caption {
+  font: var(--t-caption);
+  color: var(--c-ink-2);
+}
+.small {
+  font: var(--t-small);
+  color: var(--c-ink-2);
+}
+.overline {
+  font: var(--t-overline);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-clay);
+}
+.wordmark {
+  font: var(--t-wordmark);
+  color: var(--c-ink);
+  text-decoration: none;
+}
+.wordmark-hero {
+  font: var(--t-wordmark-hero);
+  color: var(--c-ivory);
+  text-shadow: 0 0 18px rgba(184, 242, 201, 0.55), 0 0 3px rgba(228, 250, 238, 0.35);
+  text-align: center;
+  margin: 0;
+}
+
+/* ---------- Icons: 24 grid, 1.75 stroke, current text colour ---------- */
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-well {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--c-tint);
+  color: var(--c-primary);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 24px;
+  border-radius: var(--radius-button);
+  font: var(--t-label);
+  font-size: 18px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+}
+/* The very faint paper texture of the app's green buttons (opacity 0.03, never stronger). */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("img/grain.png");
+  background-size: 256px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+.btn-tonal {
+  background: var(--c-tint);
+  color: var(--c-primary);
+}
+.btn-secondary {
+  min-height: 52px;
+  background: transparent;
+  color: var(--c-ink);
+  border: 1.5px solid var(--c-line-strong);
+}
+.btn-two-line {
+  line-height: 18px;
+  font-size: 15px;
+  text-align: left;
+}
+.btn small {
+  display: block;
+  font: var(--t-caption);
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ---------- Scripture: serif, curly quotes, clay reference above, hanging clay quote mark ---------- */
+
+.scripture {
+  margin: 0;
+  padding-left: 34px;
+  position: relative;
+}
+.scripture .overline {
+  display: block;
+  margin-bottom: 10px;
+}
+.scripture p {
+  font: var(--t-scripture-featured);
+  color: var(--c-ink);
+}
+.scripture p::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  margin-top: -6px;
+  font: 500 44px/1 var(--f-serif);
+  color: var(--c-clay);
+}
+.bsb {
+  font: var(--t-small);
+  color: var(--c-ink-2);
+}
+
+/* ---------- Phone frame for screens ---------- */
+
+.phone {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 9 / 19;
+  border-radius: 40px;
+  border: 9px solid #1b221d;
+  overflow: hidden;
+  background: var(--c-canvas);
+  box-shadow: 0 30px 60px -30px rgba(20, 30, 22, 0.45), 0 2px 6px rgba(20, 30, 22, 0.12);
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ---------- The arch with the empty cross at dawn ---------- */
+
+.arch {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 270 / 363;
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+  background: var(--c-sky) url("img/welcome-cross.jpg") center bottom / cover no-repeat;
+}
+.arch .wordmark-hero {
+  position: absolute;
+  top: 13%;
+  left: 0;
+  right: 0;
+}
+.ground {
+  height: 1.6px;
+  background: var(--c-ink);
+}
+
+/* ---------- Help: plain on purpose, like the crisis screen ---------- */
+
+.help {
+  background: var(--c-paper);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-card);
+  padding: 28px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

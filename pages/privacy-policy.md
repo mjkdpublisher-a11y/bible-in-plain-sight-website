@@ -10,6 +10,7 @@ Last updated: 27 September 2026
 - Everything you write in the app stays on your phone. We never receive it and cannot read it.
 - The app goes online only when you buy or restore the full version through Google Play.
 - You can export or delete everything you wrote at any time, in Settings.
+- This website uses no cookies and no analytics.
 
 The rest of this page explains the details.
 
@@ -115,8 +116,8 @@ goes through Google Play:
   requires us to keep sales records for up to 10 years.
 
 The legal bases are the purchase contract and our legal obligations (GDPR Article 6(1)(b) and (c)).
-Google's handling of your data is covered by Google's privacy policy:
-https://policies.google.com/privacy
+Google's handling of your data is covered by
+[Google's privacy policy](https://policies.google.com/privacy).
 
 ## 10. When you email us
 
@@ -131,12 +132,15 @@ clock and cannot help in an emergency. **If you are in danger, call your local e
 
 ## 11. This website
 
-This website is made with Google Sites and hosted by Google. When you visit it, Google receives
-technical data, such as your IP address, your browser and the pages you view, and uses cookies, as
-described in the notice Google shows on this site and in Google's privacy policy. Google may process
-this data outside the EU, including in the United States. We have not added any analytics, ads or
-cookies of our own, and we do not receive information about individual visitors. You can block or
-delete cookies in your browser; the pages still work.
+This website is hosted on GitHub Pages by GitHub, Inc. When you visit it, GitHub receives technical
+data, such as your IP address, and keeps a record of it for security purposes, as described in
+[GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+GitHub may process this data in the United States. The legal basis is our legitimate interest in
+keeping the website running and safe (GDPR Article 6(1)(f)).
+
+The website uses no cookies, no analytics and no ads, and it loads nothing from other services: its
+fonts and pictures are stored with the site. We do not receive information about individual
+visitors.
 
 ## 12. Children
 

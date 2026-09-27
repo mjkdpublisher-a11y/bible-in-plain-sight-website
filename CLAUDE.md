@@ -32,19 +32,41 @@ Mark, a beginner programmer. He works on **Windows** and checks things in his br
 3. **Support and contact**: how to reach the developer (Google Play also asks for a support email).
 4. Maybe later: the list of topics, "How it works", a page for pastors and churches.
 
-**What already exists** (found on 2026-09-27): Mark owns `bibleinplainsight.com`, bought at
-Hostinger for one year (renewal needed around September 2027). The mailbox
-`support@bibleinplainsight.com` runs on Hostinger. `www.bibleinplainsight.com` shows a one-page site
-on free **Google Sites** (a description, an About block with the legal details, the privacy policy).
-The address without `www` still shows a Hostinger "parked domain" page. Mark would like to stay on
-Google Sites, to keep things free and simple.
+**Domain and mail:** Mark owns `bibleinplainsight.com` at Hostinger (paid until 2027-09-25,
+auto-renew on, WHOIS privacy on). The mailbox `support@bibleinplainsight.com` runs on Hostinger
+(MX, SPF, DKIM and DMARC records in Hostinger's DNS: never touch them when changing the website).
 
-**Published on 2026-09-27** (Google Sites, owned by the Google account "Mark J",
-bibleinplainsight@…; in Mark's Chrome that is `authuser=2`): Home, `/privacy-policy`, `/support`,
-`/legal-notice`. The approved texts are in `pages/*.md` (the source of truth; change them there
-first, then in Google Sites). `notes/privacy-facts.md` says where each privacy claim comes from and
-what the app must do before release. Google Sites shows Google's own cookie banner, which cannot be
-changed; the privacy policy says so honestly.
+**Where the site lives:**
+- Until the switch: a four-page site on free **Google Sites** (Google account "Mark J",
+  bibleinplainsight@…; in Mark's Chrome that is `authuser=2`), published 2026-09-27. Hostinger
+  cannot redirect the address without `www` there ("you can't redirect your domain to itself").
+- Decided on 2026-09-27: move to **GitHub Pages**, in the public repository
+  `mjkdpublisher-a11y/bible-in-plain-sight-website` (Mark created it; free GitHub Pages needs a
+  public repository). It publishes the `docs/` folder. Commits use GitHub's hidden noreply address,
+  never Mark's Gmail. The switch: Pages on (`main`, `/docs`), custom domain `www.bibleinplainsight.com`
+  (`docs/CNAME`), domain verified in GitHub, then in Hostinger `www` CNAME to
+  `mjkdpublisher-a11y.github.io` and the bare domain's A records to GitHub's four addresses, then
+  "Enforce HTTPS". Keep the Google Sites site until the new one works.
+
+**How the website is built** (design: option A, "Dawn", chosen by Mark; `design/` holds the two
+mock-ups):
+- `docs/index.html`: the home page, written by hand. Styles: `docs/assets/tokens.css` (from the app),
+  `base.css` (fonts and components), `site.css` (page frame and text pages), `home.css`.
+- `pages/privacy-policy.md`, `support.md`, `legal-notice.md`: the approved texts, the source of truth.
+  `node tools/build.js` turns them into `docs/*.html` (and `docs/404.html`). Change the `.md`, then build.
+- `docs/screens/*.html`: the nine app screens in phone frames on the home page, drawn from the
+  app's code with its approved content and verses word for word from `data/bsb.txt` (Home, check-in
+  and Timeline come from the design mock-ups). Real screenshots from Mark's phone can replace any
+  of them. Never show "Listen" or "Save" (the app has no such buttons) and never show the crisis
+  screen in the gallery (Mark: too strong for someone just looking). Each screen is 390 x 867 (9:20).
+  No line of text may be cut by the phone's edge (Mark noticed it at once): screens with a tab bar
+  hide the rest under it; reading screens end with the `.fade` from `screens/app.css`, and their
+  content is placed so only the start of the next section fades out.
+- Preview: `python tools/serve.py` (or the "site" entry in `.claude/launch.json`), then
+  http://localhost:8766. It serves `/privacy-policy` from `privacy-policy.html`, as GitHub Pages does.
+- `notes/privacy-facts.md`: where each privacy claim comes from.
+- `notes/app-todo.md`: things for the app project (review request, privacy link in the app, what the
+  privacy policy depends on). Remind Mark of it when the app work comes up.
 
 ## The app, in facts
 

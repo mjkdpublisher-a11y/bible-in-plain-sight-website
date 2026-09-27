@@ -67,24 +67,6 @@ Re-check before publishing and whenever the app changes what it stores or sends.
 - Two-step verification is on for the Google account and the Hostinger account and mail
   (Mark, 2026-09-27), so section 14 may say so.
 
-## To do in the app project before release (the policy depends on these)
+## To do in the app project before release
 
-1. **A link to the privacy policy inside the app** (for example in Settings, About). Google Play
-   requires it for every app.
-2. **Phone-to-phone transfer:** decide whether to allow it. If not, add `dataExtractionRules` that
-   exclude everything from device transfer, and remove the sentence about it from section 7.
-3. **Unused storage permission:** expo-file-system declares `WRITE_EXTERNAL_STORAGE` (and
-   `READ_EXTERNAL_STORAGE`, already blocked). The app does not use it. Blocking it too keeps the Play
-   listing from showing a "files" permission that the policy says the app does not use.
-4. **The purchase (step 13b):** when it is built, check section 9 again (what Google Play Billing
-   returns, what the app stores). If version 1 ships without the purchase, section 9 and the
-   internet line in section 4 must wait for the version that has it. The same goes for the
-   "Restore purchase" answer on the Support page (today the button only says "Not available yet").
-5. **Database encryption (SQLCipher):** planned in `userDb.ts`. If it ships, section 14 can say the
-   journal is encrypted on the phone. Until then, do not claim it.
-6. **Notifications:** keep the local-only imports in `src/notifications/expoNotifications.ts` in the
-   release build, so no push token is ever registered.
-7. **Final permission list:** read it from the release build (Play Console, App bundle explorer) and
-   compare with section 4.
-8. **Data safety form** in Play Console: answer it from this file (no data collected or shared by the
-   app; purchase handled by Google Play).
+The list now lives in `notes/app-todo.md` (with the review request and the website screenshots).

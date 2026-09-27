@@ -1,0 +1,131 @@
+/* Page frame shared by every page: the linen washes, the top bar, the footer, and text pages
+   (privacy policy, support, legal notice). Home has its own sections in home.css. */
+
+body {
+  background:
+    radial-gradient(900px 600px at 100% 0%, color-mix(in srgb, var(--c-sage) 22%, transparent), transparent 70%),
+    radial-gradient(700px 500px at 0% 40%, color-mix(in srgb, #e9c9a8 18%, transparent), transparent 70%),
+    var(--c-canvas);
+}
+
+/* ---------- Top bar ---------- */
+
+header.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+header.top nav {
+  display: flex;
+  gap: 24px;
+  font: var(--t-label);
+}
+header.top nav a {
+  color: var(--c-ink-2);
+  text-decoration: none;
+}
+header.top nav a:hover,
+header.top nav a[aria-current="page"] {
+  color: var(--c-primary);
+}
+header.top nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 1px solid var(--c-line);
+  margin-top: 72px;
+  padding: 32px 0 48px;
+}
+footer .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+footer nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font: var(--t-secondary);
+}
+footer .small {
+  margin-top: 16px;
+}
+
+/* ---------- Text pages: one calm reading column on paper ---------- */
+
+.doc {
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: 48px 56px 56px;
+  background: var(--c-paper);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-sheet);
+}
+.doc h1 {
+  font: var(--t-display);
+  font-size: clamp(34px, 5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.doc h2 {
+  margin-top: 44px;
+  font: var(--t-heading);
+}
+.doc p,
+.doc ul {
+  margin: 14px 0 0;
+}
+.doc ul {
+  padding-left: 22px;
+}
+.doc li + li {
+  margin-top: 8px;
+}
+.doc .meta {
+  margin-top: 12px;
+  font: var(--t-secondary);
+  color: var(--c-ink-2);
+}
+.doc.lines p {
+  margin-top: 4px;
+}
+.doc.lines h2 + p {
+  margin-top: 14px;
+}
+.doc.faq p.q {
+  margin-top: 26px;
+  font-weight: 700;
+}
+.doc.faq p.q + p {
+  margin-top: 6px;
+}
+.doc .pagelinks {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-line);
+  font: var(--t-secondary);
+}
+
+@media (max-width: 640px) {
+  header.top nav {
+    gap: 18px;
+  }
+  header.top nav .wide {
+    display: none;
+  }
+  .doc {
+    margin-top: 8px;
+    padding: 32px 22px 36px;
+    border-radius: var(--radius-card);
+  }
+}

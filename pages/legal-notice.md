@@ -13,9 +13,9 @@ Publication director: Marek JANY
 
 ## Website host
 
-Google Ireland Limited
-Gordon House, Barrow Street, Dublin 4, D04 E5W5, Ireland
-Phone: +353 1 543 1000
+GitHub, Inc. (GitHub Pages)
+88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States
+Phone: +1 877 448 4820
 
 ## Domain name and email
 

@@ -1,0 +1,443 @@
+/* Home page sections: the dawn arch, how it works, the app's screens, the promise, help. */
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 72px;
+}
+.hero .arch-frame {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.hero .arch .wordmark-hero {
+  font-size: clamp(34px, 7.5vw, 46px);
+  line-height: 1.12;
+}
+.hero .ground {
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+.hero h2 {
+  margin-top: 40px;
+  font: var(--t-display);
+  font-size: clamp(36px, 6vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.hero .intro {
+  max-width: 30em;
+  margin: 16px auto 0;
+  font-size: 20px;
+  line-height: 32px;
+  color: var(--c-ink-2);
+}
+.privacy-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  color: var(--c-ink-2);
+  font: var(--t-secondary);
+}
+.privacy-note .icon {
+  color: var(--c-primary);
+  width: 20px;
+  height: 20px;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.actions .btn-tonal {
+  min-width: 150px;
+}
+.soon {
+  cursor: default;
+}
+
+/* ---------- Sections ---------- */
+section.block {
+  padding: 72px 0;
+}
+.section-head {
+  max-width: 36em;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+.section-head .overline {
+  display: block;
+  margin-bottom: 12px;
+}
+.section-head h2 {
+  font: var(--t-title);
+  font-size: clamp(30px, 4.5vw, 38px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.section-head p {
+  margin-top: 14px;
+  color: var(--c-ink-2);
+}
+
+/* What it is + verse */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.about h2 {
+  font: var(--t-title);
+  font-size: clamp(30px, 4.5vw, 38px);
+  line-height: 1.2;
+}
+.about p.lead {
+  margin-top: 16px;
+  color: var(--c-ink-2);
+}
+.verse-card {
+  background: var(--c-glass);
+  border: 1px solid var(--c-glass-border);
+  border-radius: var(--radius-card);
+  padding: 32px 32px 24px;
+  box-shadow: 0 20px 50px -35px rgba(30, 39, 33, 0.35);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.verse-card .bsb {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--c-line);
+}
+
+/* How it works */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.steps li {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-card);
+  padding: 24px 22px 26px;
+}
+.steps .overline {
+  display: block;
+  margin: 18px 0 6px;
+}
+.steps h3 {
+  font: var(--t-item-title);
+}
+.steps p {
+  margin-top: 8px;
+  font: var(--t-secondary);
+  color: var(--c-ink-2);
+}
+
+/* Screens: six phones, the middle column set a little lower, like cards laid on a table.
+   --pw is the screen width inside the frame; --s scales a 390 wide app screen to it. */
+.screens {
+  --pw: 262px;
+  --s: 0.6718;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px 32px;
+  justify-items: center;
+  align-items: start;
+}
+.screens figure {
+  margin: 0;
+  width: calc(var(--pw) + 18px);
+  text-align: center;
+}
+.screens figure:nth-child(3n + 2) {
+  margin-top: 48px;
+}
+.phone.live {
+  width: calc(var(--pw) + 18px);
+  max-width: none;
+  height: calc(var(--pw) * 2.2222 + 18px);
+  aspect-ratio: auto;
+}
+.phone.live iframe {
+  display: block;
+  width: 390px;
+  height: 867px;
+  border: 0;
+  pointer-events: none;
+  transform: scale(var(--s));
+  transform-origin: 0 0;
+}
+@media (max-width: 1100px) {
+  .screens {
+    --pw: 206px;
+    --s: 0.5282;
+  }
+}
+.screens figcaption {
+  margin-top: 16px;
+  font: var(--t-label);
+}
+.screens figcaption span {
+  display: block;
+  margin-top: 4px;
+  font: var(--t-secondary);
+  color: var(--c-ink-2);
+}
+
+/* Two features */
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.feature {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-card);
+  padding: 32px;
+}
+.feature h3 {
+  margin-top: 18px;
+  font: var(--t-heading);
+}
+.feature > p {
+  margin-top: 10px;
+  color: var(--c-ink-2);
+}
+.feature .scripture {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--c-line);
+}
+.feature .scripture p {
+  font: var(--t-scripture);
+  font-size: 19px;
+  line-height: 30px;
+}
+.feature .scripture p::before {
+  margin-top: -2px;
+}
+.feature .bsb {
+  margin-top: 12px;
+  padding-left: 34px;
+}
+
+/* Privacy band: the dawn greens */
+.promise {
+  background: var(--c-sky);
+  color: var(--c-ivory);
+  border-radius: 28px;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+  background-image: radial-gradient(500px 300px at 85% 110%, rgba(134, 227, 178, 0.28), transparent 70%);
+}
+.promise .overline {
+  color: #b8f2c9;
+}
+.promise h2 {
+  margin-top: 12px;
+  font: var(--t-title);
+  font-size: clamp(30px, 4.5vw, 38px);
+  line-height: 1.2;
+}
+.promise ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.promise li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font: var(--t-body);
+}
+.promise li .icon {
+  color: #b8f2c9;
+  margin-top: 3px;
+}
+.promise a {
+  color: #b8f2c9;
+  display: inline-block;
+  margin-top: 20px;
+  font: var(--t-label);
+}
+
+/* Free: the principle of the app, set large, on a sage-washed card */
+.free {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 64px 56px 56px;
+  text-align: center;
+  background:
+    radial-gradient(520px 300px at 50% 0%, color-mix(in srgb, var(--c-sage) 34%, transparent), transparent 75%),
+    var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px -45px rgba(30, 39, 33, 0.35);
+}
+.free .motto {
+  max-width: 14em;
+  margin: 16px auto 0;
+  font: 500 clamp(34px, 5.4vw, 56px) / 1.12 var(--f-serif);
+  letter-spacing: -0.015em;
+  color: var(--c-primary);
+  text-wrap: balance;
+}
+/* A short clay rule under the motto, like a printed mark. */
+.free .motto::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin: 28px auto 0;
+  background: var(--c-clay);
+}
+.free .facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.free .facts li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.free .num {
+  font: 500 56px/1 var(--f-serif);
+  color: var(--c-primary);
+  letter-spacing: -0.02em;
+}
+.free .what {
+  margin-top: 10px;
+  font: var(--t-label);
+  font-size: 18px;
+}
+.free .facts p {
+  margin-top: 8px;
+  max-width: 17em;
+  font: var(--t-secondary);
+  color: var(--c-ink-2);
+}
+/* Help */
+.help {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+}
+.help h2 {
+  font: var(--t-heading);
+}
+.help p {
+  margin-top: 8px;
+}
+.help .secondary {
+  margin-top: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .promise {
+    background-color: #0f2a20;
+  }
+}
+
+@media (max-width: 900px) {
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about,
+  .promise,
+  .pair {
+    grid-template-columns: 1fr;
+  }
+  .promise {
+    padding: 40px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    text-align: left;
+  }
+  .hero .arch-frame {
+    max-width: 320px;
+  }
+  .hero h2,
+  .hero .intro {
+    margin-left: 0;
+  }
+  .privacy-note {
+    align-items: flex-start;
+  }
+  .actions {
+    justify-content: stretch;
+    flex-wrap: nowrap;
+  }
+  .actions .btn-tonal {
+    min-width: 0;
+    flex: 0 0 40%;
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .actions .btn-primary {
+    flex: 1;
+    padding: 0 14px;
+    font-size: 16px;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .screens {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 12px;
+    margin: 0 calc(-1 * var(--gutter));
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .screens {
+    --pw: 232px;
+    --s: 0.5949;
+  }
+  .screens figure {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+  .screens figure:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+  .free {
+    padding: 44px 22px 36px;
+    border-radius: 20px;
+  }
+  .free .facts {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .help {
+    grid-template-columns: 1fr;
+  }
+  section.block {
+    padding: 56px 0;
+  }
+}
