@@ -32,9 +32,9 @@ choose where to save it, for example in your own email or drive. The file is for
 the app does not load it back in.
 
 **What happens when I change phones?**
-Android's backup to Google Drive is switched off for this app, so your journal is not copied to
-Google. Some phones copy app data when you move directly from your old phone to a new one, but not
-all do. To be sure you keep a copy, use "Export all data" before you change phones.
+What you wrote is not backed up anywhere and does not move to a new phone, not even when you copy
+everything from your old phone. If you change or reset your phone, open Settings and tap "Export all
+data" first to keep a copy.
 
 **How do I delete everything?**
 Open Settings and tap "Delete all data". It removes your journal, check-ins, stones, reminders and

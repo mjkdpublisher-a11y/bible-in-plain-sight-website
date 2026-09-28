@@ -100,7 +100,9 @@ function page({ title, description, nav, bodyClass, body, canonical }) {
 <title>${escapeHtml(title)} · Bible in Plain Sight</title>
 <meta name="description" content="${escapeHtml(description)}">
 ${canonical ? `<link rel="canonical" href="https://www.bibleinplainsight.com/${canonical}">\n` : ""}<meta name="theme-color" content="#F3EEE4">
-<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/img/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="assets/site.css">
@@ -109,7 +111,7 @@ ${canonical ? `<link rel="canonical" href="https://www.bibleinplainsight.com/${c
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="wrap top">
-  <a class="wordmark brand" href="./"><span class="mini-arch" aria-hidden="true"></span>Bible in Plain Sight</a>
+  <a class="wordmark brand" href="./"><span class="mini-icon" aria-hidden="true"></span>Bible in Plain Sight</a>
   <nav aria-label="Main">
     <a class="wide" href="./#how">How it works</a>
     <a href="privacy-policy"${current("privacy")}>Privacy</a>
@@ -127,7 +129,7 @@ ${body}
 <footer>
   <div class="wrap">
     <div class="row">
-      <a class="wordmark brand" href="./"><span class="mini-arch" aria-hidden="true"></span>Bible in Plain Sight</a>
+      <a class="wordmark brand" href="./"><span class="mini-icon" aria-hidden="true"></span>Bible in Plain Sight</a>
       <nav aria-label="Footer">
         <a href="privacy-policy">Privacy Policy</a>
         <a href="support">Support</a>

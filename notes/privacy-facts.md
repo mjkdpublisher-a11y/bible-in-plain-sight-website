@@ -31,7 +31,7 @@ Re-check before publishing and whenever the app changes what it stores or sends.
 | Region setting for helplines, read on the phone | `src/content/help.ts` (`getLocales()[0].regionCode`) |
 | Local reminders, private text by default | `src/notifications/reminders.ts`, `src/storage/preferences.ts` (`showTopicInReminders`) |
 | Permissions declared by libraries: `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED` (expo-notifications), `INTERNET`, `READ/WRITE_EXTERNAL_STORAGE` (expo-file-system), screen-capture ones | `node_modules/*/android/src/main/AndroidManifest.xml` |
-| Blocked: `READ_EXTERNAL_STORAGE`, `READ_MEDIA_IMAGES`, `DETECT_SCREEN_CAPTURE` | `app.json` (`blockedPermissions`) |
+| Blocked: `READ_EXTERNAL_STORAGE`, `WRITE_EXTERNAL_STORAGE`, `READ_MEDIA_IMAGES`, `DETECT_SCREEN_CAPTURE`, `SYSTEM_ALERT_WINDOW` | `app.json` (`blockedPermissions`, updated 2026-09-28) |
 | No network calls; the only planned one is Google Play Billing | app `CLAUDE.md`, no `fetch` or HTTP calls in `src/` |
 
 ## Calls, sharing, export, delete (sections 5 to 8)
@@ -45,7 +45,8 @@ Re-check before publishing and whenever the app changes what it stores or sends.
 | Deleted text overwritten | `src/storage/userDb.ts` (`PRAGMA secure_delete = ON`) |
 | Deleting an entry removes its waiting check-in and reminder | `src/storage/journal.ts` (`deleteEntry`) |
 | Google Drive backup off | `app.json` (`android.allowBackup: false`) |
-| Phone-to-phone transfer may still copy data on some phones | Android 12 behavior changes: `allowBackup="false"` does not stop device-to-device transfer on some devices; that needs `dataExtractionRules` |
+| No phone-to-phone transfer either (since 2026-09-28) | `plugins/withNoDataTransfer.js`: data extraction rules exclude every file from cloud backup and device transfer |
+| The journal key never leaves the phone | `src/storage/userDb.ts` (key in Android Keystore) |
 
 ## Checked again on 2026-09-28 (the app after the expert review)
 

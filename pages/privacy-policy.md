@@ -94,11 +94,10 @@ when you next open the app on a later day.
 
 ## 7. Backups and moving to a new phone
 
-Android's backup to Google Drive is switched off for this app, so your journal is not copied to
-Google's servers. On some phones, when you set up a new phone by copying directly from your old one
-(with a cable or wirelessly), the app's data may be copied to the new phone as well. It goes
-straight from your old phone to your new one, never to us. To be sure you keep your data, use
-"Export all data" before you change phones.
+Nothing you write in the app is backed up anywhere, and nothing moves to a new phone. The app
+switches off Android's backup to Google Drive, and it also blocks the direct copy from an old phone
+to a new one (with a cable or wirelessly). The key that unlocks your journal never leaves your phone
+either. If you change or reset your phone, use "Export all data" first to keep a copy.
 
 ## 8. Deleting your data
 
@@ -169,7 +168,7 @@ TSA 80715, 75334 Paris Cedex 07, www.cnil.fr), or the authority in the country w
 ## 14. How we keep data safe
 
 - In the app: your data stays in the app's private storage; what you write is encrypted, with a key
-  kept in the phone's secure key storage; deleted text is overwritten; Google Drive backup is off; the export file is removed soon after use; the two topics above leave no
+  kept in the phone's secure key storage; deleted text is overwritten; backups and phone-to-phone transfer are off; the export file is removed soon after use; the two topics above leave no
   trace; the app makes no network connections except to Google Play for the purchase.
 - On our side: we keep only emails and purchase records, and we protect our email and Google Play
   accounts with strong passwords and two-step verification.

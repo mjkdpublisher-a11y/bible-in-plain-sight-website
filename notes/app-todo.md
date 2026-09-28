@@ -42,13 +42,12 @@ the internal testing track).
 
 1. **A link to the privacy policy inside the app** (for example in Settings, About):
    https://www.bibleinplainsight.com/privacy-policy. Google Play requires it for every app.
-2. **Phone-to-phone transfer:** `allowBackup: false` stops the Google Drive backup, but on some phones
-   it does not stop a direct transfer to a new phone. Decide: allow it, or add `dataExtractionRules`
-   that exclude everything. If it is blocked, remove that sentence from the privacy policy
-   (section 7) and the Support page ("What happens when I change phones?").
-3. **Unused storage permission:** expo-file-system declares `WRITE_EXTERNAL_STORAGE` (and
-   `READ_EXTERNAL_STORAGE`, already blocked). The app does not use it. Block it too, so the Play
-   listing does not show a "files" permission.
+2. **Phone-to-phone transfer:** done in the app on 2026-09-28 (`plugins/withNoDataTransfer.js`: data
+   extraction rules exclude every file from Google Drive backup and device-to-device transfer). The
+   privacy policy (sections 7 and 14) and the Support page now say that nothing moves to a new phone.
+3. **Unused permissions:** done in the app on 2026-09-28: `WRITE_EXTERNAL_STORAGE` and
+   `SYSTEM_ALERT_WINDOW` are blocked in `app.json`, next to `READ_EXTERNAL_STORAGE`,
+   `READ_MEDIA_IMAGES` and `DETECT_SCREEN_CAPTURE`.
 4. **The purchase (step 13b):** it ships in version 1 (Mark, 2026-09-27). When it is built, check
    section 9 of the policy and the "Restore purchase" answer on the Support page against what the
    code really does.

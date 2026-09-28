@@ -156,7 +156,7 @@ footer .small {
 
 /* ---------- Motion in the page frame ---------- */
 
-/* The wordmark with a small arch: the arch rises and glows a little on hover. */
+/* The wordmark with the app's icon: the icon rises and glows a little on hover. */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -164,20 +164,20 @@ footer .small {
   white-space: nowrap;
   transition: color 0.25s ease;
 }
-.brand .mini-arch {
-  width: 20px;
-  height: 27px;
+.brand .mini-icon {
+  width: 28px;
+  height: 28px;
   flex: none;
-  border-radius: 999px 999px 0 0;
-  background: var(--c-sky) url("img/welcome-cross.jpg") center 72% / 280% auto no-repeat;
+  border-radius: 7px;
+  background: url("img/icon-64.png") center / cover no-repeat;
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
 }
 .brand:hover,
 .brand:focus-visible {
   color: var(--c-primary);
 }
-.brand:hover .mini-arch,
-.brand:focus-visible .mini-arch {
+.brand:hover .mini-icon,
+.brand:focus-visible .mini-icon {
   transform: translateY(-3px);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-sage) 45%, transparent), 0 8px 16px -8px rgba(14, 51, 37, 0.6);
 }
@@ -235,9 +235,10 @@ a.btn {
     font-size: 17px;
     gap: 8px;
   }
-  header.top .brand .mini-arch {
-    width: 18px;
+  header.top .brand .mini-icon {
+    width: 24px;
     height: 24px;
+    border-radius: 6px;
   }
   header.top nav a {
     padding: 8px 8px;
@@ -245,12 +246,12 @@ a.btn {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand .mini-arch,
+  .brand .mini-icon,
   header.top nav a,
   a.btn {
     transition: none;
   }
-  .brand:hover .mini-arch,
+  .brand:hover .mini-icon,
   header.top nav a:hover,
   a.btn:hover {
     transform: none;
