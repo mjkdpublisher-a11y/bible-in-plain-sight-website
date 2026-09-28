@@ -3,7 +3,7 @@
 We are glad to help. Write to us at **support@bibleinplainsight.com** and we will reply within a few
 working days.
 
-**If you are in danger, call your local emergency number.** Our mailbox is not watched around the
+**If you or someone else is in immediate danger, call the local emergency number.** Our mailbox is not watched around the
 clock and cannot help in an emergency. In the app, "I need help now" shows helplines for your
 country. If your country is not listed, you can find a helpline at https://findahelpline.com
 
@@ -11,6 +11,10 @@ country. If your country is not listed, you can find a helpline at https://finda
 
 **Do I need an account?**
 No. There is no account and no sign-in. Everything you write stays on your phone.
+
+**Does anyone read what I write?**
+No. What you write stays on your phone, encrypted, and we never receive it. No one monitors your
+journal or check-in answers, and reminders never alert anyone.
 
 **Which topics are free?**
 Eighteen topics are free forever: all 5 crisis topics, 11 topics for the hardest times (such as the
@@ -37,16 +41,17 @@ Open Settings and tap "Delete all data". It removes your journal, check-ins, sto
 settings from the phone. We never have a copy, so this cannot be undone.
 
 **The helplines are for the wrong country.**
-The app uses your phone's region setting. To choose another country, open Settings, then Helplines,
+The app uses your phone's region setting, and the help screen asks once whether you are in that
+country now. To choose another country, tap “No, change country”, or open Settings, then Helplines,
 then Country.
 
 **Why do reminders not show the topic?**
 That is on purpose, so nobody sees it on your lock screen. To show it, open Settings and turn on
-"Show the topic in reminders".
+"Show the topic in reminders". On the most sensitive topics a reminder never shows the topic, and
+you only get one if you ask for it.
 
 **Which Bible translation does the app use?**
 The Berean Standard Bible (BSB), which is in the public domain.
 
 **Is this a medical app?**
-No. Bible in Plain Sight offers Scripture, prayer and a place to write. It does not replace a doctor,
-a therapist or emergency services. If you are in danger, call your local emergency number.
+No. Bible in Plain Sight offers Christian Scripture, prayer and optional reflection. It does not provide diagnosis, therapy or emergency response. No one monitors your journal or check-in answers. If you or someone else is in immediate danger, call the local emergency number. Use “Help now” to find listed support services.

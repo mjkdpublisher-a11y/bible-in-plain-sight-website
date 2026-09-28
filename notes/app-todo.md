@@ -52,8 +52,8 @@ the internal testing track).
 4. **The purchase (step 13b):** it ships in version 1 (Mark, 2026-09-27). When it is built, check
    section 9 of the policy and the "Restore purchase" answer on the Support page against what the
    code really does.
-5. **Database encryption (SQLCipher):** planned in `src/storage/userDb.ts`. If it ships, the policy
-   (section 14) can say the journal is encrypted on the phone. Until then it must not.
+5. **Database encryption (SQLCipher):** done in the app on 2026-09-28 (`src/storage/userDb.ts`);
+   the privacy policy, the Support page and the home page now say that what you write is encrypted.
 6. **Notifications:** keep the local-only imports in `src/notifications/expoNotifications.ts` in the
    release build, so no push token is ever registered.
 7. **Final permission list:** read it from the release build (Play Console, App bundle explorer) and

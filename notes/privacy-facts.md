@@ -47,6 +47,20 @@ Re-check before publishing and whenever the app changes what it stores or sends.
 | Google Drive backup off | `app.json` (`android.allowBackup: false`) |
 | Phone-to-phone transfer may still copy data on some phones | Android 12 behavior changes: `allowBackup="false"` does not stop device-to-device transfer on some devices; that needs `dataExtractionRules` |
 
+## Checked again on 2026-09-28 (the app after the expert review)
+
+| Claim | Source |
+|---|---|
+| What you write is encrypted (SQLCipher); the key is 32 random bytes made on the phone and kept in Android Keystore | `src/storage/userDb.ts`, `app.json` (`expo-sqlite` with `useSQLCipher`, `expo-secure-store`) |
+| Settings (the small key-value store) are not part of the encrypted database, so the policy says "what you write" is encrypted, not "everything" | `src/storage/preferences.ts` (`expo-sqlite/kv-store`) |
+| The confirmed country is kept as a country code | `src/storage/preferences.ts` (`country_confirmed`), `src/app/crisis.tsx` |
+| Reminders on request on the reviewed crisis topics, and they only say "You have a reminder." | `src/app/write.tsx`, `src/notifications/reminders.ts`, `src/storage/checkIns.ts` (`CheckInTime`) |
+| After "Better" on those topics, an optional note about what helped, saved like a stone | `src/app/check-in/[id].tsx` (`addStone`) |
+| Private mode carries Quick exit and the hidden screen to the help screen, chapters, related topics and the country list | `src/content/privacy.ts`, `src/app/crisis.tsx`, `src/app/chapter.tsx`, `src/app/country.tsx` |
+| The help screen shows the emergency number first | `src/app/crisis.tsx` (`EmergencyLine`) |
+| New packages `expo-secure-store`, `expo-crypto`, `expo-dev-client` declare no Android permissions | `node_modules/*/android/src/main/AndroidManifest.xml` |
+| About text (expert review G03) | `src/app/settings.tsx` |
+
 ## Legal sources (sections 1, 9 to 13, legal notice)
 
 - Google Play User Data policy (what a privacy policy must contain, link required inside the app):

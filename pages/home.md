@@ -10,8 +10,9 @@ things change over time.
 The app works offline. It has no ads, no accounts and no tracking, and everything you write stays on
 your own phone.
 
-Bible in Plain Sight offers Scripture, prayer and a place to write. It does not replace a doctor, a
-therapist or emergency services. **If you are in danger, call your local emergency number.**
+Bible in Plain Sight offers Christian Scripture, prayer and optional reflection. It does not provide
+diagnosis, therapy or emergency response. No one monitors your journal or check-in answers.
+**If you or someone else is in immediate danger, call the local emergency number.**
 
 Scripture quotations are from the Berean Standard Bible (BSB), public domain.
 

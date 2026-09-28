@@ -33,8 +33,10 @@ svg.i { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-widt
 .block.divider { border-top: 1px solid #E2DACB; padding: 18px 0 20px; }
 .block.lament { background: #EEEFE4; border-radius: 12px; padding: 16px 18px; }
 .block.lament .verse { font-style: italic; }
-.ref { display: flex; align-items: center; gap: 4px; color: #9A4F37; }
+.ref { display: flex; align-items: center; gap: 6px; color: #9A4F37; }
 .ref svg.i { width: 16px; height: 16px; }
+/* The chapter link: a solid green triangle, as in the app since 2026-09-28. */
+.ref svg.play { width: 20px; height: 20px; fill: #2D5A43; stroke: none; }
 .quote { display: flex; gap: 6px; }
 .mark { font-family: "Literata", Georgia, serif; font-size: 44px; line-height: 48px; color: #9A4F37; margin: -4px 0 0 -2px; }
 .verse { font-family: "Literata", Georgia, serif; font-size: 21px; line-height: 34px; }

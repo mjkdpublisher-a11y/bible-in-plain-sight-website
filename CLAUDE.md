@@ -108,9 +108,13 @@ mock-ups):
   sensitive ones (grief, depression, addiction and the like), plus Anxiety and worry, and Thankful.
   **One purchase (about 5 USD, no subscription) unlocks the other 72.** All features are free.
   Principle: nobody in pain should meet a price.
-- It is not a medical app. In the app: "Bible in Plain Sight offers Scripture, prayer and a place to
-  write. It does not replace a doctor, a therapist or emergency services. If you are in danger,
-  call your local emergency number."
+- It is not a medical app. Settings > About in the app (wording from the expert review G03,
+  2026-09-28): "Bible in Plain Sight offers Christian Scripture, prayer and optional reflection. It
+  does not provide diagnosis, therapy or emergency response. No one monitors your journal or check-in
+  answers. If you or someone else is in immediate danger, call the local emergency number. Use Help
+  now to find listed support services." The site uses it on the Support page and in the privacy
+  policy (with "Help now" in quotation marks, since it names the app's button), and its first three
+  sentences in the home page's help block.
 - Scripture: the **Berean Standard Bible (BSB)**, public domain. Wherever Scripture appears, show:
   "Scripture quotations are from the Berean Standard Bible (BSB), public domain." Never type,
   shorten or paraphrase a verse: copy it word for word from the app project's `data/bsb.txt`.
@@ -118,10 +122,14 @@ mock-ups):
 ## Privacy facts (the privacy policy must match these exactly)
 
 - No accounts, no analytics, no ads, no tracking. Everything the person writes stays on the phone.
-- Journal, check-ins and stones are in a database on the phone. Deleted text is overwritten at once
-  (SQLite secure delete). Android backup to Google Drive is switched off.
+- Journal, check-ins and stones are in a database on the phone, **encrypted with SQLCipher** since
+  2026-09-28 (key made on the phone, kept in Android Keystore). The small settings store is not
+  encrypted, so say "what you write is encrypted", not "everything". Deleted text is overwritten at
+  once (SQLite secure delete). Android backup to Google Drive is switched off.
 - Settings has "Export all data" (a file the person shares where they choose) and "Delete all data".
-- Reminders are local notifications, private by default ("You have a new check-in", no topic).
+- Reminders are local notifications, private by default ("You have a new check-in", no topic). On
+  the reviewed crisis topics a reminder comes only if the person asks for one, and only says "You
+  have a reminder." They never alert anyone else.
 - The app makes no network calls, with one planned exception: the one-time purchase, which goes
   only to Google Play. Google, not the app, handles payment details.
 - Helpline calls and texts go through the phone's own apps; the app does not see them.
@@ -165,8 +173,9 @@ paper, sage green, clay red accents, calm and printed-looking, never flashy. Lig
 
 - US English, simple and warm. **No em dashes.** No medical claims, no promises that things will be
   fine, nothing that suggests praying instead of getting help.
-- Wherever the site talks about hard things, say where help is: "If you are in danger, call your
-  local emergency number."
+- Wherever the site talks about hard things, say where help is: "If you or someone else is in
+  immediate danger, call the local emergency number." (the app's wording since the expert review,
+  2026-09-28; before that "If you are in danger, call your local emergency number.")
 - Other useful documents in the app project: `docs/bible-help-app-developer-spec-EN.md` (the full
   specification), `docs/aplikacja-biblijna-koncepcja-PL.md` (Mark's original concept, in Polish),
   `docs/helpline-verification.md`.

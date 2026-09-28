@@ -2,12 +2,13 @@
 
 **Bible in Plain Sight** (the Android app) and **www.bibleinplainsight.com** (this website)
 
-Last updated: 27 September 2026
+Last updated: 28 September 2026
 
 ## The short version
 
 - The app has no account, no ads, no analytics and no tracking.
-- Everything you write in the app stays on your phone. We never receive it and cannot read it.
+- Everything you write in the app stays on your phone, encrypted. We never receive it and cannot
+  read it.
 - The app goes online only when you buy or restore the full version through Google Play.
 - You can export or delete everything you wrote at any time, in Settings.
 - This website uses no cookies and no analytics.
@@ -31,15 +32,17 @@ The app saves only what you choose to write or set:
 - **Journal entries:** your words, the date and time, your answer to "How heavy does it feel right
   now?" (from Very heavy to Light), the topic you wrote from, and, if you wrote in "For someone I
   love" mode, the first name you typed.
-- **Check-ins:** the topic, when the check-in is due, and your answer (Better, About the same or
-  Worse).
-- **Stones of Remembrance:** your note, its date and its topic.
+- **Check-ins and reminders:** the topic, when the check-in or reminder is due, and your answer
+  (Better, About the same or Worse).
+- **Stones of Remembrance and notes about what helped:** your note, its date and its topic.
 - **Settings:** how many days until a check-in, whether reminders show the topic, the country you
-  chose for helplines, whether you have seen the welcome screen, and whether the full version is
-  unlocked.
+  chose for helplines or confirmed as the one you are in, whether you have seen the welcome screen,
+  and whether the full version is unlocked.
 
 All of this is kept in the app's private storage on your phone, where other apps cannot read it.
-It is never sent to us or to anyone else. The app does not keep a history of the topics you read.
+What you write (your journal, check-ins, stones and notes) is kept in an encrypted database. Its key
+is made on your phone and kept in Android's secure key storage, never next to the data. None of it
+is ever sent to us or to anyone else. The app does not keep a history of the topics you read.
 
 What you write may be very personal, for example about your faith, your health or your family.
 That is exactly why it stays with you.
@@ -49,7 +52,9 @@ That is exactly why it stays with you.
 Two topics, "Being hurt at home" and "Afraid for my safety", are for people who may be in danger
 from someone who can look at their phone. On these topics the app saves nothing: no journal entry,
 no check-in, no reminder, nothing on the Timeline. They cannot be shared, they are hidden in the
-phone's recent apps screen, screenshots are blocked, and a Quick exit button closes them at once.
+phone's recent apps screen, screenshots are blocked, and a Quick exit button closes them at once. The same protection stays on
+everything you open from them, such as the help screen, a whole chapter or a related topic, until you
+go back to Home or use Quick exit.
 
 ## 4. What the app can use on your phone
 
@@ -57,9 +62,11 @@ phone's recent apps screen, screenshots are blocked, and a Quick exit button clo
   helplines for your country. This happens on the phone and is not sent anywhere. You can choose a
   different country in Settings.
 - **Notifications, only if you allow them.** The app uses them to remind you of a check-in. The
-  reminders are created on your phone, not sent from a server. By default they only say "You have a
-  new check-in." without the topic. You can choose to show the topic in Settings, and you can turn
-  reminders off at any time in Settings or in your phone's settings.
+  reminders are created on your phone, not sent from a server, and they never alert anyone else. By
+  default they only say "You have a new check-in." without the topic. On the most sensitive topics
+  you decide whether you want a reminder at all, and when, and it only ever says "You have a
+  reminder." On other topics you can choose to show the topic in Settings. You can turn reminders
+  off at any time in Settings or in your phone's settings.
 - **Starting after a restart.** This lets reminders you already have still arrive after your phone
   restarts.
 - **The internet, only for the purchase.** The app connects only to Google Play, and only to buy or
@@ -128,7 +135,7 @@ ends, unless we need it longer to settle a dispute. Our mailbox is provided by H
 International Ltd (Cyprus, EU).
 
 Please do not send us more personal details than you need to. Our mailbox is not watched around the
-clock and cannot help in an emergency. **If you are in danger, call your local emergency number.**
+clock and cannot help in an emergency. **If you or someone else is in immediate danger, call the local emergency number.**
 
 ## 11. This website
 
@@ -161,16 +168,15 @@ TSA 80715, 75334 Paris Cedex 07, www.cnil.fr), or the authority in the country w
 
 ## 14. How we keep data safe
 
-- In the app: your data stays in the app's private storage; deleted text is overwritten; Google
-  Drive backup is off; the export file is removed soon after use; the two topics above leave no
+- In the app: your data stays in the app's private storage; what you write is encrypted, with a key
+  kept in the phone's secure key storage; deleted text is overwritten; Google Drive backup is off; the export file is removed soon after use; the two topics above leave no
   trace; the app makes no network connections except to Google Play for the purchase.
 - On our side: we keep only emails and purchase records, and we protect our email and Google Play
   accounts with strong passwords and two-step verification.
 
 ## 15. Not a medical app
 
-Bible in Plain Sight offers Scripture, prayer and a place to write. It does not replace a doctor, a
-therapist or emergency services. If you are in danger, call your local emergency number.
+Bible in Plain Sight offers Christian Scripture, prayer and optional reflection. It does not provide diagnosis, therapy or emergency response. No one monitors your journal or check-in answers. If you or someone else is in immediate danger, call the local emergency number. Use “Help now” to find listed support services.
 
 ## 16. Changes to this policy
 
