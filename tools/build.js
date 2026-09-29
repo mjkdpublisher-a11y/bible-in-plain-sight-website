@@ -90,8 +90,11 @@ function toHtml(md, { faq = false, lines = false } = {}) {
   return { title, body: parts.join("\n") };
 }
 
-function page({ title, description, nav, bodyClass, body, canonical }) {
+// base: "" for the pages, "/" for 404.html, which GitHub Pages also shows at deeper addresses such as
+// /privacy-policy/ (relative links would point into a folder that does not exist).
+function page({ title, description, nav, bodyClass, body, canonical, base = "" }) {
   const current = (name) => (nav === name ? ' aria-current="page"' : "");
+  const home = base || "./";
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -100,22 +103,23 @@ function page({ title, description, nav, bodyClass, body, canonical }) {
 <title>${escapeHtml(title)} · Bible in Plain Sight</title>
 <meta name="description" content="${escapeHtml(description)}">
 ${canonical ? `<link rel="canonical" href="https://www.bibleinplainsight.com/${canonical}">\n` : ""}<meta name="theme-color" content="#F3EEE4">
-<link rel="icon" href="assets/img/icon-32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="assets/img/icon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="assets/img/icon-180.png">
-<link rel="stylesheet" href="assets/tokens.css">
-<link rel="stylesheet" href="assets/base.css">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="${base}assets/img/icon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="${base}assets/img/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="${base}assets/img/icon-180.png">
+<link rel="stylesheet" href="${base}assets/tokens.css">
+<link rel="stylesheet" href="${base}assets/base.css">
+<link rel="stylesheet" href="${base}assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="wrap top">
-  <a class="wordmark brand" href="./"><span class="mini-icon" aria-hidden="true"></span>Bible in Plain Sight</a>
+  <a class="wordmark brand" href="${home}"><span class="mini-icon" aria-hidden="true"></span><span class="brand-name">Bible in Plain Sight</span></a>
   <nav aria-label="Main">
-    <a class="wide" href="./#how">How it works</a>
-    <a href="privacy-policy"${current("privacy")}>Privacy</a>
-    <a href="support"${current("support")}>Support</a>
+    <a class="wide" href="${home}#how">How it works</a>
+    <a href="${base}privacy-policy"${current("privacy")}>Privacy</a>
+    <a href="${base}support"${current("support")}>Support</a>
+    <a class="help-now" href="${home}#help"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 7.5h2.6l1.3 3.3-1.7 1.1a8.4 8.4 0 0 0 4.4 4.4l1.1-1.7 3.3 1.3v2.6a1.6 1.6 0 0 1-1.8 1.6A12.8 12.8 0 0 1 3.9 9.3a1.6 1.6 0 0 1 1.6-1.8z"/><path d="M17.8 10.2s-3.3-2-3.3-4.4a1.7 1.7 0 0 1 3.3-.8 1.7 1.7 0 0 1 3.3.8c0 2.4-3.3 4.4-3.3 4.4z"/></svg>Help now</a>
   </nav>
 </header>
 
@@ -129,11 +133,11 @@ ${body}
 <footer>
   <div class="wrap">
     <div class="row">
-      <a class="wordmark brand" href="./"><span class="mini-icon" aria-hidden="true"></span>Bible in Plain Sight</a>
+      <a class="wordmark brand" href="${home}"><span class="mini-icon" aria-hidden="true"></span><span class="brand-name">Bible in Plain Sight</span></a>
       <nav aria-label="Footer">
-        <a href="privacy-policy">Privacy Policy</a>
-        <a href="support">Support</a>
-        <a href="legal-notice">Legal notice</a>
+        <a href="${base}privacy-policy">Privacy Policy</a>
+        <a href="${base}support">Support</a>
+        <a href="${base}legal-notice">Legal notice</a>
       </nav>
     </div>
     <p class="small">Scripture quotations are from the Berean Standard Bible (BSB), public domain. © 2026 Bible in Plain Sight.</p>
@@ -159,7 +163,8 @@ fs.writeFileSync(
     title: "Page not found",
     description: "This page does not exist.",
     nav: "",
-    body: '<p>This page does not exist. It may have moved.</p>\n<p><a href="./">Go to the home page</a> or see <a href="support">Support</a>.</p>',
+    base: "/",
+    body: '<p>This page does not exist. It may have moved.</p>\n<p><a href="/">Go to the home page</a> or see <a href="/support">Support</a>.</p>',
   }),
 );
 console.log("docs/404.html");
@@ -185,7 +190,7 @@ function stampVersions() {
     const stamped = html.replace(/\b(href|src)="([^"#?:]+\.(?:css|js|html|jpg|png|svg))(?:\?v=[0-9a-f]+)?"/g, (m, attr, ref) => {
       // Links between pages need no version (and pages that link to each other would never settle).
       if (attr === "href" && ref.endsWith(".html")) return `${attr}="${ref}"`;
-      const target = path.join(path.dirname(file), ref);
+      const target = ref.startsWith("/") ? path.join(out, ref) : path.join(path.dirname(file), ref);
       return fs.existsSync(target) ? `${attr}="${ref}?v=${fingerprint(target)}"` : m;
     });
     if (stamped !== html) fs.writeFileSync(file, stamped);

@@ -3,6 +3,11 @@
    like the hills in the picture. The paper grain and the dark green footer are in site.css, for
    every page. */
 
+/* The sunrise glow is wider than a phone. On body alone the clip is handed to the window and the
+   page still grows sideways (580 px on a 375 px phone); on html as well it stays at phone width. */
+html {
+  overflow-x: clip;
+}
 body {
   background: var(--c-canvas);
   overflow-x: clip;

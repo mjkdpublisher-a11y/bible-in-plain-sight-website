@@ -22,5 +22,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.path = "/404.html"
         return super().send_head()
 
+    # The preview never keeps old files, so a change shows at once (GitHub Pages keeps them 10 minutes).
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
 
 http.server.ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()

@@ -56,6 +56,8 @@ mock-ups):
   `base.css` (fonts and components), `site.css` (page frame and text pages), `home.css`.
 - `pages/privacy-policy.md`, `support.md`, `legal-notice.md`: the approved texts, the source of truth.
   `node tools/build.js` turns them into `docs/*.html` (and `docs/404.html`). Change the `.md`, then build.
+  `404.html` uses links from the root (`/assets/...`, `/support`), because GitHub Pages also shows it
+  at deeper addresses such as `/privacy-policy/`.
 - **Run `node tools/build.js` before every commit**, also after changing only CSS, JS or a screen: it
   writes `?v=` and a fingerprint of the file into every link to a style sheet, script, picture or
   screen. GitHub Pages lets browsers keep files for 10 minutes, so without it phones show the old
@@ -78,8 +80,22 @@ mock-ups):
   for him): `docs/assets/backgrounds.css` on the home page (sunrise glow behind the arch, drifting
   washes in `.bg-layer`, sage bands with hills on `[data-part="gallery"]` and `[data-part="free"]`),
   and in `site.css` for every page the faint paper grain and the dark green footer with a hill.
+- Header and help (after the critique and audit of 2026-09-29, approved by Mark): every page has
+  "Help now" (the app's own short name for its help button) in the header, going to the home page's
+  `#help`. Below 720 px "How it works" leaves the header, below 540 px the name does (the icon keeps
+  it as a label), below 340 px the help icon; the header must fit at 320 px. The hero buttons have no
+  entrance animation, and the help block is not a `.tile` (no reveal, no hover): help never waits.
+  Until the app is on Google Play, "Coming soon to Google Play" is a quiet outlined `.soon` note, not
+  a green button, with no shine; the green button comes back with the real link.
+- Fonts: WOFF2 files cut to the Latin letters the site uses (fontTools, installed with pip on
+  2026-09-29), with the TTF behind them as a fallback. When a page needs a new kind of character, make
+  the WOFF2 again from the TTF (`python -m fontTools.subset`).
+- `PRODUCT.md` (who the site is for, its principles) and `.impeccable/` belong to the impeccable
+  design skill (Mark ran critique, audit, polish and init on 2026-09-29).
 - Preview: `python tools/serve.py` (or the "site" entry in `.claude/launch.json`), then
-  http://localhost:8766. It serves `/privacy-policy` from `privacy-policy.html`, as GitHub Pages does.
+  http://localhost:8766. It serves `/privacy-policy` from `privacy-policy.html`, as GitHub Pages does,
+  and tells the browser to keep nothing, so a change shows at once. After a change, reload any preview
+  tab that was open before (it still holds the old page).
 - `notes/privacy-facts.md`: where each privacy claim comes from.
 - `notes/app-todo.md`: things for the app project (review request, privacy link in the app, what the
   privacy policy depends on). Remind Mark of it when the app work comes up.

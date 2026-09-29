@@ -1,2 +1,4 @@
 .claude/
 __pycache__/
+.impeccable/live/
+.impeccable/config.local.json

@@ -26,6 +26,7 @@ header.top nav {
 header.top nav a {
   color: var(--c-ink-2);
   text-decoration: none;
+  white-space: nowrap;
 }
 header.top nav a:hover,
 header.top nav a[aria-current="page"] {
@@ -44,8 +45,8 @@ footer {
   position: relative;
   margin-top: 150px;
   padding: 40px 0 48px;
-  background: #0e3325;
-  color: #f4eedc;
+  background: var(--c-sky);
+  color: var(--c-ivory);
 }
 footer::before {
   content: "";
@@ -54,16 +55,20 @@ footer::before {
   right: 0;
   bottom: calc(100% - 1px);
   height: 90px;
-  background: #0e3325;
+  background: var(--c-sky);
   -webkit-mask: url("img/hill-front.svg") bottom / 100% 100% no-repeat;
   mask: url("img/hill-front.svg") bottom / 100% 100% no-repeat;
   pointer-events: none;
 }
 footer .wordmark {
-  color: #f4eedc;
+  color: var(--c-ivory);
 }
 footer a {
-  color: #b8f2c9;
+  color: var(--c-mint);
+}
+/* The focus ring in the page's green would vanish on the dark green (1.75:1); mint shows (10.9:1). */
+footer :focus-visible {
+  outline-color: var(--c-mint);
 }
 footer .small {
   color: rgba(244, 238, 220, 0.72);
@@ -144,9 +149,6 @@ footer .small {
   header.top nav {
     gap: 18px;
   }
-  header.top nav .wide {
-    display: none;
-  }
   .doc {
     margin-top: 8px;
     padding: 32px 22px 36px;
@@ -206,9 +208,49 @@ header.top nav a[aria-current="page"] {
 footer nav a {
   transition: color 0.2s ease;
 }
+
+/* "Help now", as in the app: always in the header, in the app's green, with the helpline icon. */
+header.top nav a.help-now {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--c-primary);
+}
+header.top nav a.help-now .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Room for all of it on a phone: "How it works" goes first, then the name leaves the header
+   (it stays in the icon's label, and the home page shows it large on the arch). */
+@media (max-width: 719px) {
+  header.top nav .wide {
+    display: none;
+  }
+}
+@media (max-width: 540px) {
+  header.top .brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  header.top .brand {
+    padding: 4px;
+    margin-left: -4px;
+    border-radius: 10px;
+  }
+  header.top .brand .mini-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+}
 footer nav a:hover,
 footer .brand:hover {
-  color: #f4eedc;
+  color: var(--c-ivory);
 }
 
 /* Buttons that go somewhere come up a little too. */
@@ -231,17 +273,21 @@ a.btn {
   }
 }
 @media (max-width: 420px) {
-  header.top .brand {
-    font-size: 17px;
-    gap: 8px;
-  }
-  header.top .brand .mini-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
-  }
   header.top nav a {
     padding: 8px 8px;
+  }
+}
+@media (max-width: 360px) {
+  header.top {
+    gap: 8px;
+  }
+  header.top nav a {
+    padding: 8px 6px;
+  }
+}
+@media (max-width: 340px) {
+  header.top nav a.help-now .icon {
+    display: none;
   }
 }
 

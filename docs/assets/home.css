@@ -55,8 +55,13 @@
 .actions .btn-tonal {
   min-width: 150px;
 }
+/* Until the app is on Google Play this is a quiet note, not a button: nothing to press, nothing that
+   moves. The green button comes back with the real link. */
 .soon {
   cursor: default;
+  background: transparent;
+  color: var(--c-ink-2);
+  border: 1.5px solid var(--c-line-strong);
 }
 
 /* ---------- Sections ---------- */
@@ -244,7 +249,10 @@ section.block {
   background-image: radial-gradient(500px 300px at 85% 110%, rgba(134, 227, 178, 0.28), transparent 70%);
 }
 .promise .overline {
-  color: #b8f2c9;
+  color: var(--c-mint);
+}
+.promise :focus-visible {
+  outline-color: var(--c-mint);
 }
 .promise h2 {
   margin-top: 12px;
@@ -266,11 +274,11 @@ section.block {
   font: var(--t-body);
 }
 .promise li .icon {
-  color: #b8f2c9;
+  color: var(--c-mint);
   margin-top: 3px;
 }
 .promise a {
-  color: #b8f2c9;
+  color: var(--c-mint);
   display: inline-block;
   margin-top: 20px;
   font: var(--t-label);
@@ -397,7 +405,7 @@ section.block {
     padding: 0 12px;
     gap: 8px;
   }
-  .actions .btn-primary {
+  .actions .soon {
     flex: 1;
     padding: 0 14px;
     font-size: 16px;
@@ -546,8 +554,8 @@ section.block {
   }
 }
 
-/* Buttons and the top of the page.
-   On arrival the arch appears and the words and buttons rise in one after another. */
+/* The top of the page. On arrival the arch appears and the words rise in one after another. The
+   buttons are there from the start, so "Need help now?" never waits for an animation. */
 @keyframes rise-in {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
@@ -561,35 +569,8 @@ section.block {
 .hero h2 { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.3s; }
 .hero .intro { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.45s; }
 .hero .privacy-note { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.6s; }
-.hero .actions { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.75s; }
 
-/* "Coming soon to Google Play": a soft band of light passes over it once after arrival
-   (home.js adds "shine"), and again when the mouse comes over it. */
-.btn-primary.soon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.26) 50%, transparent 75%);
-  transform: translateX(-130%);
-  pointer-events: none;
-}
-.btn-primary.soon.shine::before {
-  animation: sheen 1.3s ease-out 1;
-}
-@keyframes sheen {
-  to { transform: translateX(130%); }
-}
-.btn-primary.soon {
-  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease;
-}
 @media (hover: hover) {
-  .btn-primary.soon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px -16px rgba(30, 39, 33, 0.5);
-  }
-  .btn-primary.soon:hover::before {
-    animation: sheen 1.3s ease-out 1;
-  }
   /* "Need help now?": the phone with a heart gives one calm beat. */
   a.btn-tonal:hover .icon {
     animation: beat 0.9s ease-in-out 1;
@@ -617,13 +598,8 @@ section.block {
   .hero h2,
   .hero .intro,
   .hero .privacy-note,
-  .hero .actions,
-  .btn-primary.soon::before,
   a.btn-tonal:hover .icon {
     animation: none;
-  }
-  .btn-primary.soon::before {
-    display: none;
   }
   .promise a.more .arrow {
     transition: none;

@@ -2,35 +2,35 @@
 
 @font-face {
   font-family: "Literata";
-  src: url("fonts/Literata_400Regular.ttf") format("truetype");
+  src: url("fonts/Literata_400Regular.woff2") format("woff2"), url("fonts/Literata_400Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Literata";
-  src: url("fonts/Literata_400Regular_Italic.ttf") format("truetype");
+  src: url("fonts/Literata_400Regular_Italic.woff2") format("woff2"), url("fonts/Literata_400Regular_Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Literata";
-  src: url("fonts/Literata_500Medium.ttf") format("truetype");
+  src: url("fonts/Literata_500Medium.woff2") format("woff2"), url("fonts/Literata_500Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Atkinson Hyperlegible";
-  src: url("fonts/AtkinsonHyperlegible_400Regular.ttf") format("truetype");
+  src: url("fonts/AtkinsonHyperlegible_400Regular.woff2") format("woff2"), url("fonts/AtkinsonHyperlegible_400Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Atkinson Hyperlegible";
-  src: url("fonts/AtkinsonHyperlegible_700Bold.ttf") format("truetype");
+  src: url("fonts/AtkinsonHyperlegible_700Bold.woff2") format("woff2"), url("fonts/AtkinsonHyperlegible_700Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -42,6 +42,7 @@
   --c-night: #081c15;
   --c-sky: #0e3325;
   --c-ivory: #f4eedc;
+  --c-mint: #b8f2c9;
   --page-max: 1120px;
   --gutter: 20px;
 }
