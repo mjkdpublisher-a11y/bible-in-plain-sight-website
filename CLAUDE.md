@@ -70,6 +70,10 @@ mock-ups):
   No line of text may be cut by the phone's edge (Mark noticed it at once): screens with a tab bar
   hide the rest under it; reading screens end with the `.fade` from `screens/app.css`, and their
   content is placed so only the start of the next section fades out.
+- The phones (2026-09-30, Mark: a high-quality modern phone, like the newest Samsung): drawn in CSS in
+  `home.css` (`.phone.live` and its `.glass`): a thin graphite titanium frame, an even black edge,
+  the keys on the right, a faint reflection. Every screen has the phone's status bar
+  (`screens/status.css`: 7:42, Wi-Fi, signal, battery, the front camera); keep it on new screens.
 - Motion: `docs/assets/home.js` (our own script, nothing from outside) plays a phone's screen when
   the mouse is over it, or on a touch screen when the phone stands in the middle of the view, and
   lets the phones come in one after another. A screen scrolls its `.scroller` by `--scroll` over
@@ -108,7 +112,7 @@ mock-ups):
 - **90 topics in 10 categories** (Heart & Mind, Money & Work, Relationships & Family, Loss & Grief,
   Health & Body, Guilt & Temptation, Faith & Doubt, Decisions & Future, Joy & Gratitude, and
   I Need Help Now).
-- A topic **card**: an honest opening, a lament (or "Remember" on joyful topics), "What God says"
+- A topic **card**: an honest opening, a lament (or "Remember" on joyful topics), "Scripture and context"
   (passages with a note on their context), a story from Scripture, one practical step, a prayer,
   a verse to keep. Every passage can open **the whole chapter**, so no verse is read out of context.
 - **For someone I love**: the prayer becomes a prayer for a person by name, with tips on how to be
@@ -146,8 +150,12 @@ mock-ups):
 - Reminders are local notifications, private by default ("You have a new check-in", no topic). On
   the reviewed crisis topics a reminder comes only if the person asks for one, and only says "You
   have a reminder." They never alert anyone else.
-- The app makes no network calls, with one planned exception: the one-time purchase, which goes
-  only to Google Play. Google, not the app, handles payment details.
+- Play Console (2026-09-30): target age groups 13-15, 16-17 and 18 and over; Data safety "No data
+  collected", "No data shared".
+- The app makes no network calls except through Google Play: the one-time purchase (price, buy,
+  and a check at start whether it is owned) and, once at most, Google's own review card (never on
+  crisis or sensitive topics; the app remembers on how many days it was opened and whether it asked).
+  Google, not the app, handles payment details.
 - Helpline calls and texts go through the phone's own apps; the app does not see them.
 - Source of truth for these facts: the app project's `CLAUDE.md` and `src/storage/`,
   `src/purchases/fullVersion.ts`, `app.json`. If in doubt, read the code; do not guess.

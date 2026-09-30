@@ -6,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="fonts.css?v=4221bc84">
 <link rel="stylesheet" href="motion.css?v=2c9956e4">
-<!-- Placeholder drawn in the app's style from src/app/(tabs)/topics.tsx and content/topics.json.
+<link rel="stylesheet" href="status.css?v=a2dfb599">
+<!-- Drawn in the app's style from src/app/(tabs)/topics.tsx, src/ui/ListRow.tsx and content/topics.json
+     (2026-09-30: the crisis category first, in help green, and an icon for each category).
      Replace with a real screenshot from the app. -->
 <style>
 body{margin:0;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#1E2721;background:#F3EEE4}
@@ -14,27 +16,36 @@ body{margin:0;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#1E
 .row:first-child{border-top:1px solid #1E2721}
 .row b{display:block;font-size:18px;line-height:24px}
 .row span{font-size:15px;line-height:20px;color:#4F5A52}
-.row svg{margin-left:auto;color:#4F5A52;flex:none}
+.row>div{flex:1}
+.row svg{flex:none}
+.row .ic{color:#2D5A43}
+.row .chev{color:#4F5A52}
+.help{min-height:72px;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:#E6ECDD;color:#2D5A43;box-sizing:border-box}
+.help>div{flex:1;display:flex;flex-direction:column;gap:2px}
+.help b{font-size:18px;line-height:24px}
+.help span{font-size:15px;line-height:20px;color:#4F5A52}
+.help svg{flex:none}
 </style>
 </head>
 <body>
 <main style="width:390px;height:867px;position:relative;overflow:hidden;background:#F3EEE4">
-<div class="scroller" style="--scroll:126px;--dur:1.8s;padding:56px 20px 0;display:flex;flex-direction:column;gap:24px">
+<div class="sb canvas" aria-hidden="true"><span class="time">7:42</span><i class="cam"></i><span class="icons"><svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 11.6.4 4a10.8 10.8 0 0 1 15.2 0z"/></svg><svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="8.5" width="2.8" height="3.5" rx=".7"/><rect x="4.4" y="6" width="2.8" height="6" rx=".7"/><rect x="8.8" y="3" width="2.8" height="9" rx=".7"/><rect x="13.2" y="0" width="2.8" height="12" rx=".7"/></svg><span class="level">78%</span><svg width="25" height="12" viewBox="0 0 25 12"><rect x=".75" y=".75" width="21" height="10.5" rx="3.2" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><rect x="2.6" y="2.6" width="13.6" height="6.8" rx="1.7"/><path d="M23 4.2c.9.2 1.5.9 1.5 1.8s-.6 1.6-1.5 1.8z" fill-opacity=".4"/></svg></span></div>
+<div class="scroller" style="--scroll:92px;--dur:1.8s;padding:48px 20px 0;display:flex;flex-direction:column;gap:24px">
 <div>
 <h1 style="margin:0;font-family:'Literata',Georgia,serif;font-size:32px;line-height:38px;font-weight:500;letter-spacing:-0.01em">Topics</h1>
 <p style="margin:8px 0 0;font-size:16px;line-height:24px;color:#4F5A52">Find Scripture and prayer for what you are facing.</p>
 </div>
+<div class="help"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 7.5h2.6l1.3 3.3-1.7 1.1a8.4 8.4 0 0 0 4.4 4.4l1.1-1.7 3.3 1.3v2.6a1.6 1.6 0 0 1-1.8 1.6A12.8 12.8 0 0 1 3.9 9.3a1.6 1.6 0 0 1 1.6-1.8z"/><path d="M17.8 10.2s-3.3-2-3.3-4.4a1.7 1.7 0 0 1 3.3-.8 1.7 1.7 0 0 1 3.3.8c0 2.4-3.3 4.4-3.3 4.4z"/></svg><div><b>I Need Help Now</b><span>5 topics · always free</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
 <div>
-<div class="row"><div><b>Heart &amp; Mind</b><span>14 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>I Need Help Now</b><span>5 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Money &amp; Work</b><span>11 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Relationships &amp; Family</b><span>13 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Loss &amp; Grief</b><span>8 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Health &amp; Body</b><span>9 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Guilt &amp; Temptation</b><span>8 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Faith &amp; Doubt</b><span>10 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Decisions &amp; Future</b><span>7 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
-<div class="row"><div><b>Joy &amp; Gratitude</b><span>5 topics</span></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></svg><div><b>Heart &amp; Mind</b><span>14 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="7" rx="6.5" ry="2.5"/><path d="M5.5 7v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5V7M5.5 12v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"/></svg><div><b>Money &amp; Work</b><span>11 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M3.5 19c.8-3 2.9-4.5 5.5-4.5s4.7 1.5 5.5 4.5M14.5 14.6c.6-.1 1.3-.1 2-.1 2.2 0 3.8 1.3 4.5 4"/></svg><div><b>Relationships &amp; Family</b><span>13 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11h6v9H9zM12 11V8.5M12 3.5c1.4 1.5 1.4 3.2 0 4.5-1.4-1.3-1.4-3 0-4.5z"/></svg><div><b>Loss &amp; Grief</b><span>8 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12h4l2-4 3 8 2-4h6"/></svg><div><b>Health &amp; Body</b><span>9 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14.5 4.5 10 9 5.5M4.5 10h10a5 5 0 0 1 0 10H11"/></svg><div><b>Guilt &amp; Temptation</b><span>8 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v17M6.5 8.5h11"/></svg><div><b>Faith &amp; Doubt</b><span>10 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v17M12 6h6l2 2-2 2h-6M12 12H6l-2 2 2 2h6"/></svg><div><b>Decisions &amp; Future</b><span>7 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="row"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg><div><b>Joy &amp; Gratitude</b><span>5 topics</span></div><svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
 </div>
 </div>
 <nav aria-label="Main" style="position:absolute;left:0;right:0;bottom:0;height:88px;padding:6px 12px 22px;box-sizing:border-box;background:rgba(250,247,240,0.98);border-top:1px solid #E2DACB;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))">

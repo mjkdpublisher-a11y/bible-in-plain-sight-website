@@ -32,7 +32,12 @@ Re-check before publishing and whenever the app changes what it stores or sends.
 | Local reminders, private text by default | `src/notifications/reminders.ts`, `src/storage/preferences.ts` (`showTopicInReminders`) |
 | Permissions declared by libraries: `POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED` (expo-notifications), `INTERNET`, `READ/WRITE_EXTERNAL_STORAGE` (expo-file-system), screen-capture ones | `node_modules/*/android/src/main/AndroidManifest.xml` |
 | Blocked: `READ_EXTERNAL_STORAGE`, `WRITE_EXTERNAL_STORAGE`, `READ_MEDIA_IMAGES`, `DETECT_SCREEN_CAPTURE`, `SYSTEM_ALERT_WINDOW` | `app.json` (`blockedPermissions`, updated 2026-09-28) |
-| No network calls; the only planned one is Google Play Billing | app `CLAUDE.md`, no `fetch` or HTTP calls in `src/` |
+| No network calls except through Google Play: price, purchase, a check at start and on return whether the full version is owned (since 2026-09-29) | `src/purchases/fullVersion.ts` (`refreshPurchase`, expo-iap), app `CLAUDE.md`; no `fetch` or HTTP calls in `src/` |
+| Google's in-app review card: once at most, after a stone (Better) or on a Joy & Gratitude card, only after 3 days of use, never on crisis, sensitive or privacy topics; the app is not told the result | `src/purchases/review.ts` (expo-store-review) |
+| The app remembers the number of days it was opened, the last one, and whether it asked for a review | `src/purchases/review.ts` (`open_days`, `last_open_day`, `review_asked`) |
+| "Rate this app" in Settings opens the Play Store page | `src/purchases/review.ts` (`openStoreListing`), `src/app/settings.tsx` |
+| Firebase Messaging ships inside expo-notifications but is never started (no configuration) | app `docs/play-console/setup-answers.md` (Data safety) |
+| Age groups on Google Play: 13-15, 16-17, 18 and over (no under-13 group) | app `docs/play-console/setup-answers.md` (Target audience) |
 
 ## Calls, sharing, export, delete (sections 5 to 8)
 

@@ -1,0 +1,58 @@
+/* The phone's status bar over every screen, as Android draws it over the app: the clock on the left,
+   Wi-Fi, signal and battery on the right, the front camera in the middle. The page shows through a
+   little, like the app's StatusBarBackdrop (there the page color at 94%; here 97%, so no line of the page
+   shows through the clock in a small picture). */
+.sb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 40px;
+  padding: 2px 22px 0 28px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(250, 247, 240, 0.97);
+  color: #1E2721;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  pointer-events: none;
+}
+/* Screens on the linen canvas (Home, Topics, Timeline, check-in). */
+.sb.canvas {
+  background: rgba(243, 238, 228, 0.97);
+}
+.sb .time {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.sb .icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.sb .icons svg {
+  display: block;
+  fill: currentColor;
+}
+.sb .level {
+  margin-left: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+/* The front camera: a small dark lens behind the glass. */
+.sb .cam {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 13px;
+  height: 13px;
+  margin-left: -6.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 34%, #3a4a66 0 12%, #11141a 34%, #050607 70%);
+  box-shadow: 0 0 0 1.5px #0a0b0d, 0 0 0 2.5px rgba(255, 255, 255, 0.06);
+}

@@ -23,8 +23,8 @@ worry” and “Thankful.” Every feature is free too. One purchase, with no su
 other 72 topics.
 
 **I bought the full version. How do I get it on a new phone?**
-Use the same Google account in Google Play on the new phone. Then open Settings in the app and tap
-"Restore purchase".
+Use the same Google account in Google Play on the new phone. The app checks with Google Play when it
+starts, so the topics unlock by themselves. If they do not, open Settings and tap "Restore purchase".
 
 **How do I keep a copy of what I wrote?**
 Open Settings and tap "Export all data". This makes one file with everything you wrote, and you

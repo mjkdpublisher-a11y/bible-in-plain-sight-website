@@ -166,11 +166,60 @@ section.block {
 .screens figure:nth-child(3n + 2) {
   margin-top: 48px;
 }
+/* Each phone is a modern flagship Android phone drawn in CSS, so it stays sharp at any size: a thin
+   frame of graphite titanium (3px), an even black edge around the glass (6px), the volume key above
+   the side key on the right, as on Samsung Galaxy phones, and a faint reflection on the glass. */
 .phone.live {
+  --r: calc(var(--pw) * 0.12 + 9px);
+  --drop: 0 30px 60px -30px rgba(20, 30, 22, 0.45), 0 2px 6px rgba(20, 30, 22, 0.12);
+  position: relative;
   width: calc(var(--pw) + 18px);
   max-width: none;
   height: calc(var(--pw) * 2.2222 + 18px);
   aspect-ratio: auto;
+  padding: 3px;
+  border: 0;
+  border-radius: var(--r);
+  overflow: visible;
+  background: linear-gradient(155deg, #767b81 0%, #2c3034 16%, #4a4f54 46%, #1f2225 70%, #62676d 100%);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.3), inset 0 1px 1.5px rgba(255, 255, 255, 0.35), var(--drop);
+}
+.phone.live .glass {
+  position: relative;
+  height: 100%;
+  border: 6px solid #050607;
+  border-radius: calc(var(--r) - 3px);
+  overflow: hidden;
+  isolation: isolate;
+  /* The app's paper while a screen is still loading, not a black glass. */
+  background: #FAF7F0;
+}
+/* Light on the glass: brightest at the top left, gone before the middle. */
+.phone.live .glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.035) 26%, rgba(255, 255, 255, 0) 40%);
+}
+/* The keys on the right edge: volume above, the side key below. */
+.phone.live::before,
+.phone.live::after {
+  content: "";
+  position: absolute;
+  right: -2.5px;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(90deg, #26292c, #6c7177 55%, #34383c);
+}
+.phone.live::before {
+  top: 20%;
+  height: 11%;
+}
+.phone.live::after {
+  top: 34%;
+  height: 6%;
 }
 .phone.live iframe {
   display: block;
@@ -473,7 +522,7 @@ section.block {
 }
 .screens figure.playing .phone {
   transform: translateY(-10px);
-  box-shadow: 0 46px 80px -38px rgba(20, 30, 22, 0.5), 0 3px 10px rgba(20, 30, 22, 0.14);
+  --drop: 0 46px 80px -38px rgba(20, 30, 22, 0.5), 0 3px 10px rgba(20, 30, 22, 0.14);
 }
 @media (prefers-reduced-motion: reduce) {
   .js .screens figure,

@@ -2,14 +2,15 @@
 
 **Bible in Plain Sight** (the Android app) and **www.bibleinplainsight.com** (this website)
 
-Last updated: 28 September 2026
+Last updated: 30 September 2026
 
 ## The short version
 
 - The app has no account, no ads, no analytics and no tracking.
 - Everything you write in the app stays on your phone, encrypted. We never receive it and cannot
   read it.
-- The app goes online only when you buy or restore the full version through Google Play.
+- The app goes online only through Google Play: for the full version, and once at most for Google's
+  own card to rate the app.
 - You can export or delete everything you wrote at any time, in Settings.
 - This website uses no cookies and no analytics.
 
@@ -37,7 +38,8 @@ The app saves only what you choose to write or set:
 - **Stones of Remembrance and notes about what helped:** your note, its date and its topic.
 - **Settings:** how many days until a check-in, whether reminders show the topic, the country you
   chose for helplines or confirmed as the one you are in, whether you have seen the welcome screen,
-  and whether the full version is unlocked.
+  whether the full version is unlocked, and, so that it asks you to rate the app once at most, on how
+  many different days you have opened it and whether it has already asked.
 
 All of this is kept in the app's private storage on your phone, where other apps cannot read it.
 What you write (your journal, check-ins, stones and notes) is kept in an encrypted database. Its key
@@ -69,8 +71,15 @@ go back to Home or use Quick exit.
   off at any time in Settings or in your phone's settings.
 - **Starting after a restart.** This lets reminders you already have still arrive after your phone
   restarts.
-- **The internet, only for the purchase.** The app connects only to Google Play, and only to buy or
-  restore the full version.
+- **Google Play, and nothing else online.** The app goes online only through the Play Store app on
+  your phone: to show the price of the full version, to buy it, and, when the app starts or you come
+  back to it, to check whether you own it, so a purchase made on another phone, or a refund, is picked
+  up.
+- **Rating the app.** At a moment of thanks, such as after you save a Stone of Remembrance, and once
+  at most, the app may ask Google Play to show its own card for rating the app. It never asks on the
+  crisis or sensitive topics. Google decides whether the card appears, and the app is not told
+  whether you rated it or what you wrote. "Rate this app" in Settings opens the app's page in Google
+  Play.
 
 The app does not ask for and does not use your contacts, location, camera, microphone, photos,
 files, calls or messages.
@@ -115,7 +124,8 @@ goes through Google Play:
 
 - Google handles the payment. We never see your card or other payment details.
 - Google Play tells the app that the purchase is valid, and the app remembers on your phone that the
-  full version is unlocked.
+  full version is unlocked. When the app starts, it asks Google Play again, so the full version
+  unlocks by itself on a new phone, and a refund locks it again.
 - Google Play gives us order details, such as the order number, date, price and country, and lets us
   look up an order by the email address of the Google account that made it. We use these only to
   help you with your order or a refund, and for our accounting and tax obligations. French law
@@ -150,8 +160,9 @@ visitors.
 
 ## 12. Children
 
-The app is intended for adults and is not directed at children. We do not knowingly receive data
-from children. If you believe a child has written to us, contact us and we will delete the message.
+The app is meant for people aged 13 and over, and it is not directed at children under 13. We do not
+knowingly receive data from children under 13. If you believe a child has written to us, contact us
+and we will delete the message.
 
 ## 13. Your rights
 
@@ -169,7 +180,8 @@ TSA 80715, 75334 Paris Cedex 07, www.cnil.fr), or the authority in the country w
 
 - In the app: your data stays in the app's private storage; what you write is encrypted, with a key
   kept in the phone's secure key storage; deleted text is overwritten; backups and phone-to-phone transfer are off; the export file is removed soon after use; the two topics above leave no
-  trace; the app makes no network connections except to Google Play for the purchase.
+  trace; the app makes no network connections except through Google Play, for the full version and its
+  rating card.
 - On our side: we keep only emails and purchase records, and we protect our email and Google Play
   accounts with strong passwords and two-step verification.
 

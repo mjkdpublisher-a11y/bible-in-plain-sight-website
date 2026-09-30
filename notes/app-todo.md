@@ -7,6 +7,9 @@ and remind me what is on it."
 
 ## 1. Ask for a Google Play review at a good moment (Mark's idea)
 
+**Built in the app on 2026-09-29** (`src/purchases/review.ts`); the privacy policy (sections 2 and 4)
+describes it since 2026-09-30.
+
 Mark would like the app to ask for a review at a good moment, for example after a journal entry or
 after saving a Stone of Remembrance.
 
@@ -40,7 +43,7 @@ the internal testing track).
 
 ## 2. Before release (the privacy policy depends on these)
 
-1. **A link to the privacy policy inside the app** (for example in Settings, About):
+1. **Done in the app on 2026-09-29** (Settings > About, `src/app/settings.tsx`). **A link to the privacy policy inside the app** (for example in Settings, About):
    https://www.bibleinplainsight.com/privacy-policy. Google Play requires it for every app.
 2. **Phone-to-phone transfer:** done in the app on 2026-09-28 (`plugins/withNoDataTransfer.js`: data
    extraction rules exclude every file from Google Drive backup and device-to-device transfer). The
@@ -48,7 +51,7 @@ the internal testing track).
 3. **Unused permissions:** done in the app on 2026-09-28: `WRITE_EXTERNAL_STORAGE` and
    `SYSTEM_ALERT_WINDOW` are blocked in `app.json`, next to `READ_EXTERNAL_STORAGE`,
    `READ_MEDIA_IMAGES` and `DETECT_SCREEN_CAPTURE`.
-4. **The purchase (step 13b):** it ships in version 1 (Mark, 2026-09-27). When it is built, check
+4. **Done and tested on 2026-09-29; the policy (sections 4, 9, 14) and Support were updated on 2026-09-30.** **The purchase (step 13b):** it ships in version 1 (Mark, 2026-09-27). When it is built, check
    section 9 of the policy and the "Restore purchase" answer on the Support page against what the
    code really does.
 5. **Database encryption (SQLCipher):** done in the app on 2026-09-28 (`src/storage/userDb.ts`);
@@ -57,12 +60,12 @@ the internal testing track).
    release build, so no push token is ever registered.
 7. **Final permission list:** read it from the release build (Play Console, App bundle explorer) and
    compare it with section 4 of the policy.
-8. **Data safety form** in Play Console: no data collected or shared by the app; payment and reviews
+8. **Submitted on 2026-09-30** ("No data collected", "No data shared"). **Data safety form** in Play Console: no data collected or shared by the app; payment and reviews
    handled by Google Play. `notes/privacy-facts.md` in the website project has the details.
 
 ## 3. For the website, when there is time
 
 Real screenshots from the phone can replace the drawn screens on the home page (light mode, no
 notifications in the status bar): Home, Topics, the "Worried about money" card with For someone I
-love on and "Anna" typed, What God says, the whole chapter (Matthew 6 from the card), the prayer for
+love on and "Anna" typed, Scripture and context, the whole chapter (Matthew 6 from the card), the prayer for
 Anna, Write in my journal, How is it now?, Timeline with a stone or two. Never the crisis screen.
