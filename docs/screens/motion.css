@@ -1,11 +1,16 @@
 /* Motion for the screens on the website. When the page adds "play" to <html> (mouse over the phone,
    or on a touch screen the phone in view), the screen scrolls gently, like someone reading on the
    phone, and goes back when it stops. Each screen sets how far with --scroll on its .scroller. */
+/* Clip SVG/filter and scrolling paint inside the preview document as well as its phone. */
+html, body { overflow: hidden; }
+body > main { contain: paint; isolation: isolate; }
 .scroller { transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1); }
 .play .scroller {
   transform: translateY(calc(-1 * var(--scroll, 0px)));
   transition: transform var(--dur, 3.6s) cubic-bezier(0.45, 0.05, 0.35, 1) 0.2s;
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroller, .play .scroller { transform: none; transition: none; }
+  .scroller, .play .scroller { transition: none; }
+  /* A deliberate tap/key still reveals the rest, without animated movement. */
+  .play .scroller { transform: translateY(calc(-1 * var(--scroll, 0px))); }
 }

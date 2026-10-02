@@ -1,8 +1,9 @@
 // Builds the text pages of the website from pages/*.md into docs/*.html, in the site's design.
 // Run from the website folder:  node tools/build.js
-// No dependencies. It understands only what the pages use: # and ## headings, paragraphs,
-// "- " lists, **bold**, [text](link), plain https:// links, email and www. addresses.
-// The home page (docs/index.html) is written by hand; only its file versions are updated here.
+// No dependencies. It understands only what the pages use: # and ## headings (with an optional
+// {#id}), paragraphs, "> " notices, "- " lists, **bold**, [text](link), plain https:// links, email
+// and www. addresses. The home page (docs/index.html) is written by hand; the text pages take their
+// header, footer and "Coming soon" dialog from it, so every page shares the same menu.
 // Last, every link to a style sheet, script, picture or screen in docs/ gets "?v=" and a short
 // fingerprint of that file, so a phone that keeps files for a while still gets a changed one at once.
 // Run it before every commit.
@@ -14,21 +15,27 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const out = path.join(root, "docs");
 
+// The wording around each page (eyebrow, heading, intro) comes from the redesign of 2026-10-02.
 const PAGES = [
   {
     file: "privacy-policy",
-    nav: "privacy",
+    label: "Privacy policy",
+    eyebrow: "Privacy, in plain sight",
+    intro: "Your words stay with you.",
     description: "How the Bible in Plain Sight app and website handle your data: no account, no ads, no tracking, and everything you write stays on your phone.",
   },
   {
     file: "support",
-    nav: "support",
+    label: "Support",
+    eyebrow: "A little help along the way",
     description: "Help and common questions about the Bible in Plain Sight app, and how to reach us.",
-    faq: true,
+    support: true,
   },
   {
     file: "legal-notice",
-    nav: "",
+    label: "Legal notice",
+    eyebrow: "Clear and transparent",
+    intro: "The people and services behind Bible in Plain Sight.",
     description: "Legal notice (mentions légales) for Bible in Plain Sight.",
     lines: true,
   },
@@ -51,9 +58,24 @@ function inline(text) {
   return s.replace(/\u0001(\d+)\u0002/g, (m, i) => `<a href="${links[i].href}">${links[i].label}</a>`);
 }
 
-function toHtml(md, { faq = false, lines = false } = {}) {
+// "1. Who we are" -> "1-who-we-are", as the redesign names its sections.
+function slug(text) {
+  return text.toLowerCase().replace(/&/g, " ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+// Splits a page into blocks. Returns the title, the first paragraph (support uses it as the intro),
+// the headings for "On this page", and the body.
+function toHtml(md, { lines = false, support = false } = {}) {
   let title = "";
+  let intro = "";
+  const toc = [];
   const parts = [];
+  let section = null; // support: the open group of questions
+  const closeSection = () => {
+    if (!section) return;
+    parts.push(`<section class="document-section" id="${section.id}" aria-labelledby="${section.id}-title"><h2 id="${section.id}-title">${section.title}</h2><div class="support-faq">${section.faq.join("")}</div>${section.related.join("")}</section>`);
+    section = null;
+  };
   for (const block of md.replace(/\r/g, "").trim().split(/\n\s*\n/)) {
     const rows = block.split("\n");
     if (rows[0].startsWith("# ")) {
@@ -61,7 +83,24 @@ function toHtml(md, { faq = false, lines = false } = {}) {
       continue;
     }
     if (rows[0].startsWith("## ")) {
-      parts.push(`<h2>${inline(rows[0].slice(3))}</h2>`);
+      const m = rows[0].slice(3).match(/^(.*?)\s*(?:\{#([a-z0-9-]+)\})?$/);
+      const text = m[1];
+      const id = m[2] || slug(text);
+      toc.push({ id, text });
+      if (support) {
+        closeSection();
+        section = { id, title: inline(text), faq: [], related: [] };
+      } else parts.push(`<h2 id="${id}">${inline(text)}</h2>`);
+      continue;
+    }
+    if (support && rows[0].startsWith("> ")) {
+      const text = rows.map((row) => row.replace(/^> ?/, "")).join(" ");
+      parts.push(`<aside id="need-help" class="support-notice" aria-labelledby="urgent-help-title"><h2 id="urgent-help-title">Need help now?</h2><p>${inline(text)}</p><a class="text-button" href="./#help">Read about immediate help</a></aside>`);
+      toc.unshift({ id: "need-help", text: "Need help now?" });
+      continue;
+    }
+    if (support && !intro && !section) {
+      intro = inline(rows.join(" "));
       continue;
     }
     if (rows[0].startsWith("- ")) {
@@ -81,68 +120,87 @@ function toHtml(md, { faq = false, lines = false } = {}) {
       parts.push(rows.map((row) => `<p>${inline(row)}</p>`).join(""));
       continue;
     }
-    if (faq && /^\*\*.+\*\*$/.test(rows[0]) && rows.length > 1) {
-      parts.push(`<p class="q">${rows[0].slice(2, -2)}</p><p>${inline(rows.slice(1).join(" "))}</p>`);
+    if (section && /^\*\*.+\*\*$/.test(rows[0]) && rows.length > 1) {
+      section.faq.push(`<details><summary>${rows[0].slice(2, -2)}<span aria-hidden="true"></span></summary><p>${inline(rows.slice(1).join(" "))}</p></details>`);
+      continue;
+    }
+    if (section) {
+      section.related.push(`<p class="document-related">${inline(rows.join(" "))}</p>`);
       continue;
     }
     parts.push(`<p>${inline(rows.join(" "))}</p>`);
   }
-  return { title, body: parts.join("\n") };
+  closeSection();
+  if (support) toc.push({ id: "contact", text: "Contact us" });
+  return { title, intro, toc, body: parts.join("\n") };
 }
+
+// The shared header, footer and dialog, taken from the home page.
+const home = fs.readFileSync(path.join(out, "index.html"), "utf8").replace(/\r\n/g, "\n");
+const part = (re, name) => {
+  const m = home.match(re);
+  if (!m) throw new Error(`docs/index.html has no ${name}`);
+  return m[0].replace(/\?v=[0-9a-f]+"/g, '"');
+};
+const HEADER = part(/  <header class="site-header">[\s\S]*?<\/header>/, "site header");
+const FOOTER = part(/  <footer class="site-footer">[\s\S]*?<\/footer>/, "site footer");
+const DIALOG = part(/  <dialog [\s\S]*?<\/dialog>/, "availability dialog");
 
 // base: "" for the pages, "/" for 404.html, which GitHub Pages also shows at deeper addresses such as
 // /privacy-policy/ (relative links would point into a folder that does not exist).
-function page({ title, description, nav, bodyClass, body, canonical, base = "" }) {
-  const current = (name) => (nav === name ? ' aria-current="page"' : "");
+function shell(html, base, current) {
   const home = base || "./";
+  let s = html
+    .replace(/href="#main"/g, `href="${home}"`)
+    .replace(/href="#([a-z-]+)"/g, `href="${home}#$1"`)
+    .replace(/(src|href)="assets\//g, `$1="${base}assets/`)
+    .replace(/href="(privacy-policy|support|legal-notice)(#[a-z-]+)?"/g, `href="${base}$1$2"`);
+  if (current) s = s.replace(`href="${base}${current}"`, `href="${base}${current}" aria-current="page"`);
+  return s;
+}
+
+function page({ file, title, label, eyebrow, intro, description, toc, body, canonical, base = "", support = false }) {
+  const tocLinks = toc.map((t) => `<a href="#${t.id}">${escapeHtml(t.text)}</a>`).join("");
+  const sidebarToc = toc.length
+    ? `<p class="eyebrow">On this page</p><nav class="document-toc" aria-label="Page contents">${tocLinks}</nav><details class="document-mobile-toc"><summary>On this page</summary><nav class="document-toc" aria-label="Page contents">${tocLinks}</nav></details>`
+    : "";
+  const docNav = PAGES.map((p) => `<a href="${base}${p.file}"${p.file === file ? ' aria-current="page"' : ""}>${p.label}</a>`).join("");
+  const sections = support ? toc.filter((t) => t.id !== "need-help" && t.id !== "contact") : [];
+  const supportLinks = sections.length
+    ? `<nav class="support-links" aria-label="Support topics">${sections.map((t) => `<a href="#${t.id}">${escapeHtml(t.text)}</a>`).join("")}</nav>`
+    : "";
+  const contact = support
+    ? '<section class="support-contact" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">Contact us</h2><p>We are glad to help. We will reply within a few working days.</p><a class="button" href="mailto:support@bibleinplainsight.com">Email support</a><p class="document-related">support@bibleinplainsight.com</p></section>'
+    : "";
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#163e31">
 <title>${escapeHtml(title)} · Bible in Plain Sight</title>
 <meta name="description" content="${escapeHtml(description)}">
-${canonical ? `<link rel="canonical" href="https://www.bibleinplainsight.com/${canonical}">\n` : ""}<meta name="theme-color" content="#F3EEE4">
-<link rel="icon" href="${base}assets/img/icon-32.png" type="image/png" sizes="32x32">
+${canonical ? `<link rel="canonical" href="https://www.bibleinplainsight.com/${canonical}">\n` : ""}<link rel="icon" href="${base}assets/img/icon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="${base}assets/img/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="${base}assets/img/icon-180.png">
-<link rel="stylesheet" href="${base}assets/tokens.css">
-<link rel="stylesheet" href="${base}assets/base.css">
-<link rel="stylesheet" href="${base}assets/site.css">
+<link rel="stylesheet" href="${base}assets/styles.css">
+<link rel="stylesheet" href="${base}assets/interactions.css">
+<link rel="stylesheet" href="${base}assets/ambient-background.css">
+<link rel="stylesheet" href="${base}assets/navigation.css">
+<link rel="stylesheet" href="${base}assets/documents.css">
+<script src="${base}assets/config.js" defer></script>
+<script src="${base}assets/site.js" defer></script>
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="wrap top">
-  <a class="wordmark brand" href="${home}"><span class="mini-icon" aria-hidden="true"></span><span class="brand-name">Bible in Plain Sight</span></a>
-  <nav aria-label="Main">
-    <a class="wide" href="${home}#how">How it works</a>
-    <a href="${base}privacy-policy"${current("privacy")}>Privacy</a>
-    <a href="${base}support"${current("support")}>Support</a>
-    <a class="help-now" href="${home}#help"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 7.5h2.6l1.3 3.3-1.7 1.1a8.4 8.4 0 0 0 4.4 4.4l1.1-1.7 3.3 1.3v2.6a1.6 1.6 0 0 1-1.8 1.6A12.8 12.8 0 0 1 3.9 9.3a1.6 1.6 0 0 1 1.6-1.8z"/><path d="M17.8 10.2s-3.3-2-3.3-4.4a1.7 1.7 0 0 1 3.3-.8 1.7 1.7 0 0 1 3.3.8c0 2.4-3.3 4.4-3.3 4.4z"/></svg>Help now</a>
-  </nav>
-</header>
-
-<main id="main" class="wrap">
-<article class="doc${bodyClass ? " " + bodyClass : ""}">
-<h1>${escapeHtml(title)}</h1>
+<body class="document-page" data-page="${file}">
+<div class="ambient-light" aria-hidden="true"><span class="ambient-orb ambient-orb-sage"></span><span class="ambient-orb ambient-orb-gold"></span></div>
+<a class="skip-link" href="#main">Skip to content</a>
+${shell(HEADER, base)}
+<div class="document-breadcrumb wrap"><a href="${base || "./"}">Home</a><span aria-hidden="true">/</span><span>${escapeHtml(label)}</span></div>
+<main class="document-layout wrap" id="main"><aside class="document-sidebar"><nav class="document-pages" aria-label="Information pages">${docNav}</nav>${sidebarToc}</aside><article class="document-content${support ? " support-content" : ""}"><header class="document-intro"><p class="eyebrow">${escapeHtml(eyebrow)}</p><h1>${escapeHtml(label)}</h1><p>${intro}</p></header>${supportLinks}
 ${body}
-</article>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="row">
-      <a class="wordmark brand" href="${home}"><span class="mini-icon" aria-hidden="true"></span><span class="brand-name">Bible in Plain Sight</span></a>
-      <nav aria-label="Footer">
-        <a href="${base}privacy-policy">Privacy Policy</a>
-        <a href="${base}support">Support</a>
-        <a href="${base}legal-notice">Legal notice</a>
-      </nav>
-    </div>
-    <p class="small">Scripture quotations are from the Berean Standard Bible (BSB), public domain. © 2026 Bible in Plain Sight.</p>
-  </div>
-</footer>
+${contact}</article></main>
+${shell(FOOTER, base, file)}
+${shell(DIALOG, base)}
 </body>
 </html>
 `;
@@ -150,9 +208,11 @@ ${body}
 
 for (const p of PAGES) {
   const md = fs.readFileSync(path.join(root, "pages", `${p.file}.md`), "utf8");
-  const { title, body } = toHtml(md, p);
-  const bodyClass = p.faq ? "faq" : p.lines ? "lines" : "";
-  fs.writeFileSync(path.join(out, `${p.file}.html`), page({ title, description: p.description, nav: p.nav, bodyClass, body, canonical: p.file }));
+  const { title, intro, toc, body } = toHtml(md, p);
+  fs.writeFileSync(
+    path.join(out, `${p.file}.html`),
+    page({ ...p, title, intro: p.intro ? escapeHtml(p.intro) : intro, toc, body, canonical: p.file }),
+  );
   console.log(`docs/${p.file}.html  (${title})`);
 }
 
@@ -160,41 +220,55 @@ for (const p of PAGES) {
 fs.writeFileSync(
   path.join(out, "404.html"),
   page({
+    file: "",
     title: "Page not found",
+    label: "Page not found",
+    eyebrow: "Bible in Plain Sight",
+    intro: "This page does not exist. It may have moved.",
     description: "This page does not exist.",
-    nav: "",
+    toc: [],
     base: "/",
-    body: '<p>This page does not exist. It may have moved.</p>\n<p><a href="/">Go to the home page</a> or see <a href="/support">Support</a>.</p>',
+    body: '<p><a href="/">Go to the home page</a> or see <a href="/support">Support</a>.</p>',
   }),
 );
 console.log("docs/404.html");
 
-// File versions: deeper pages first, so a page's fingerprint includes the versions written into the
-// screens it shows.
+// File versions. Screens first, then the scripts that open them (assets/app.js), then the pages that
+// show both, so every fingerprint includes the versions written into the files it points to.
 function stampVersions() {
-  const pages = [];
+  const files = [];
   const walk = (dir) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, entry.name);
       if (entry.isDirectory()) walk(full);
-      else if (entry.name.endsWith(".html")) pages.push(full);
+      else if (/\.(html|js)$/.test(entry.name)) files.push(full);
     }
   };
   walk(out);
-  pages.sort((a, b) => b.split(path.sep).length - a.split(path.sep).length);
+  const rank = (f) => (f.endsWith(".js") ? 1 : path.dirname(f) === out ? 2 : 0);
+  files.sort((a, b) => rank(a) - rank(b));
   // Line endings are left out, so the same file gives the same fingerprint on Windows and on GitHub.
   const fingerprint = (file) =>
     crypto.createHash("sha1").update(fs.readFileSync(file).toString("latin1").replace(/\r\n/g, "\n"), "latin1").digest("hex").slice(0, 8);
-  for (const file of pages) {
-    const html = fs.readFileSync(file, "utf8");
-    const stamped = html.replace(/\b(href|src)="([^"#?:]+\.(?:css|js|html|jpg|png|svg))(?:\?v=[0-9a-f]+)?"/g, (m, attr, ref) => {
-      // Links between pages need no version (and pages that link to each other would never settle).
-      if (attr === "href" && ref.endsWith(".html")) return `${attr}="${ref}"`;
-      const target = ref.startsWith("/") ? path.join(out, ref) : path.join(path.dirname(file), ref);
-      return fs.existsSync(target) ? `${attr}="${ref}?v=${fingerprint(target)}"` : m;
-    });
-    if (stamped !== html) fs.writeFileSync(file, stamped);
+  for (const file of files) {
+    const text = fs.readFileSync(file, "utf8");
+    let stamped;
+    if (file.endsWith(".js")) {
+      // Screens a script opens by name, as 'screens/topic-card.html' (paths from the site's root).
+      stamped = text.replace(/(['"])(screens\/[\w-]+\.html)(?:\?v=[0-9a-f]+)?\1/g, (m, q, ref) => {
+        const target = path.join(out, ref);
+        return fs.existsSync(target) ? `${q}${ref}?v=${fingerprint(target)}${q}` : m;
+      });
+    } else {
+      stamped = text.replace(/\b(href|src)="([^"#?:]+\.(?:css|js|html|jpg|png|svg))(?:\?v=[0-9a-f]+)?"/g, (m, attr, ref) => {
+        // Links between pages need no version (and pages that link to each other would never settle).
+        if (attr === "href" && ref.endsWith(".html")) return `${attr}="${ref}"`;
+        const target = ref.startsWith("/") ? path.join(out, ref) : path.join(path.dirname(file), ref);
+        return fs.existsSync(target) ? `${attr}="${ref}?v=${fingerprint(target)}"` : m;
+      });
+    }
+    if (stamped !== text) fs.writeFileSync(file, stamped);
   }
-  console.log(`file versions: ${pages.length} pages`);
+  console.log(`file versions: ${files.length} files`);
 }
 stampVersions();

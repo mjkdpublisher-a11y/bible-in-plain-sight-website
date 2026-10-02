@@ -1,271 +1,131 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bible in Plain Sight</title>
-<meta name="description" content="A Christian app for Android that takes you from what you are facing to Scripture in context, prayer, and a record of how things changed. No account, no ads, no tracking.">
-<link rel="canonical" href="https://www.bibleinplainsight.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bible in Plain Sight">
-<meta property="og:description" content="Find Scripture and prayer for what weighs on you. Write down how it goes, and later look back on how God met you.">
-<meta property="og:url" content="https://www.bibleinplainsight.com/">
-<meta property="og:image" content="https://www.bibleinplainsight.com/assets/img/welcome-cross.jpg">
-<meta name="theme-color" content="#F3EEE4">
-<link rel="icon" href="assets/img/icon-32.png?v=20d8e08d" type="image/png" sizes="32x32">
-<link rel="icon" href="assets/img/icon-192.png?v=2ea461a6" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="assets/img/icon-180.png?v=8ce1c252">
-<link rel="stylesheet" href="assets/tokens.css?v=e24c95cc">
-<link rel="stylesheet" href="assets/base.css?v=0add111a">
-<link rel="stylesheet" href="assets/site.css?v=d39345d6">
-<link rel="stylesheet" href="assets/backgrounds.css?v=4bdaf47c">
-<link rel="stylesheet" href="assets/home.css?v=92d0914f">
-<script>document.documentElement.classList.add("js");</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163e31">
+  <meta name="description" content="Find Scripture and prayer for what you are facing. Bible in Plain Sight is a Christian Android app with Bible passages in context and a private journal. Coming soon to Google Play.">
+  <title>Bible in Plain Sight | Scripture for what you're facing</title>
+  <link rel="canonical" href="https://www.bibleinplainsight.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bible in Plain Sight">
+  <meta property="og:description" content="Find Scripture and prayer for what weighs on you. Write down how it goes, and later look back on how God met you.">
+  <meta property="og:url" content="https://www.bibleinplainsight.com/">
+  <meta property="og:image" content="https://www.bibleinplainsight.com/assets/img/welcome-cross.jpg">
+  <link rel="icon" href="assets/img/icon-32.png?v=20d8e08d" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/img/icon-192.png?v=2ea461a6" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png?v=8ce1c252">
+  <link rel="preload" href="assets/fonts/Literata_400Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/styles.css?v=0d939ffc">
+  <link rel="stylesheet" href="assets/phone.css?v=6038c676">
+  <link rel="stylesheet" href="assets/interactions.css?v=ab65b773">
+  <link rel="stylesheet" href="assets/ambient-background.css?v=a5d471ec">
+  <link rel="stylesheet" href="assets/closing-motion.css?v=9e809411">
+  <link rel="stylesheet" href="assets/navigation.css?v=4dce4787">
+  <script src="assets/config.js?v=22e0a57e" defer></script>
+  <script src="assets/site.js?v=72c21c33" defer></script>
+  <script src="assets/app.js?v=51ee46f1" defer></script>
 </head>
-<body>
-<div class="bg-layer" aria-hidden="true"><i class="w1"></i><i class="w2"></i><i class="w3"></i></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-helpline" viewBox="0 0 24 24"><path d="M5.5 7.5h2.6l1.3 3.3-1.7 1.1a8.4 8.4 0 0 0 4.4 4.4l1.1-1.7 3.3 1.3v2.6a1.6 1.6 0 0 1-1.8 1.6A12.8 12.8 0 0 1 3.9 9.3a1.6 1.6 0 0 1 1.6-1.8z"/><path d="M17.8 10.2s-3.3-2-3.3-4.4a1.7 1.7 0 0 1 3.3-.8 1.7 1.7 0 0 1 3.3.8c0 2.4-3.3 4.4-3.3 4.4z"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
-  <symbol id="i-stone" viewBox="0 0 24 24"><path d="M4.5 19.8c-.6-1.8 2.6-3.6 7.4-3.7 4.9-.1 8 1.4 7.6 3.3-.3 1.4-3.5 1.9-7.6 1.9-4.2 0-7-.3-7.4-1.5zM6.8 13.4c-.3-1.6 2.1-3.1 5.4-3.3 3.2-.2 5.4.9 5.2 2.4-.2 1.5-2.4 2.2-5.3 2.3-2.9.1-5.1-.2-5.3-1.4zM9.3 7.6c-.1-1.3 1.3-2.4 3.3-2.5 1.9-.1 3.2.8 3.1 1.9-.1 1.2-1.4 1.8-3.2 1.9-1.8.1-3.1-.2-3.2-1.3z"/></symbol>
-  <symbol id="i-journal" viewBox="0 0 24 24"><path d="M5 19h14M14.5 5.5l3 3L9 17H6v-3z"/></symbol>
-  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.6A3.9 3.9 0 0 1 12 7.6a3.9 3.9 0 0 1 7 2.3c0 5.3-7 9.6-7 9.6z"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
-  <symbol id="i-timeline" viewBox="0 0 24 24"><path d="M4 19.5h16M5.5 15l4-4.5 3.5 3 5.5-6.5"/></symbol>
-  <symbol id="i-topics" viewBox="0 0 24 24"><path d="M12 6.5C10.3 5.2 8 4.5 4 4.5v14c4 0 6.3.7 8 2 1.7-1.3 4-2 8-2v-14c-4 0-6.3.7-8 2zM12 6.5v14"/></symbol>
-  <symbol id="i-anxiety" viewBox="0 0 24 24"><path d="M3.5 9c2.8-2.4 5.7 2.4 8.5 0s5.7-2.4 8.5 0M3.5 15c2.8-2.4 5.7 2.4 8.5 0s5.7-2.4 8.5 0"/></symbol>
-</svg>
-
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="wrap top">
-  <a class="wordmark brand" href="./"><span class="mini-icon" aria-hidden="true"></span><span class="brand-name">Bible in Plain Sight</span></a>
-  <nav aria-label="Main">
-    <a class="wide" href="#how">How it works</a>
-    <a href="privacy-policy">Privacy</a>
-    <a href="support">Support</a>
-    <a class="help-now" href="#help"><svg class="icon" aria-hidden="true"><use href="#i-helpline"/></svg>Help now</a>
-  </nav>
-</header>
-
-<main id="main">
-  <section class="wrap hero">
-    <div class="arch-frame">
-      <div class="arch">
-        <h1 class="wordmark-hero">Bible in<br>Plain Sight</h1>
-      </div>
-    </div>
-    <div class="ground" aria-hidden="true"></div>
-
-    <h2>Bring what<br>you carry.</h2>
-    <p class="intro">Find Scripture and prayer for what weighs on you. Write down how it goes, and later look back on how God met you.</p>
-
-    <p class="privacy-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>No account needed. Everything you write stays on your phone.</p>
-
-    <div class="actions">
-      <a class="btn btn-tonal btn-two-line" href="#help"><svg class="icon" aria-hidden="true"><use href="#i-helpline"/></svg>Need help <br>now?</a>
-      <span class="btn soon" role="note">Coming soon to Google Play</span>
-    </div>
-  </section>
-
-  <section class="block" data-part="about">
-    <div class="wrap about">
-      <div>
-        <span class="overline">Scripture for real life</span>
-        <h2 style="margin-top:12px">What the Bible says about what you are actually facing.</h2>
-        <p class="lead">Money worries, grief, anxiety, conflict, doubt and more. Each topic offers relevant Bible passages with context, a short reflection, a prayer, and a place to write down how things change over time.</p>
-      </div>
-      <div class="verse-card tile">
-        <figure class="scripture">
-          <span class="overline">Matthew 11:28</span>
-          <p>Come to Me, all you who are weary and burdened, and I will give you rest.”</p>
-        </figure>
-        <p class="bsb">Scripture quotations are from the Berean Standard Bible (BSB), public domain.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="how">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="overline">How it works</span>
-        <h2>From a hard moment to a word you can hold on to.</h2>
-      </div>
-      <ol class="steps">
-        <li class="tile">
-          <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-anxiety"/></svg></span>
-          <span class="overline">Step 1</span>
-          <h3>Say what you are facing</h3>
-          <p>90 topics in 10 categories, from money worries and stress at work to grief, doubt and joy.</p>
-        </li>
-        <li class="tile">
-          <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-topics"/></svg></span>
-          <span class="overline">Step 2</span>
-          <h3>Read Scripture in context</h3>
-          <p>Passages with a note on their context. Every passage opens the whole chapter, so no verse is read out of place.</p>
-        </li>
-        <li class="tile">
-          <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-journal"/></svg></span>
-          <span class="overline">Step 3</span>
-          <h3>Pray, write, take a step</h3>
-          <p>A prayer, one practical step, a verse to keep, and a journal with a simple “How heavy does it feel?” scale.</p>
-        </li>
-        <li class="tile">
-          <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-timeline"/></svg></span>
-          <span class="overline">Step 4</span>
-          <h3>See how it changed</h3>
-          <p>A few days later the app asks, “How is it now?” Your Timeline shows the way you have come.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="block" data-part="gallery">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="overline">Inside the app</span>
-        <h2>Calm to read. Easy to come back to.</h2>
-        <p>Warm paper, large clear type, and help that is always one tap away.</p>
-      </div>
-      <!-- Screens drawn from the app's code with its approved content (verses word for word from the
-           BSB). The Home, check-in and Timeline screens come from the design mock-ups. Replace any of
-           them with a real screenshot from the app: an <img> in the same .phone frame. -->
-      <div class="screens">
-        <figure>
-          <div class="phone live" role="img" aria-label="The Home screen"><div class="glass"><iframe src="screens/02-home.html?v=dc91ae97" title="The Home screen" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>Home<span>Start from how you feel or what you face.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="The Topics screen: 10 categories"><div class="glass"><iframe src="screens/topics.html?v=33d56a05" title="The Topics screen: 10 categories" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>Topics<span>90 topics in 10 categories.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="A topic card: Worried about money"><div class="glass"><iframe src="screens/topic-card.html?v=58a08e56" title="A topic card: Worried about money" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>A topic card<span>For you, or for someone you love.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="Scripture and context: passages with notes on their context"><div class="glass"><iframe src="screens/what-god-says.html?v=67eb3a0d" title="Scripture and context: passages with notes on their context" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>Scripture and context<span>Each passage with a note on its context.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="The whole chapter, with the verses from the card highlighted"><div class="glass"><iframe src="screens/chapter.html?v=3f35280e" title="The whole chapter, with the verses from the card highlighted" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>The whole chapter<span>Tap a reference to read it in its place.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="For someone I love: a prayer for a person by name"><div class="glass"><iframe src="screens/for-someone.html?v=a355d092" title="For someone I love: a prayer for a person by name" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>For someone I love<span>A prayer for them, by name.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="Write in my journal"><div class="glass"><iframe src="screens/journal.html?v=d9e1399d" title="Write in my journal" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>Journal<span>“How heavy does it feel right now?”</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="The check-in screen: How is it now?"><div class="glass"><iframe src="screens/07-check-in.html?v=c4165c32" title="The check-in screen: How is it now?" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>How is it now?<span>A check-in a few days after you write.</span></figcaption>
-        </figure>
-        <figure>
-          <div class="phone live" role="img" aria-label="The Timeline with Stones of Remembrance"><div class="glass"><iframe src="screens/08-timeline.html?v=03f0954c" title="The Timeline with Stones of Remembrance" tabindex="-1" loading="lazy" aria-hidden="true"></iframe></div></div>
-          <figcaption>Timeline<span>How it has felt, and how God helped.</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" data-part="pair">
-    <div class="wrap pair">
-      <article class="feature tile">
-        <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span>
-        <h3>For someone I love</h3>
-        <p>Turn any topic toward a person you care about. The prayer becomes a prayer for them, by name, with tips on how to be there for them. You can send them a verse as an image.</p>
-      </article>
-      <article class="feature tile">
-        <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-stone"/></svg></span>
-        <h3>Stones of Remembrance</h3>
-        <p>Short notes, in your own words, of a time God helped you, so you can find them again on a harder day.</p>
-        <figure class="scripture">
-          <span class="overline">1 Samuel 7:12</span>
-          <p>Afterward, Samuel took a stone and set it up between Mizpah and Shen. He named it Ebenezer, saying, “Thus far the LORD has helped us.”</p>
-        </figure>
-        <p class="bsb">Scripture quotations are from the Berean Standard Bible (BSB), public domain.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="block" id="privacy">
-    <div class="wrap">
-      <div class="promise tile">
-        <div>
-          <span class="overline">Our promise</span>
-          <h2>What you write stays with you.</h2>
-        </div>
-        <div>
-          <ul>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No account and no sign-in.</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No ads, no analytics, no tracking.</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Your journal stays on your phone, encrypted. We never see it.</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Export or delete everything, any time.</li>
-          </ul>
-          <a class="more" href="privacy-policy">Read the privacy policy <span class="arrow" aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" data-part="free">
-    <div class="wrap">
-      <div class="free tile">
-        <span class="overline">Free where it matters most</span>
-        <h2 class="motto">Nobody in pain should meet a price.</h2>
-        <ul class="facts">
-          <li>
-            <span class="num">18</span>
-            <span class="what">topics free forever</span>
-            <p>All 5 crisis topics, 11 for the hardest times (such as the death of a loved one, depression and addiction), plus “Anxiety and worry” and “Thankful.”</p>
-          </li>
-          <li>
-            <span class="num">All</span>
-            <span class="what">features free</span>
-            <p>The journal, check-ins, Timeline, Stones of Remembrance, For someone I love and the whole chapter.</p>
-          </li>
-          <li>
-            <span class="num">1</span>
-            <span class="what">purchase, no subscription</span>
-            <p>One purchase unlocks the other 72 topics, for good.</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="help">
-    <div class="wrap">
-      <div class="help">
-        <span class="icon-well"><svg class="icon" aria-hidden="true"><use href="#i-helpline"/></svg></span>
-        <div>
-          <h2>Need help now?</h2>
-          <p><strong>If you or someone else is in immediate danger, call the local emergency number.</strong></p>
-          <p>In the app, “I need help now” is always one tap away. It shows your local emergency number first, then helplines for your country, or a way to find one. You can also find a helpline at <a href="https://findahelpline.com">findahelpline.com</a>.</p>
-          <p class="secondary">Bible in Plain Sight offers Christian Scripture, prayer and optional reflection. It does not provide diagnosis, therapy or emergency response. No one monitors your journal or check-in answers.</p>
-          <p class="secondary">Questions about the app: <a href="mailto:support@bibleinplainsight.com">support@bibleinplainsight.com</a>, or see <a href="support">Support</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="row">
-      <a class="wordmark brand" href="./"><span class="mini-icon" aria-hidden="true"></span><span class="brand-name">Bible in Plain Sight</span></a>
-      <nav aria-label="Footer">
-        <a href="privacy-policy">Privacy Policy</a>
-        <a href="support">Support</a>
-        <a href="legal-notice">Legal notice</a>
+<body data-page="home">
+  <div class="ambient-light" aria-hidden="true"><span class="ambient-orb ambient-orb-sage"></span><span class="ambient-orb ambient-orb-gold"></span></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#main" aria-label="Bible in Plain Sight, home"><img src="assets/img/icon-64.png?v=165036d6" width="36" height="36" alt=""><span>Bible in Plain Sight</span></a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#app">The app</a><a href="#privacy">Your privacy</a><a href="#questions">Questions</a><a class="help-link" href="#help">Need help now?</a>
       </nav>
+      <button class="button button-small header-download" type="button" data-download><span data-download-label>Google Play · Soon</span></button>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
     </div>
-    <p class="small">Scripture quotations are from the Berean Standard Bible (BSB), public domain. © 2026 Bible in Plain Sight.</p>
-  </div>
-</footer>
-<script src="assets/home.js?v=a6c12487" defer></script>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span>A Christian app for everyday life</p>
+        <h1 id="hero-title">Scripture for<br>what you're<br><em>facing.</em></h1>
+        <p class="hero-description">Find Bible passages in context, pray through what weighs on you, and keep a private journal of how things change.</p>
+        <div class="hero-actions">
+          <button class="button download-button" type="button" data-download><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 3.5v17l9-8.5Z" fill="currentColor"/><path d="m6 2 12.6 7.2-4.1 2.1ZM14.5 12.7l4.1 2.1L6 22ZM16 12l4.1-2.1c1.9 1 1.9 3.2 0 4.2Z" fill="currentColor"/></svg><span><small data-store-caption>ANDROID APP</small><strong data-download-label>Coming soon to Google Play</strong></span></button>
+          <a class="text-button" href="#app">Explore the app</a>
+        </div>
+        <p class="hero-note"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>No account needed. Your journal stays with you.</p>
+      </div>
+      <div class="hero-visual" id="app-preview">
+        <img class="hero-art" src="assets/img/welcome-cross.jpg?v=04b5835f" width="1170" height="1170" alt="An illustrated cross on a hill at sunrise">
+        <div class="hero-verse"><span class="eyebrow">Matthew 11:28</span><p>“Come to Me, all you who are weary and burdened, and I will give you rest.”</p><span class="verse-version">Berean Standard Bible</span></div>
+        <div class="hero-phone device" role="button" tabindex="0" aria-label="Scroll the Home screen preview" aria-pressed="false"><div class="device-screen"><iframe src="screens/02-home.html?v=7175620c" title="App preview: Home screen" tabindex="-1" loading="eager" sandbox="allow-same-origin" aria-hidden="true"></iframe></div></div>
+        <span class="preview-label">Hover or tap to explore</span>
+      </div>
+    </section>
+    <div class="trust-strip wrap" aria-label="App benefits">
+      <div><span class="trust-check" aria-hidden="true">✓</span><span><strong>90 topics.</strong> More on the way.</span></div>
+      <div><span class="trust-check" aria-hidden="true">✓</span><span><strong>No ads</strong> or tracking</span></div>
+      <div><span class="trust-check" aria-hidden="true">✓</span><span>A journal that <strong>stays private</strong></span></div>
+    </div>
+    <section class="app-section wrap section-space" id="app" aria-labelledby="app-title">
+      <div class="section-intro">
+        <div><p class="eyebrow">A place to begin</p><h2 id="app-title">From a hard moment<br>to a word you can hold.</h2></div>
+        <p>Start with what's on your mind. <br>Take a moment with Scripture. <br>Come back when you're ready.</p>
+      </div>
+      <div class="journey">
+        <div class="journey-tabs" role="tablist" aria-label="Explore how the app works" aria-orientation="vertical">
+          <button class="journey-option is-active" id="step-find" role="tab" aria-selected="true" aria-controls="journey-panel" data-step="find" tabindex="0"><span class="step-number">01</span><span class="step-content"><span class="step-title">Start with what you're facing.</span><span class="step-description">Money worries, grief, anxiety or doubt. Find relevant passages among 90 topics in 10 categories, with context and the whole chapter.</span><span class="step-meta">Scripture in context</span></span></button>
+          <button class="journey-option" id="step-pray" role="tab" aria-selected="false" aria-controls="journey-panel" data-step="pray" tabindex="-1"><span class="step-number">02</span><span class="step-content"><span class="step-title">Put your prayer into words.</span><span class="step-description">Read a prayer, choose a practical step, and write down what you're carrying. Your journal asks, “How heavy does it feel?”</span><span class="step-meta">Prayer & your private journal</span></span></button>
+          <button class="journey-option" id="step-return" role="tab" aria-selected="false" aria-controls="journey-panel" data-step="return" tabindex="-1"><span class="step-number">03</span><span class="step-content"><span class="step-title">Come back and see what changed.</span><span class="step-description">Check in a few days later. Your Timeline helps you look back on how it felt and the ways God helped you along the way.</span><span class="step-meta">Check-ins & your Timeline</span></span></button>
+        </div>
+        <div class="journey-display" id="journey-panel" role="tabpanel" aria-labelledby="step-find" tabindex="0">
+          <div class="journey-stage"><div class="stage-halo" aria-hidden="true"></div><div class="device journey-phone" role="button" tabindex="0" aria-label="Scroll the app preview" aria-pressed="false"><div class="device-screen"><iframe id="journey-frame" src="screens/topic-card.html?v=3d4d56c7" title="App preview: A topic card about money worries" tabindex="-1" loading="lazy" sandbox="allow-same-origin" aria-hidden="true"></iframe></div></div></div>
+          <p id="journey-caption">A topic card: Worried about money</p>
+          <span class="preview-disclaimer">Preview of the app's screens.</span>
+          <div class="screen-choices" aria-label="Choose a screen in this step"><button type="button" data-screen="0" aria-pressed="true">Topic card</button><button type="button" data-screen="1" aria-pressed="false">Scripture & context</button><button type="button" data-screen="2" aria-pressed="false">Topics</button><button type="button" data-screen="3" aria-pressed="false">Whole chapter</button></div>
+          <button class="screen-motion-toggle" type="button" aria-pressed="false" aria-controls="journey-frame">Scroll screen</button>
+        </div>
+      </div>
+      <div class="care-features">
+        <article><span class="feature-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20s-8-4.6-8-10.3a4.7 4.7 0 0 1 8-3.3 4.7 4.7 0 0 1 8 3.3C20 15.4 12 20 12 20Z"/></svg></span><div><h3>For someone you love.</h3><p>Turn a topic into a prayer for someone by name, with suggestions for how to be there for them. Share a verse as an image.</p><a class="feature-preview-link" href="#app" data-preview-step="pray" data-preview-screen="1">Explore this prayer <span aria-hidden="true">↗</span></a></div></article>
+        <article><span class="feature-symbol" aria-hidden="true"><svg class="stones-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19.8c-.6-1.8 2.6-3.6 7.4-3.7 4.9-.1 8 1.4 7.6 3.3-.3 1.4-3.5 1.9-7.6 1.9-4.2 0-7-.3-7.4-1.5z"/><path d="M6.8 13.4c-.3-1.6 2.1-3.1 5.4-3.3 3.2-.2 5.4.9 5.2 2.4-.2 1.5-2.4 2.2-5.3 2.3-2.9.1-5.1-.2-5.3-1.4z"/><path d="M9.3 7.6c-.1-1.3 1.3-2.4 3.3-2.5 1.9-.1 3.2.8 3.1 1.9-.1 1.2-1.4 1.8-3.2 1.9-1.8.1-3.1-.2-3.2-1.3z"/></svg></span><div><h3>Remember how God helped.</h3><p>Keep Stones of Remembrance: short notes, in your own words, to return to when the next day feels harder.</p><a class="feature-preview-link" href="#app" data-preview-step="return" data-preview-screen="0">Explore your Timeline <span aria-hidden="true">↗</span></a></div></article>
+      </div>
+    </section>
+    <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
+      <div class="privacy-inner wrap">
+        <div class="privacy-copy"><p class="eyebrow">Room to be honest</p><h2 id="privacy-title">Some things are<br>between you<br><em>and God.</em></h2><p>Your journal is encrypted and stored on your phone. We never see what you write.</p><a class="light-link" href="privacy-policy">Read our privacy promise</a></div>
+        <div class="privacy-details">
+          <div class="privacy-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg><div><h3>No account to create.</h3><p>Start without a sign-in. Your reflections stay on your device.</p></div></div>
+          <div class="privacy-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg><div><h3>No ads. No tracking.</h3><p>No analytics or advertising in the app.</p></div></div>
+          <div class="privacy-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg><div><h3>Your words belong to you.</h3><p>Export or delete everything, whenever you choose.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="pricing-section wrap section-space" aria-labelledby="pricing-title">
+      <div class="pricing-copy"><p class="eyebrow">Free where it matters most</p><h2 id="pricing-title">Nobody in pain<br>should meet a price.</h2><p>All app features are free, including your journal, check-ins, Timeline, and Stones of Remembrance.</p><p class="pricing-explanation">Start with 18 free topics. If you'd like to explore more, one purchase unlocks the other 72. No subscription.</p></div>
+      <div class="pricing-card"><div class="pricing-card-heading"><span class="pricing-number">18</span><div><h3>topics.<br>Free forever.</h3><span>All features included</span></div></div><ul><li>All 5 crisis topics</li><li>11 topics for the hardest times, including grief, depression and addiction</li><li>“Anxiety and worry” and “Thankful”</li></ul><div class="pricing-extra"><strong>Want all 90 topics?</strong><span>One optional purchase. Yours for good.</span></div></div>
+    </section>
+    <section class="faq-section wrap" id="questions" aria-labelledby="faq-title">
+      <div class="faq-heading"><p class="eyebrow">Before you begin</p><h2 id="faq-title">A few things<br> you might wonder.</h2><p>Have another question? <br><a href="support#contact">We're here to help.</a></p></div>
+      <div class="faq-list">
+        <details><summary>Can I download the app now?<span aria-hidden="true"></span></summary><p data-availability-answer>Bible in Plain Sight is coming soon to Google Play for Android. You can explore the app preview here before launch.</p></details>
+        <details><summary>What can I use for free?<span aria-hidden="true"></span></summary><p>18 topics are free forever, including all five crisis topics. Every app feature is free. One optional purchase unlocks the remaining 72 topics. There is no subscription.</p></details>
+        <details><summary>Who can read my journal?<span aria-hidden="true"></span></summary><p>Your journal is encrypted and stored on your phone. We never see it. You can export or delete your entries at any time. No one monitors your journal or check-in answers.</p></details>
+        <details><summary>Can I pray for someone else?<span aria-hidden="true"></span></summary><p>Yes. “For someone I love” turns a topic into a prayer for them, by name, with suggestions for how to support them. You can also share a verse as an image.</p></details>
+        <details><summary>What happens if I change my phone?<span aria-hidden="true"></span></summary><p>Your journal is stored locally, with no cloud backup. Before changing or resetting your phone, export your data to keep a copy for your records. Exported files cannot be loaded back into the app. Find more information on the <a href="support">support page</a>.</p></details>
+        <details><summary>Which Bible translation does the app use?<span aria-hidden="true"></span></summary><p>Scripture quotations use the Berean Standard Bible (BSB), which is in the public domain. Passages come with context, and you can open the whole chapter.</p></details>
+      </div>
+    </section>
+    <section class="closing-section wrap" id="download" aria-labelledby="closing-title">
+      <div class="closing-art" aria-hidden="true"></div><div class="closing-copy"><p class="eyebrow">Bible in Plain Sight</p><h2 id="closing-title">Bring what you carry.</h2><p>Begin with Scripture for the moment you're in.</p><button class="button download-button" type="button" data-download><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 3.5v17l9-8.5Z" fill="currentColor"/><path d="m6 2 12.6 7.2-4.1 2.1ZM14.5 12.7l4.1 2.1L6 22ZM16 12l4.1-2.1c1.9 1 1.9 3.2 0 4.2Z" fill="currentColor"/></svg><span><small data-store-caption>ANDROID APP</small><strong data-download-label>Coming soon to Google Play</strong></span></button><span class="closing-note">18 free topics. No account needed.</span></div>
+    </section>
+    <aside class="help-section wrap" id="help" aria-labelledby="help-title"><div><h2 id="help-title">Need help now?</h2><p>If you or someone else is in immediate danger, call the local emergency number.</p></div><div><p>For support in your country, visit <a href="https://findahelpline.com/" target="_blank" rel="noopener">Find a Helpline</a>. In the app, help is always one tap away.</p><p class="help-scope">Bible in Plain Sight offers Christian Scripture, prayer and optional reflection. It does not provide diagnosis, therapy or emergency response. No one monitors your journal or check-in answers.</p></div></aside>
+  </main>
+  <footer class="site-footer"><div class="footer-inner wrap"><a class="brand" href="#main"><img src="assets/img/icon-64.png?v=165036d6" width="32" height="32" alt=""><span>Bible in Plain Sight</span></a><nav aria-label="Footer"><a href="privacy-policy">Privacy</a><a href="support">Support</a><a href="legal-notice">Legal notice</a></nav></div><div class="footer-bottom wrap"><span>Scripture quotations: Berean Standard Bible (BSB), public domain.</span><span>© 2026 Bible in Plain Sight</span></div></footer>
+  <dialog class="availability-dialog" id="availability-dialog" aria-labelledby="availability-title">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="Close availability information">×</button>
+    <img src="assets/img/icon-192.png?v=2ea461a6" width="64" height="64" alt="">
+    <p class="eyebrow">Bible in Plain Sight for Android</p>
+    <h2 id="availability-title">Coming soon to<br>Google Play.</h2>
+    <p>Downloads aren't available yet. You can explore the app preview while we prepare for launch.</p>
+    <a class="button" href="#app" data-close-dialog>Explore the app</a>
+  </dialog>
+  <div class="mobile-download-bar" inert><span>Bible in Plain Sight<small>Scripture for real life</small></span><button class="button button-small" type="button" data-download><span data-download-label>Google Play · Soon</span></button></div>
 </body>
 </html>

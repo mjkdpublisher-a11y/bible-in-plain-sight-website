@@ -50,47 +50,45 @@ auto-renew on, WHOIS privacy on). The mailbox `support@bibleinplainsight.com` ru
   bibleinplainsight@…; in Mark's Chrome that is `authuser=2`), published 2026-09-27. Mark
   unpublished it the same day, after the switch; the draft stays in his Google account.
 
-**How the website is built** (design: option A, "Dawn", chosen by Mark; `design/` holds the two
-mock-ups):
-- `docs/index.html`: the home page, written by hand. Styles: `docs/assets/tokens.css` (from the app),
-  `base.css` (fonts and components), `site.css` (page frame and text pages), `home.css`.
+**How the website is built** (since 2026-10-02: the redesign Mark approved, made outside this repo
+and handed over as a package in `M:\GPT Roboczy\Projekty\Bible in Plain Sight - WWW\przekazanie\`; it is the
+reference for look and behavior, do not redesign it; the earlier design "Dawn" is in git history):
+- `docs/index.html`: the home page, written by hand. Styles in `docs/assets/`: `styles.css` (fonts, colors,
+  layout, mobile), `phone.css` (graphite phones, glass, screen masking), `interactions.css` (cards, icons,
+  links, buttons, FAQ), `ambient-background.css` (slow sage and gold light), `closing-motion.css` (light in
+  the last card; the three decorative lines above it stay removed), `navigation.css` (quiet menu tiles),
+  `documents.css` (text pages). Scripts: `site.js` (menu, Google Play buttons, "Coming soon" dialog, on every
+  page), `app.js` (the three steps and screen choices, phone scrolling), `config.js` (`googlePlayUrl`: empty
+  until the real, verified store address exists; then every download button changes together; never
+  invent an app id). No trackers, nothing from other services.
 - `pages/privacy-policy.md`, `support.md`, `legal-notice.md`: the approved texts, the source of truth.
-  `node tools/build.js` turns them into `docs/*.html` (and `docs/404.html`). Change the `.md`, then build.
-  `404.html` uses links from the root (`/assets/...`, `/support`), because GitHub Pages also shows it
-  at deeper addresses such as `/privacy-policy/`.
+  `node tools/build.js` turns them into `docs/*.html` (and `docs/404.html`) in the new layout, taking the
+  header, footer and dialog from `docs/index.html`, so change those there and build. Addresses stay
+  `/privacy-policy`, `/support`, `/legal-notice` (the app's Settings and Google Play link to them).
+  `support.md`: `## Group {#id}` starts a group of questions (`**Question?**` then the answer), a `> `
+  paragraph is the "Need help now?" notice, other paragraphs in a group are its small related links.
+  `404.html` uses links from the root (`/assets/...`, `/support`), because GitHub Pages also shows it at
+  deeper addresses such as `/privacy-policy/`.
 - **Run `node tools/build.js` before every commit**, also after changing only CSS, JS or a screen: it
-  writes `?v=` and a fingerprint of the file into every link to a style sheet, script, picture or
-  screen. GitHub Pages lets browsers keep files for 10 minutes, so without it phones show the old
-  look after a change (Mark hit this on 2026-09-27).
-- `docs/screens/*.html`: the nine app screens in phone frames on the home page, drawn from the
-  app's code with its approved content and verses word for word from `data/bsb.txt` (Home, check-in
-  and Timeline come from the design mock-ups). Real screenshots from Mark's phone can replace any
-  of them. Never show "Listen" or "Save" (the app has no such buttons) and never show the crisis
-  screen in the gallery (Mark: too strong for someone just looking). Each screen is 390 x 867 (9:20).
-  No line of text may be cut by the phone's edge (Mark noticed it at once): screens with a tab bar
-  hide the rest under it; reading screens end with the `.fade` from `screens/app.css`, and their
-  content is placed so only the start of the next section fades out.
-- The phones (2026-09-30, Mark: a high-quality modern phone, like the newest Samsung): drawn in CSS in
-  `home.css` (`.phone.live` and its `.glass`): a thin graphite titanium frame, an even black edge,
-  the keys on the right, a faint reflection. Every screen has the phone's status bar
-  (`screens/status.css`: 7:42, Wi-Fi, signal, battery, the front camera); keep it on new screens.
-- Motion: `docs/assets/home.js` (our own script, nothing from outside) plays a phone's screen when
-  the mouse is over it, or on a touch screen when the phone stands in the middle of the view, and
-  lets the phones come in one after another. A screen scrolls its `.scroller` by `--scroll` over
-  `--dur` (`screens/motion.css`). Each `--scroll` was measured so that, at the end, no line is cut
-  at the top bar, the tab bar or the fade; re-measure it when a screen's content changes.
-  "Reduce motion" switches all of it off.
-- Background (Mark chose "Dawn" + "Hills" on 2026-09-27; a darker "night to dawn" top was too dark
-  for him): `docs/assets/backgrounds.css` on the home page (sunrise glow behind the arch, drifting
-  washes in `.bg-layer`, sage bands with hills on `[data-part="gallery"]` and `[data-part="free"]`),
-  and in `site.css` for every page the faint paper grain and the dark green footer with a hill.
-- Header and help (after the critique and audit of 2026-09-29, approved by Mark): every page has
-  "Help now" (the app's own short name for its help button) in the header, going to the home page's
-  `#help`. Below 720 px "How it works" leaves the header, below 540 px the name does (the icon keeps
-  it as a label), below 340 px the help icon; the header must fit at 320 px. The hero buttons have no
-  entrance animation, and the help block is not a `.tile` (no reveal, no hover): help never waits.
-  Until the app is on Google Play, "Coming soon to Google Play" is a quiet outlined `.soon` note, not
-  a green button, with no shine; the green button comes back with the real link.
+  writes `?v=` and a fingerprint of the file into every link to a style sheet, script, picture or screen,
+  also into `'screens/....html'` names in `assets/app.js`. GitHub Pages lets browsers keep files for 10
+  minutes, so without it phones show the old look after a change (Mark hit this on 2026-09-27).
+- `docs/screens/*.html`: the nine app screens shown in the phones, drawn from the app's code with its
+  approved content and verses word for word from `data/bsb.txt`. Real screenshots from Mark's phone can
+  replace any of them. Never show "Listen" or "Save" (the app has no such buttons) and never show the
+  crisis screen (Mark: too strong for someone just looking). Each screen is 390 x 867 with the phone's
+  status bar (`screens/status.css`: 7:42, Wi-Fi, signal, battery, the front camera). No line of text may be
+  cut by the phone's edge: screens with a tab bar hide the rest under it; reading screens end with the
+  `.fade` from `screens/app.css`. A screen scrolls its `.scroller` by `--scroll` over `--dur`
+  (`screens/motion.css`), on hover, tap, Enter/Space or "Scroll screen"; each `--scroll` was measured so
+  that at the end no line is cut at the top bar, the tab bar or the fade; re-measure it when a screen's
+  content changes. "Reduce motion" switches the movement off (a tap still shows the rest at once).
+- Content to keep (Mark, 2026-10-02): "Nobody in pain should meet a price.", "90 topics. More on the way.",
+  18 free topics and 72 more for one optional purchase (never "90 free topics"); the help line in the
+  app's wording, "If you or someone else is in immediate danger, call the local emergency number."
+- The files of the earlier design (`tokens.css`, `base.css`, `site.css`, `home.css`, `backgrounds.css`,
+  `home.js`, the paper grain and the hills) were removed on 2026-10-02, with Mark's OK; they are in git
+  history.
 - Fonts: WOFF2 files cut to the Latin letters the site uses (fontTools, installed with pip on
   2026-09-29), with the TTF behind them as a fallback. When a page needs a new kind of character, make
   the WOFF2 again from the TTF (`python -m fontTools.subset`).

@@ -1,0 +1,100 @@
+/*
+ * A quiet sunrise for the final invitation.
+ * Tune the 20s cycle, the two glow opacities, or --closing-zoom below.
+ * --ambient-play can pause the illustration when the section is off screen.
+ */
+.closing-section {
+  --closing-glow-low: .24;
+  --closing-glow-high: .68;
+  --closing-glow-scale: 1.055;
+  --closing-zoom: 1.015;
+  isolation: isolate;
+  transition: transform 320ms cubic-bezier(.22, .7, .25, 1),
+    box-shadow 320ms ease;
+}
+
+/* Only the image moves. Its fade into the green copy area stays fixed. */
+.closing-art {
+  z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background: none;
+}
+.closing-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("img/welcome-cross.jpg") 50% 65% / cover no-repeat;
+  transform-origin: 50% 60%;
+  pointer-events: none;
+}
+.closing-art::after { z-index: 1; }
+.closing-copy { z-index: 2; }
+
+/* A soft, localized light catches the existing sunrise without washing the text. */
+.closing-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 39% 39% at 50% 58%,
+    #fff1b852 0%, #edc58333 35%, #bcd7ad14 67%, transparent 100%);
+  opacity: .36;
+  transform-origin: 50% 58%;
+}
+
+.closing-section:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 40px -25px #12392b80;
+}
+@media (hover: hover) and (pointer: fine) {
+  .closing-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 40px -25px #12392b80;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .closing-art::before {
+    animation: closing-sunrise-zoom 20s ease-in-out infinite;
+    animation-play-state: var(--ambient-play, running);
+  }
+  .closing-section::before {
+    animation: closing-sunrise-light 20s ease-in-out infinite;
+    animation-play-state: var(--ambient-play, running);
+  }
+}
+@keyframes closing-sunrise-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(var(--closing-zoom)); }
+}
+@keyframes closing-sunrise-light {
+  0%, 100% { opacity: var(--closing-glow-low); transform: scale(1); }
+  50% { opacity: var(--closing-glow-high); transform: scale(var(--closing-glow-scale)); }
+}
+
+@media (max-width: 700px) {
+  .closing-section {
+    --closing-glow-low: .12;
+    --closing-glow-high: .34;
+    --closing-glow-scale: 1.025;
+    --closing-zoom: 1.008;
+  }
+  .closing-art::before { background-position: center 68%; }
+  .closing-section::before {
+    width: 100%;
+    background: radial-gradient(ellipse 45% 42% at 50% 58%,
+      #fff1b84a 0%, #edc58324 35%, transparent 100%);
+    opacity: .2;
+  }
+}
+
+/* The same illustration and focus feedback remain, without any movement. */
+@media (prefers-reduced-motion: reduce) {
+  .closing-section { transition: none; }
+  .closing-art::before, .closing-section::before { animation: none !important; transform: none; }
+  .closing-section:is(:hover, :focus-within) { transform: none; }
+}

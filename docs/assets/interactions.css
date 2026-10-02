@@ -1,0 +1,269 @@
+/*
+ * Bible in Plain Sight — quiet, responsive details.
+ * Tune --motion-ui for interactions and the ambient animation durations below.
+ * Phone geometry and screen clipping are owned by phone.css.
+ */
+:root {
+  --motion-ui: 280ms;
+  --motion-ease: cubic-bezier(.22, .7, .25, 1);
+  --motion-shadow: 0 16px 32px -20px #163e3154;
+}
+
+/* Light moves around the illustration, while its phone remains fixed. */
+.hero-visual { isolation: isolate; }
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 32px -8px 35px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 60% 40%, #dcc78d4a, #b8cda333 47%, transparent 73%);
+}
+.hero-verse {
+  transition: transform 380ms var(--motion-ease), box-shadow 380ms var(--motion-ease);
+}
+.stage-halo { transform-origin: center; }
+.privacy-section::before {
+  content: "";
+  position: absolute;
+  width: min(560px, 80vw);
+  height: 580px;
+  right: 3%;
+  top: -40px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(ellipse, #b8cda312, transparent 68%);
+}
+
+/* One short response, with no repeating shimmer on the download action. */
+.button {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--motion-ui) var(--motion-ease),
+    background var(--motion-ui) ease, box-shadow var(--motion-ui) ease;
+}
+.button::after {
+  content: "";
+  position: absolute;
+  inset: -50% auto -50% -45%;
+  width: 30%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #ffffff24, transparent);
+  transform: translateX(0) skewX(-18deg);
+  opacity: 0;
+}
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px #173b2926;
+}
+.button:active { transform: translateY(0) scale(.985); }
+.brand img {
+  transition: transform var(--motion-ui) var(--motion-ease), box-shadow var(--motion-ui) ease;
+}
+.brand:focus-visible img { transform: scale(1.06); box-shadow: 0 4px 12px #163e3126; }
+
+/* A drawn underline makes the destination feel responsive without moving text. */
+.site-nav a, .footer-inner nav a { position: relative; text-decoration: none; }
+.site-nav a::after, .footer-inner nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: currentColor;
+  opacity: .65;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-ui) var(--motion-ease);
+}
+.site-nav a:focus-visible::after, .footer-inner nav a:focus-visible::after { transform: scaleX(1); }
+.text-button, .light-link, .screen-motion-toggle {
+  transition: color var(--motion-ui) ease, text-decoration-color var(--motion-ui) ease,
+    text-underline-offset var(--motion-ui) var(--motion-ease);
+}
+.text-button:focus-visible, .light-link:focus-visible, .screen-motion-toggle:focus-visible {
+  text-underline-offset: 8px;
+}
+
+/* The chosen step and screen have a tactile response. */
+.journey-option {
+  transition: transform var(--motion-ui) var(--motion-ease), background var(--motion-ui) ease,
+    border-color var(--motion-ui) ease, box-shadow var(--motion-ui) ease;
+}
+.journey-option:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--motion-shadow);
+}
+.step-number, .step-meta { transition: color var(--motion-ui) ease; }
+.journey-option:focus-visible .step-number { color: var(--green); }
+.screen-choices button {
+  transition: transform 200ms var(--motion-ease), background 200ms ease,
+    color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.screen-choices button:focus-visible { transform: translateY(-2px); box-shadow: 0 5px 12px #163e3117; }
+.screen-choices button:active { transform: translateY(0) scale(.97); }
+.trust-check {
+  transition: background var(--motion-ui) ease, color var(--motion-ui) ease,
+    border-color var(--motion-ui) ease, transform var(--motion-ui) var(--motion-ease);
+}
+
+/* Cards rise; the illustrations respond to what the card is about. */
+.care-features article { position: relative; isolation: isolate; transition:transform var(--motion-ui) var(--motion-ease); }
+.feature-preview-link { display:inline-flex; align-items:center; gap:9px; min-height:44px; margin-top:10px; font-size:.875rem; font-weight:700; text-decoration-color:#a8b9a0; }
+.feature-preview-link > span { display:inline-block; transition:transform var(--motion-ui) var(--motion-ease); }
+.feature-preview-link:is(:hover,:focus-visible) > span { transform:translate(2px,-2px); }
+.care-features article::before {
+  content: "";
+  position: absolute;
+  inset: -17px -18px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid #d7dfce;
+  border-radius: 14px;
+  background: #edf1e6;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--motion-ui) ease, transform var(--motion-ui) var(--motion-ease),
+    box-shadow var(--motion-ui) ease;
+}
+.feature-symbol {
+  position: relative;
+  transition: color var(--motion-ui) ease, transform 380ms var(--motion-ease);
+}
+.feature-symbol svg { overflow: visible; }
+.feature-symbol svg path {
+  fill: currentColor;
+  fill-opacity: 0;
+  transition: fill-opacity 360ms ease, transform 380ms var(--motion-ease);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* Separate stone paths, when present, fill from the foundation upwards. */
+.care-features article:nth-child(2) .feature-symbol path:nth-child(2) { transition-delay: 55ms; }
+.care-features article:nth-child(2) .feature-symbol path:nth-child(3) { transition-delay: 110ms; }
+.care-features article:is(:focus-within, .is-engaged)::before {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: var(--motion-shadow);
+}
+.care-features article:is(:focus-within, .is-engaged) .feature-symbol { color: #326143; transform: translateY(-3px); }
+.care-features article:is(:focus-within, .is-engaged) .feature-symbol path { fill-opacity: .32; }
+.care-features article:first-child:is(:focus-within, .is-engaged) .feature-symbol svg {
+  animation: heart-response 460ms var(--motion-ease) 1;
+}
+.care-features article:nth-child(2):is(:focus-within, .is-engaged) .feature-symbol path { transform: translateY(-1px); }
+.pricing-card {
+  transition: transform 360ms var(--motion-ease), box-shadow 360ms ease,
+    background 360ms ease, border-color 360ms ease;
+}
+.pricing-card:is(:focus-within, .is-engaged) {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 42px -24px #163e314d;
+  border-color: #afc19d;
+  background: #f0f4e9;
+}
+.pricing-number { transition: color var(--motion-ui) ease; }
+.pricing-card:is(:focus-within, .is-engaged) .pricing-number { color: #204c3b; }
+.privacy-line > svg {
+  transition: color var(--motion-ui) ease, transform var(--motion-ui) var(--motion-ease);
+}
+
+/* Opening a question reveals its answer with the same calm pace as the cards. */
+.faq-list summary {
+  transition: color var(--motion-ui) ease, background var(--motion-ui) ease;
+}
+.faq-list summary > span {
+  transition: transform var(--motion-ui) var(--motion-ease);
+}
+.faq-list summary:focus-visible { color: #3c6950; }
+.faq-list summary:focus-visible > span { transform: scale(1.15); }
+.faq-list details[open] summary { color: #3c6950; }
+.faq-list details[open] > p { animation: answer-reveal 240ms ease-out both; }
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover::after { animation: button-light 460ms ease-out 1; }
+  .brand:hover img { transform: scale(1.06); box-shadow: 0 4px 12px #163e3126; }
+  .site-nav a:hover, .footer-inner nav a:hover { text-decoration: none; }
+  .site-nav a:hover::after, .footer-inner nav a:hover::after { transform: scaleX(1); }
+  .text-button:hover, .light-link:hover, .screen-motion-toggle:hover { text-underline-offset: 8px; }
+  .hero-verse:hover { transform: rotate(-1deg) translateY(-4px); box-shadow: 0 18px 32px #163e312a; }
+  .journey-option:hover { transform: translateY(-3px); box-shadow: var(--motion-shadow); }
+  .journey-option:hover .step-number { color: var(--green); }
+  .screen-choices button:hover { transform: translateY(-2px); box-shadow: 0 5px 12px #163e3117; }
+  .screen-choices button:active { transform: translateY(0) scale(.97); }
+  .trust-strip > div:hover .trust-check { background: var(--green); color: #fff; border-color: var(--green); transform: scale(1.08); }
+  .care-features article:hover::before { opacity: 1; transform: translateY(0); box-shadow: var(--motion-shadow); }
+  .care-features article:hover { transform:translateY(-3px); }
+  .care-features article:hover .feature-symbol { color: #326143; transform: translateY(-3px); }
+  .care-features article:hover .feature-symbol path { fill-opacity: .32; }
+  .care-features article:first-child:hover .feature-symbol svg { animation: heart-response 460ms var(--motion-ease) 1; }
+  .care-features article:nth-child(2):hover .feature-symbol path { transform: translateY(-1px); }
+  .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 20px 42px -24px #163e314d; border-color: #afc19d; background: #f0f4e9; }
+  .pricing-card:hover .pricing-number { color: #204c3b; }
+  .privacy-line:hover > svg { color: #d4e5c3; transform: translateY(-2px); }
+  .faq-list summary:hover { color: #3c6950; background: #e6ebdf55; }
+  .faq-list summary:hover > span { transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual::before { animation: sunrise-breathe 14s ease-in-out infinite alternate; }
+  .stage-halo { animation: halo-breathe 12s ease-in-out infinite alternate; }
+  .privacy-section::before { animation: privacy-drift 18s ease-in-out infinite alternate; }
+  .privacy-section::after { animation: privacy-circle 20s ease-in-out infinite alternate; }
+}
+
+@keyframes sunrise-breathe {
+  from { opacity: .55; transform: translate(-5px, 8px) scale(.98); }
+  to { opacity: 1; transform: translate(5px, -8px) scale(1.03); }
+}
+@keyframes halo-breathe {
+  from { transform: scale(.96) translateY(4px); opacity: .76; }
+  to { transform: scale(1.05) translateY(-4px); opacity: 1; }
+}
+@keyframes privacy-drift {
+  from { opacity: .5; transform: translate(-14px, 8px); }
+  to { opacity: 1; transform: translate(14px, -8px); }
+}
+@keyframes privacy-circle {
+  from { transform: translate(-8px, 7px); }
+  to { transform: translate(8px, -7px); }
+}
+@keyframes heart-response {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(1.13); }
+  70% { transform: scale(1.04); }
+}
+@keyframes answer-reveal {
+  from { opacity: .35; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes button-light {
+  0% { opacity: 0; transform: translateX(0) skewX(-18deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(600%) skewX(-18deg); }
+}
+
+@media (max-width: 700px) {
+  .site-nav a::after { left: 10px; right: auto; width: 32px; bottom: 7px; }
+  .care-features article::before { inset: -10px -10px; border-radius: 10px; }
+}
+
+/* Static feedback remains available when the user asks for less movement. */
+@media (prefers-reduced-motion: reduce) {
+  .care-features article,.feature-preview-link > span { transition:none!important; transform:none!important; }
+  .hero-visual::before, .stage-halo, .privacy-section::before, .privacy-section::after,
+  .button::after, .care-features .feature-symbol svg, .faq-list details[open] > p { animation: none !important; }
+  .button, .brand img, .hero-verse, .journey-option, .screen-choices button,
+  .feature-symbol, .feature-symbol path, .pricing-card, .privacy-line > svg,
+  .faq-list summary > span, .trust-check { transition: none !important; }
+  .button:is(:hover, :focus-visible, :active), .brand:is(:hover, :focus-visible) img,
+  .journey-option:is(:hover, :focus-visible), .screen-choices button:is(:hover, :focus-visible, :active),
+  .pricing-card:is(:hover, :focus-within, .is-engaged), .privacy-line:hover > svg,
+  .care-features article:is(:hover, :focus-within, .is-engaged) .feature-symbol,
+  .care-features article:is(:hover, :focus-within, .is-engaged) .feature-symbol path,
+  .faq-list summary:is(:hover, :focus-visible) > span, .trust-strip > div:hover .trust-check { transform: none; }
+  .hero-verse:hover { transform: rotate(-3deg); }
+  .care-features article::before, .care-features article:is(:hover, :focus-within, .is-engaged)::before { transform: none; }
+}
