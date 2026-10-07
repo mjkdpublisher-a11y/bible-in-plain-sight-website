@@ -1,5 +1,6 @@
-// Paste the verified store URL here after publication. All download buttons update together.
+// The app's page on Google Play (checked on 2026-10-07). All download buttons use this address.
+// With an empty address the buttons open the "Coming soon" dialog instead.
 window.BIPS_CONFIG = {
-  googlePlayUrl: '',
+  googlePlayUrl: 'https://play.google.com/store/apps/details?id=com.bibleinplainsight.app',
   supportEmail: 'support@bibleinplainsight.com'
 };

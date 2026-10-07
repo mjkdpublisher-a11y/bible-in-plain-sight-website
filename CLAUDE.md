@@ -58,9 +58,11 @@ reference for look and behavior, do not redesign it; the earlier design "Dawn" i
   links, buttons, FAQ), `ambient-background.css` (slow sage and gold light), `closing-motion.css` (light in
   the last card; the three decorative lines above it stay removed), `navigation.css` (quiet menu tiles),
   `documents.css` (text pages). Scripts: `site.js` (menu, Google Play buttons, "Coming soon" dialog, on every
-  page), `app.js` (the three steps and screen choices, phone scrolling), `config.js` (`googlePlayUrl`: empty
-  until the real, verified store address exists; then every download button changes together; never
-  invent an app id). No trackers, nothing from other services.
+  page), `app.js` (the three steps and screen choices, phone scrolling), `config.js` (`googlePlayUrl`: the
+  app's page on Google Play since 2026-10-07, every download button opens it; with an empty address
+  the buttons open the "Coming soon" dialog; never invent an app id). The page's own words (button
+  labels, the FAQ answer "Can I download the app now?", the description) are in the published state
+  too, the same words `site.js` writes. No trackers, nothing from other services.
 - `pages/privacy-policy.md`, `support.md`, `legal-notice.md`: the approved texts, the source of truth.
   `node tools/build.js` turns them into `docs/*.html` (and `docs/404.html`) in the new layout, taking the
   header, footer and dialog from `docs/index.html`, so change those there and build. Addresses stay
@@ -106,7 +108,8 @@ reference for look and behavior, do not redesign it; the earlier design "Dawn" i
 
 - A Christian app that takes a person from a life problem to Bible passages with context, then
   follows up and builds a personal history of how things changed. English, **Android first**,
-  iOS later. Not published yet: Mark's Google Play Console account is being verified.
+  iOS later. **Published on Google Play** (Mark, 2026-10-07):
+  https://play.google.com/store/apps/details?id=com.bibleinplainsight.app
 - **90 topics in 10 categories** (Heart & Mind, Money & Work, Relationships & Family, Loss & Grief,
   Health & Body, Guilt & Temptation, Faith & Doubt, Decisions & Future, Joy & Gratitude, and
   I Need Help Now).

@@ -23,8 +23,8 @@ install, and by Google when the app is published. These are secondary.
 
 The website exists to:
 
-1. Show what the app is and how it helps, and link to Google Play once the app is published
-   (until then the button reads "Coming soon to Google Play").
+1. Show what the app is and how it helps, and link to its page on Google Play (the app is published
+   since 2026-10-07; every download button opens the store page).
 2. Host the privacy policy at a public address, as Google Play requires. It must match what the
    app really does, nothing more and nothing less.
 3. Give support and contact details (support@bibleinplainsight.com) and the French legal notice.
@@ -66,7 +66,7 @@ find help right away if they are in danger, and knows where to get the app.
   requests; fonts are hosted with the site.
 - Stack: static HTML and CSS with one small script of our own; `node tools/build.js` builds the
   text pages from `pages/*.md` and versions every asset link. No framework, few dependencies.
-- The app is not on Google Play yet (the developer account is being verified).
+- The app is on Google Play since 2026-10-07: https://play.google.com/store/apps/details?id=com.bibleinplainsight.app
 - Undecided: a topics page, a "How it works" page, a page for pastors and churches.
 
 ## Brand Commitments
@@ -90,8 +90,8 @@ find help right away if they are in danger, and knows where to get the app.
   screenshots may replace them.
 - Approved texts: `pages/privacy-policy.md`, `pages/support.md`, `pages/legal-notice.md`; the
   sources of each privacy claim in `notes/privacy-facts.md`.
-- **No reviews, testimonials, download counts, ratings, press or endorsements exist.** The app is
-  unpublished. Never invent any.
+- **No reviews, testimonials, download counts, ratings, press or endorsements exist.** The app was
+  published on 2026-10-07 and is new. Never invent any.
 
 ## Product Principles
 
