@@ -71,6 +71,10 @@ reference for look and behavior, do not redesign it; the earlier design "Dawn" i
   paragraph is the "Need help now?" notice, other paragraphs in a group are its small related links.
   `404.html` uses links from the root (`/assets/...`, `/support`), because GitHub Pages also shows it at
   deeper addresses such as `/privacy-policy/`.
+- For search engines (2026-10-07): `tools/build.js` also writes `docs/sitemap.xml` (the home page and the
+  three text pages at their https www addresses) and `docs/robots.txt` (points to the sitemap). The
+  screens in `docs/screens/` carry `noindex`. Search Console's "Page with redirect" for the addresses
+  without www or https is expected: they redirect to the www address.
 - **Run `node tools/build.js` before every commit**, also after changing only CSS, JS or a screen: it
   writes `?v=` and a fingerprint of the file into every link to a style sheet, script, picture or screen,
   also into `'screens/....html'` names in `assets/app.js`. GitHub Pages lets browsers keep files for 10

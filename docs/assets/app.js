@@ -1,18 +1,18 @@
 'use strict';
 const steps = {
   find: [
-    { label: 'Topic card', file: 'screens/topic-card.html?v=3d4d56c7', caption: 'A topic card: Worried about money' },
-    { label: 'Scripture & context', file: 'screens/what-god-says.html?v=95c3fc47', caption: 'Read Scripture in its context' },
-    { label: 'Topics', file: 'screens/topics.html?v=922c09f1', caption: 'Explore 90 topics in 10 categories' },
-    { label: 'Whole chapter', file: 'screens/chapter.html?v=f430393a', caption: 'Read the whole chapter in its place' }
+    { label: 'Topic card', file: 'screens/topic-card.html?v=f2d70548', caption: 'A topic card: Worried about money' },
+    { label: 'Scripture & context', file: 'screens/what-god-says.html?v=18079adc', caption: 'Read Scripture in its context' },
+    { label: 'Topics', file: 'screens/topics.html?v=b842ba28', caption: 'Explore 90 topics in 10 categories' },
+    { label: 'Whole chapter', file: 'screens/chapter.html?v=6a1cec21', caption: 'Read the whole chapter in its place' }
   ],
   pray: [
-    { label: 'Private journal', file: 'screens/journal.html?v=d9b5d43e', caption: 'Write down what you are carrying' },
-    { label: 'For someone I love', file: 'screens/for-someone.html?v=5bc2619e', caption: 'A prayer for someone you love' }
+    { label: 'Private journal', file: 'screens/journal.html?v=8f46037b', caption: 'Write down what you are carrying' },
+    { label: 'For someone I love', file: 'screens/for-someone.html?v=4e86f794', caption: 'A prayer for someone you love' }
   ],
   return: [
-    { label: 'Timeline', file: 'screens/08-timeline.html?v=ca01837a', caption: 'Look back on how things changed' },
-    { label: 'Check-in', file: 'screens/07-check-in.html?v=d08a1053', caption: 'A few days later: How is it now?' }
+    { label: 'Timeline', file: 'screens/08-timeline.html?v=d3f3725e', caption: 'Look back on how things changed' },
+    { label: 'Check-in', file: 'screens/07-check-in.html?v=36f2358c', caption: 'A few days later: How is it now?' }
   ]
 };
 let activeStep = 'find';

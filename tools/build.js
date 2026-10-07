@@ -233,6 +233,17 @@ fs.writeFileSync(
 );
 console.log("docs/404.html");
 
+// For search engines: the site's pages at their one right address (https, www), and where that list
+// is. The other addresses (no www, http) only redirect here, which Search Console reports as "Page
+// with redirect"; that is as it should be.
+const SITE = "https://www.bibleinplainsight.com/";
+fs.writeFileSync(
+  path.join(out, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["", ...PAGES.map((p) => p.file)].map((p) => `  <url><loc>${SITE}${p}</loc></url>`).join("\n")}\n</urlset>\n`,
+);
+fs.writeFileSync(path.join(out, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}sitemap.xml\n`);
+console.log("docs/sitemap.xml, docs/robots.txt");
+
 // File versions. Screens first, then the scripts that open them (assets/app.js), then the pages that
 // show both, so every fingerprint includes the versions written into the files it points to.
 function stampVersions() {
