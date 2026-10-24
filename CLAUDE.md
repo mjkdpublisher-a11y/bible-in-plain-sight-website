@@ -1,3 +1,7 @@
+## Current release workflow — 2026-10-24
+
+The owner approved and authorized the book, app and podcast update. Read notes/release-2026-10-24.md before editing or publishing. The new directory layout and its build path supersede the older layout instructions below. Preserve rollback history and never publish full book source files.
+
 # Bible in Plain Sight: website
 
 The website for the Android app **Bible in Plain Sight**. The app itself is a separate project at

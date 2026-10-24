@@ -1,0 +1,15 @@
+/* Three related editorial bands, kept inside one shared frame. */
+.product-overview { margin-top:12px; border:1px solid #c8d5bf; border-radius:14px; overflow:hidden; box-shadow:0 14px 30px -25px #183e315e; }
+.product-overview>.wrap { width:100%; margin:0; padding:27px 30px; }
+.product-overview .product-benefits { background:#e1e9d8; border:0; border-bottom:1px solid #cad6bf; }
+.product-overview .product-benefits>div { gap:15px; }
+.product-overview .product-benefits svg { color:#3b6748; }
+.product-overview .product-benefits strong { font-size:1.12rem; }
+.product-overview .book-formats { background:#f3eddd; border-bottom:1px solid #ddd8c8; }
+.product-overview .book-format-link { border-color:#d4ceb9; }
+.product-overview .book-format-link:hover { background:#e9e3cf; }
+.product-overview .podcast-strip { background:#e4ece2; border:0; }
+.product-overview .podcast-strip>.text-button { border:1px solid #adc2a8; background:#f6f8ed; border-radius:6px; padding:12px 17px; min-height:46px; text-decoration:none; }
+.product-overview .podcast-strip>.text-button:hover { background:#d5e2ce; }
+@media(max-width:1150px) { .product-overview>.wrap { padding:24px; } .product-overview .book-formats { grid-template-columns:1fr; gap:17px; } .product-overview .book-format-link:first-child { padding-left:0; border-left:0; } .product-overview .product-benefits strong { font-size:1.02rem; } }
+@media(max-width:700px) { .product-overview { margin-top:8px; border-radius:11px; } .product-overview>.wrap { padding:23px 20px; } .product-overview .product-benefits { gap:20px; } .product-overview .product-benefits strong { font-size:1.1rem; } .product-overview .book-format-link { padding:15px 0; } .product-overview .podcast-strip>.text-button { margin-left:48px; padding:11px 14px; } }

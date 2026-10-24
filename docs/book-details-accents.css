@@ -1,0 +1,12 @@
+/* Quiet changes of paper tone distinguish reading, browsing and listening. */
+.chapter-experience { margin-top:64px; margin-bottom:64px; padding:38px 36px; background:#f3eddd; border:1px solid #ddd3bd; border-radius:14px; box-shadow:0 13px 28px -25px #4d482d55; }
+.chapter-experience .chapter-element { border-color:#d7cfba; }
+.chapter-experience .chapter-element svg { color:#436b49; }
+.chapter-experience .book-support { max-width:none; border-color:#d7cfba; }
+.book-page .podcast-feature { padding:38px 36px; margin-bottom:var(--book-space); background:#e2eadd; border:1px solid #cbd8c3; border-radius:14px; gap:48px; box-shadow:0 13px 28px -25px #244c3b55; }
+.book-page .podcast-feature .podcast-episode { border-top:0; border-left:1px solid #bccfb4; padding:12px 0 12px 36px; }
+.book-page .podcast-feature .text-button { padding:12px 17px; min-height:46px; border:1px solid #a8bd9f; background:#f6f8ed; border-radius:6px; text-decoration:none; }
+.book-page .podcast-feature .text-button:hover { background:#d2e0c9; }
+.book-page .podcast-episode>a { padding-bottom:3px; text-decoration-thickness:1px; }
+@media(max-width:1000px) { .book-page .podcast-feature { gap:30px; } .book-page .podcast-feature .podcast-episode { padding-left:25px; } }
+@media(max-width:700px) { .chapter-experience { margin-block:38px; padding:28px 22px; border-radius:11px; } .chapter-experience .chapter-element:nth-child(2) { border-color:#d7cfba; } .book-page .podcast-feature { padding:28px 22px; border-radius:11px; gap:27px; } .book-page .podcast-feature .podcast-episode { border-left:0; border-top:1px solid #bccfb4; padding:25px 0 0; } .book-page .podcast-feature .text-button { font-size:.875rem; padding:11px 13px; } }

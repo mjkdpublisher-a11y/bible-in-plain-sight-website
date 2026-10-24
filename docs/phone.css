@@ -1,0 +1,76 @@
+/* Graphite frame, polished edge and glass. Keep preview geometry at 390 × 867. */
+.device {
+  --bezel: 8px;
+  --outer-radius: calc(390px * var(--phone-scale) * .12 + 9px);
+  --screen-radius: calc(var(--outer-radius) - var(--bezel));
+  border-radius: var(--outer-radius);
+  background: linear-gradient(155deg,#767b81 0%,#2c3034 16%,#4a4f54 46%,#1f2225 70%,#62676d 100%);
+  isolation: isolate;
+  overflow: visible;
+  box-shadow: inset 0 0 0 1px #a9b0a299, inset 0 0 0 3px #111914,
+    0 32px 42px -22px #122c3e70, 0 8px 14px -6px #13281e55;
+}
+.device-screen {
+  --screen-radius: calc(var(--outer-radius) - var(--bezel));
+  position: relative;
+  border-radius: var(--screen-radius);
+  overflow: hidden;
+  isolation: isolate;
+  contain: paint;
+  clip-path: inset(0 round var(--screen-radius));
+  -webkit-mask-image: linear-gradient(#fff,#fff);
+  mask-image: linear-gradient(#fff,#fff);
+  background: #f3eee4;
+}
+/* Layout zoom avoids a separate transformed iframe layer inside the rotated hero. */
+.device iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 390px;
+  height: 867px;
+  transform: none;
+  zoom: var(--phone-scale);
+  border-radius: calc(var(--screen-radius) / var(--phone-scale));
+  clip-path: inset(0 round calc(var(--screen-radius) / var(--phone-scale)));
+}
+.device:after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  z-index: 3;
+  border: 5px solid #050607;
+  border-radius: calc(var(--outer-radius) - 3px);
+  box-shadow: inset 0 0 0 1px #f4f9ed33, 0 0 0 1px #a0a99b44;
+  pointer-events: none;
+}
+.device:before {
+  content: '';
+  position: absolute;
+  right: -2.5px;
+  top: 23%;
+  width: 3px;
+  height: 7%;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(90deg,#26292c,#6c7177 55%,#34383c);
+  box-shadow: 0 60px 0 #34383c;
+  z-index: -1;
+  pointer-events: none;
+}
+.phone-glass {
+  position: absolute;
+  inset: var(--bezel);
+  border-radius: var(--screen-radius);
+  clip-path: inset(0 round var(--screen-radius));
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(125deg,#ffffff1c 0%,#fff0 28%,#fff0 78%,#ffffff08 100%);
+  box-shadow: inset 0 1px 0 #ffffff55;
+}
+.journey-phone { box-shadow: inset 0 0 0 1px #a9b0a299,inset 0 0 0 3px #111914,0 28px 34px -20px #15352570; }
+@media(max-width:700px) {
+  .hero-phone { --bezel:7px; }
+  .hero-phone .device-screen { --screen-radius:calc(var(--outer-radius) - var(--bezel)); }
+  .hero-phone:after { border-width:4px; }
+  .device:before { box-shadow:0 45px 0 #34383c; }
+}

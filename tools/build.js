@@ -1,3 +1,9 @@
+// The approved 2026-10-24 directory layout carries rendered source pages.
+// Preserve the original Markdown builder below for the earlier layout/history.
+if (require('fs').existsSync(require('path').join(__dirname, '../docs/book/index.html'))) {
+  require('./build-directory-site.js');
+  process.exit(0);
+}
 // Builds the text pages of the website from pages/*.md into docs/*.html, in the site's design.
 // Run from the website folder:  node tools/build.js
 // No dependencies. It understands only what the pages use: # and ## headings (with an optional

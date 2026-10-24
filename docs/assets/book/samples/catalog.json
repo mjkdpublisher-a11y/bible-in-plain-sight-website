@@ -1,0 +1,84 @@
+{
+  "sections": [
+    {
+      "id": "heart-mind",
+      "title": "Heart & Mind",
+      "chapter": "When Worry Keeps Returning",
+      "start": 13,
+      "end": 17,
+      "url": "/assets/book/samples/heart-mind/sample.json"
+    },
+    {
+      "id": "i-need-help-now",
+      "title": "When You Need Help Now",
+      "chapter": "Thoughts of Ending My Life",
+      "start": 83,
+      "end": 85,
+      "url": "/assets/book/samples/i-need-help-now/sample.json"
+    },
+    {
+      "id": "money-and-work",
+      "title": "Money & Work",
+      "chapter": "When You Worry About Money",
+      "start": 98,
+      "end": 102,
+      "url": "/assets/book/samples/money-and-work/sample.json"
+    },
+    {
+      "id": "relationships-and-family",
+      "title": "Relationships & Family",
+      "chapter": "When You Are in Conflict",
+      "start": 153,
+      "end": 157,
+      "url": "/assets/book/samples/relationships-and-family/sample.json"
+    },
+    {
+      "id": "loss-and-grief",
+      "title": "Loss & Grief",
+      "chapter": "When Someone You Love Dies",
+      "start": 218,
+      "end": 222,
+      "url": "/assets/book/samples/loss-and-grief/sample.json"
+    },
+    {
+      "id": "health-and-body",
+      "title": "Health & Body",
+      "chapter": "When You Are Ill",
+      "start": 257,
+      "end": 261,
+      "url": "/assets/book/samples/health-and-body/sample.json"
+    },
+    {
+      "id": "guilt-and-temptation",
+      "title": "Guilt & Temptation",
+      "chapter": "When You Feel Guilty",
+      "start": 299,
+      "end": 303,
+      "url": "/assets/book/samples/guilt-and-temptation/sample.json"
+    },
+    {
+      "id": "faith-and-doubt",
+      "title": "Faith & Doubt",
+      "chapter": "When You Have Doubts About God",
+      "start": 333,
+      "end": 336,
+      "url": "/assets/book/samples/faith-and-doubt/sample.json"
+    },
+    {
+      "id": "decisions-and-future",
+      "title": "Decisions & the Future",
+      "chapter": "Facing a Major Decision",
+      "start": 374,
+      "end": 378,
+      "url": "/assets/book/samples/decisions-and-future/sample.json"
+    },
+    {
+      "id": "joy-and-gratitude",
+      "title": "Joy & Gratitude",
+      "chapter": "Making Room for Gratitude",
+      "start": 406,
+      "end": 410,
+      "url": "/assets/book/samples/joy-and-gratitude/sample.json"
+    }
+  ]
+}

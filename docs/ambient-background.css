@@ -1,0 +1,78 @@
+/*
+ * Quiet landscape light: one sage wash and one warm gold wash.
+ * Adjust the gradient alpha values for strength; duration controls the pace.
+ * Decorative markup lives behind the page, with no layout or pointer effects.
+ */
+body { isolation: isolate; }
+
+.ambient-light {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ambient-orb {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ambient-orb-sage {
+  width: min(920px, 76vw);
+  height: min(850px, 100vh);
+  left: -19%;
+  top: 15%;
+  opacity: .88;
+  background: radial-gradient(ellipse at 54% 46%,
+    rgb(132 165 111 / .19) 0%,
+    rgb(155 182 132 / .12) 30%,
+    rgb(181 201 159 / .055) 52%, transparent 73%);
+}
+.ambient-orb-gold {
+  width: min(820px, 68vw);
+  height: min(720px, 88vh);
+  right: -14%;
+  bottom: -18%;
+  opacity: .8;
+  background: radial-gradient(ellipse at 48% 45%,
+    rgb(209 178 111 / .17) 0%,
+    rgb(220 195 140 / .10) 32%,
+    rgb(230 211 169 / .045) 53%, transparent 74%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-orb-sage { animation: ambient-sage-drift 24s ease-in-out infinite; }
+  .ambient-orb-gold { animation: ambient-gold-drift 28s -7s ease-in-out infinite; }
+  .ambient-orb { animation-play-state: var(--ambient-play, running); }
+}
+@keyframes ambient-sage-drift {
+  0%, 100% { transform: translate3d(-8px, 6px, 0); opacity: .7; }
+  50% { transform: translate3d(8px, -6px, 0); opacity: .98; }
+}
+@keyframes ambient-gold-drift {
+  0%, 100% { transform: translate3d(8px, 7px, 0); opacity: .64; }
+  50% { transform: translate3d(-8px, -7px, 0); opacity: .92; }
+}
+
+@media (max-width: 700px) {
+  .ambient-orb-sage { width: 115vw; height: 68vh; left: -58%; top: 25%; }
+  .ambient-orb-gold { width: 110vw; height: 60vh; right: -57%; bottom: -8%; }
+  @keyframes ambient-sage-drift {
+    0%, 100% { transform: translate3d(-4px, 3px, 0); opacity: .66; }
+    50% { transform: translate3d(4px, -3px, 0); opacity: .86; }
+  }
+  @keyframes ambient-gold-drift {
+    0%, 100% { transform: translate3d(4px, 4px, 0); opacity: .6; }
+    50% { transform: translate3d(-4px, -4px, 0); opacity: .8; }
+  }
+}
+
+/* The landscape remains visible, but still, when less motion is requested. */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb { animation: none !important; transform: none !important; }
+}
+
+html.motion-paused *,
+html.motion-paused *::before,
+html.motion-paused *::after { animation-play-state: paused !important; }
